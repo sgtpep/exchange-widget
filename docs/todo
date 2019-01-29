@@ -22,7 +22,9 @@ state
     amount
 tests
 
-on destroy
-  abort fetch
-  cancel timeout
-http://meiosis.js.org/tutorial/09-using-preact.html
+preact
+  allow to pass initial state
+  on destroy
+    abort fetch
+    cancel timeout
+  http://meiosis.js.org/tutorial/09-using-preact.html
