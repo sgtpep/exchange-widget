@@ -1,18 +1,22 @@
-jest/enzyme
+jest
+  https://jestjs.io/
+enzyme
+  https://github.com/airbnb/enzyme
+  https://airbnb.io/enzyme/
+preact+jest+enzyme
+  enzyme mount https://github.com/windyGex/preact-compat-enzyme
+    https://github.com/windyGex/preact-jest-test-example
+    https://github.com/windyGex/preact-compat-enzyme/issues/1
+    https://preactjs.com/guide/unit-testing-with-enzyme
   https://preactjs.com/guide/unit-testing-with-enzyme
-preact-cycle
-  https://developit.github.io/preact-cycle/
-  http://jsfiddle.net/developit/1z5f5d5t/
-preact
-  https://preactjs.com/guide/types-of-components
-  https://preactjs.com/guide/differences-to-react
-  https://preactjs.com/guide/switching-to-preact
-  https://preactjs.com/guide/getting-started
-  https://preactjs.com/guide/switching-to-preact
-  https://preactjs.com/about/demos-examples
-  https://preactjs.com/repl
-  https://preactjs.com/guide/forms
-  https://preactjs.com/guide/linked-state
-  https://preactjs.com/guide/external-dom-mutations
-  https://preactjs.com/guide/extending-component
+  https://github.com/aweary/enzyme-adapter-preact
+    https://stackoverflow.com/a/46956642
+  https://github.com/mzgoddard/preact-render-spy/
+    https://github.com/victronenergy/venus-html5-app/pull/46/commits/7d6e7cf46a98a87a944c4968e6c335aa06b13234
+preact https://preactjs.com/
   https://preactjs.com/guide/api-reference
+htm https://github.com/developit/htm
+meiosis https://meiosis.js.org/
+  streams
+    @most/core
+    kefir

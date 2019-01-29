@@ -13,6 +13,7 @@ travis
   badge
 eslint
 babel
+  babel-plugin-htm
 autoprefixer
 minify js, css
 optimize images
@@ -22,10 +23,13 @@ readme
   unconventional
     no transpilation: template literals, no webpack/preact-cli
     functional style: lambdas
-    preact-cycle for state
+    meiosis for state
+    typescript as an external tool
   usage
   npm scripts
   supported browsers
+package.json
+  typings https://github.com/developit/linkstate/blob/master/package.json
 tests
 test coverage
 typescript
