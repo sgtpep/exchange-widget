@@ -1,5 +1,4 @@
 actions
-  fetchRates
   updatePocket
   setSourcePocket
   setDestinationPocket
@@ -23,6 +22,7 @@ state
 tests
 
 preact
+  rates-url
   allow to pass initial state
   on destroy
     abort fetch

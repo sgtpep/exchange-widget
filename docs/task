@@ -3,6 +3,7 @@
 - Implement functionality of this screen in your own custom web widget using FX rates from either source:
   - http://www.ecb.int/stats/exchange/eurofxref/html/index.en.html#dev
   - https://openexchangerates.org/
+  - https://fixer.io/
   - Your preferred source of FX rates
 
 Explicit Requirements
