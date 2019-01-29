@@ -11,7 +11,10 @@ lighthouse
 deploy
 readme
   npm scripts
-  webpack
+  unconventional
+    webpack
+    functional style: lambdas
+  usage
 tests
 test coverage
 typescript
