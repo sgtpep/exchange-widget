@@ -1,0 +1,17 @@
+normalize.css
+prettier
+travis
+eslint
+babel
+autoprefixer
+minify js, css
+optimize images
+crossbrowser test
+lighthouse
+deploy
+readme
+  npm scripts
+  webpack
+tests
+test coverage
+typescript
