@@ -1,0 +1,22 @@
+cancel button
+rate dropdown
+  list
+exchange button
+  disabled
+currency box
+  currency name
+  dots
+  swipes
+  you have
+  reverse exchange rate
+  input
+    format
+    sign
+separator
+events
+  inputted
+  pair changed
+    pair equal
+      disable exchange button
+      hide rate dropdown
+  fetched data changed
