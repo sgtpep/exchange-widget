@@ -17,6 +17,3 @@ preact https://preactjs.com/
   https://preactjs.com/guide/api-reference
 htm https://github.com/developit/htm
 meiosis https://meiosis.js.org/
-  streams
-    @most/core
-    kefir
