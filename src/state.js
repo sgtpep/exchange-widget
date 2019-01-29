@@ -1,1 +1,1 @@
-export default { rates: [] };
+export default { rates: [], ratesLoading: false };
