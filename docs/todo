@@ -6,7 +6,6 @@ actions
   setSourceAmount
   setDestinationAmount
 state
-  fetchError
   rates
     currency
     rate
