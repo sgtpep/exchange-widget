@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "kefir": "^3.8.6"
+  }
+}
