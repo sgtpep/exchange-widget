@@ -1,5 +1,5 @@
 actions
-  updatePocket
+  updatePockets
   setSourcePocket
   setDestinationPocket
   buyCurrency
@@ -19,7 +19,6 @@ state
   destination
     pocket
     amount
-tests
 
 preact
   rates-url
