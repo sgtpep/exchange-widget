@@ -1,20 +1,37 @@
+crossbrowser test
+  chromium
+  chromium mobile emulator
+  firefox
+  chrome mobile
+  safari
+  safari mobile
+  edge
+  opera
 normalize.css
 prettier
 travis
+  badge
 eslint
 babel
 autoprefixer
 minify js, css
 optimize images
-crossbrowser test
 lighthouse
 deploy
 readme
-  npm scripts
   unconventional
-    webpack
+    no transpilation: template literals, no webpack/preact-cli
     functional style: lambdas
+    preact-cycle for state
   usage
+  npm scripts
+  supported browsers
 tests
 test coverage
 typescript
+https://gethead.info/
+https://frontendchecklist.io/
+routing
+pwa
+svg backgrounds
+storybook
