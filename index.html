@@ -9,8 +9,8 @@
   <link href="images/favicon.png" rel="icon" />
   <link href="styles/index.css" rel="stylesheet" />
   <script type="module">
-    import widget from './src/index.js';
-    widget({
+    import initialize from './src/index.js';
+    initialize(document.body, {
       pockets: [
         { currency: 'GBP', sum: 100 },
         { currency: 'EUR', sum: 200 },
