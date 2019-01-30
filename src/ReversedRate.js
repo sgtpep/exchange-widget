@@ -1,3 +1,3 @@
 import { html } from '../node_modules/htm/preact/standalone.mjs';
 
-export default () => 'RateDropdown';
+export default props => 'ReversedRate';
