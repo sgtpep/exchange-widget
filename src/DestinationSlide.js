@@ -8,7 +8,7 @@ export default props =>
     <div>
       <p>${props.pocket.currency}</p>
       <p>
-        You have${' '}
+        ${'You have '}
         ${formatCurrency(props.pocket.sum, props.pocket.currency)}
       </p>
       <p><${DestinationAmount} /></p>
