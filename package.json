@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "htm": "^2.0.0",
     "kefir": "^3.8.6"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  },
+  "scripts": {
+    "start": "http-server -c -1"
   }
 }
