@@ -1,26 +1,9 @@
-actions
-  updatePockets
-  setSourcePocket
-  setDestinationPocket
-  buyCurrency
-  setSourceAmount
-  setDestinationAmount
-state
-  rates
-    currency
-    rate
-  pockets
-    currency
-    sum
-  source
-    pocket
-    amount
-  destination
-    pocket
-    amount
-
 preact
-  rates-url
+  props
+    pockets
+      currency
+      sum
+    rates-url
   allow to pass initial state
   on destroy
     abort fetch
