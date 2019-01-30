@@ -4,12 +4,20 @@ import { Component, html } from '../node_modules/htm/preact/standalone.mjs';
 import { onState } from './update.js';
 
 export default class extends Component {
+  componentDidMount() {
+    this.fetchRates();
+    this.fetchRatesInterval = setInterval(() => this.fetchRates(), 1000);
+  }
+
   componentWillMount() {
     onState(state => {
       console.log('state', state);
       this.setState(state);
     });
-    this.fetchRates();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.fetchRatesInterval);
   }
 
   fetchRates() {

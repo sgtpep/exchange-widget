@@ -1,3 +1,2 @@
 on destroy
   abort fetch
-  cancel timeout
