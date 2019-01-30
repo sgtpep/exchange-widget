@@ -3,6 +3,7 @@ import formatCurrency from './format-currency.js';
 import html from './html.js';
 
 export default (props, state) =>
+  !state.rates.length ||
   html`
     <span class="RateDropdown">
       <span>
