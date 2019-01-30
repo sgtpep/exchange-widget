@@ -1,7 +1,7 @@
 import DestinationAmount from './DestinationAmount.js';
 import ReversedRate from './ReversedRate.js';
 import formatCurrency from './format-currency.js';
-import { html } from '../node_modules/htm/preact/standalone.mjs';
+import html from './html.js';
 
 export default props =>
   html`

@@ -1,6 +1,6 @@
 import Slider from './Slider.js';
 import SourceSlide from './SourceSlide.js';
-import { html } from '../node_modules/htm/preact/standalone.mjs';
+import html from './html.js';
 import { setSourcePocket } from './actions.js';
 
 export default (props, state) =>

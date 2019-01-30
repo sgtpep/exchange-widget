@@ -1,5 +1,6 @@
 import App from './App.js';
-import { html, render } from '../node_modules/htm/preact/standalone.mjs';
+import html from './html.js';
+import { render } from '../node_modules/preact/dist/preact.mjs';
 
 export default (element, options) => {
   const root = render(

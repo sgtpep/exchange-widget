@@ -1,7 +1,8 @@
 import DestinationSlider from './DestinationSlider.js';
 import RateDropdown from './RateDropdown.js';
 import SourceSlider from './SourceSlider.js';
-import { Component, html } from '../node_modules/htm/preact/standalone.mjs';
+import html from './html.js';
+import { Component } from '../node_modules/preact/dist/preact.mjs';
 import { fetchRates, setPockets } from './actions.js';
 import { onState } from './update.js';
 

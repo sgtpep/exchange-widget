@@ -1,4 +1,4 @@
-import { html } from '../node_modules/htm/preact/standalone.mjs';
+import html from './html.js';
 import { setAmount } from './actions.js';
 
 export default (props, state) => html`

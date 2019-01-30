@@ -1,4 +1,4 @@
-import { html } from '../node_modules/htm/preact/standalone.mjs';
+import html from './html.js';
 
 export default props =>
   html`

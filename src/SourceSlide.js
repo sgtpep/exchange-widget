@@ -1,6 +1,6 @@
 import SourceAmount from './SourceAmount.js';
 import formatCurrency from './format-currency.js';
-import { html } from '../node_modules/htm/preact/standalone.mjs';
+import html from './html.js';
 
 export default props =>
   html`

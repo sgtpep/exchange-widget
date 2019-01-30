@@ -1,6 +1,6 @@
-import Slider from './Slider.js';
 import DestinationSlide from './DestinationSlide.js';
-import { html } from '../node_modules/htm/preact/standalone.mjs';
+import Slider from './Slider.js';
+import html from './html.js';
 import { setDestinationPocket } from './actions.js';
 
 export default (props, state) =>
