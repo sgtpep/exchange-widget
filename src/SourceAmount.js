@@ -25,7 +25,14 @@ export default class extends Component {
           autofocus
           max=${props.max}
           min="1"
-          onInput=${event => setAmount(event.target.value)}
+          onInput=${event =>
+            setAmount(
+              event.target.validity.valid
+                ? isNaN(event.target.valueAsNumber)
+                  ? null
+                  : event.target.valueAsNumber
+                : state.amount,
+            )}
           ref=${this.input}
           type="number"
           value=${state.amount}
