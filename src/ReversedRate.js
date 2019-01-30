@@ -11,6 +11,8 @@ export default (props, state) => {
         state.sourcePocket.currency,
       );
   return html`
-    <span class="animated" hidden=${state.ratesHidden}>${prevText}</span>
+    <span class="ReversedRate animated" hidden=${state.ratesHidden}
+      >${prevText}</span
+    >
   `;
 };

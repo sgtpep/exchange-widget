@@ -4,7 +4,7 @@ import html from './html.js';
 
 export default props =>
   html`
-    <div>
+    <div class="SourceSlide">
       <p>${props.pocket.currency}</p>
       <p>
         ${'You have '}

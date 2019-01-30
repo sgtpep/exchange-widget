@@ -5,15 +5,17 @@ import { setDestinationPocket } from './actions.js';
 
 export default (props, state) =>
   html`
-    <${Slider}
-      index=${state.pockets.indexOf(state.destinationPocket)}
-      onSelect=${index => setDestinationPocket(state.pockets[index])}
-    >
-      ${state.pockets.map(
-        pocket =>
-          html`
-            <${DestinationSlide} pocket=${pocket} />
-          `,
-      )}
-    <//>
+    <div class="DestinationSlider">
+      <${Slider}
+        index=${state.pockets.indexOf(state.destinationPocket)}
+        onSelect=${index => setDestinationPocket(state.pockets[index])}
+      >
+        ${state.pockets.map(
+          pocket =>
+            html`
+              <${DestinationSlide} pocket=${pocket} />
+            `,
+        )}
+      <//>
+    </div>
   `;

@@ -19,7 +19,7 @@ export default class extends Component {
 
   render(props, _, state) {
     return html`
-      <span>
+      <span class="SourceAmount">
         ${state.amount && '-'}
         <input
           autofocus

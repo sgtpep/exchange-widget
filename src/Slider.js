@@ -2,7 +2,7 @@ import html from './html.js';
 
 export default props =>
   html`
-    <div>
+    <div class="Slider">
       ${props.children.map(
         (child, index) =>
           html`
