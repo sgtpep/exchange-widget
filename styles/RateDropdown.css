@@ -1,11 +1,11 @@
 .RateDropdown {
   display: inline-block;
   position: relative;
-  transition: opacity var(--duration), visibility var(--duration);
+  transition: opacity var(--duration);
 }
-.RateDropdown.hidden {
+.RateDropdown[hidden] {
   opacity: 0;
-  visibility: hidden;
+  pointer-events: none;
 }
 
 .RateDropdown > select {
