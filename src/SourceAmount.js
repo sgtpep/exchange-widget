@@ -7,7 +7,7 @@ export default (props, state) => html`
     <input
       max=${props.max}
       min="1"
-      onChange=${event => setAmount(event.target.value)}
+      onInput=${event => setAmount(event.target.value)}
       type="number"
       value=${state.amount}
     />
