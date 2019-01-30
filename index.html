@@ -8,5 +8,15 @@
   <title>Revolut Test Task</title>
   <link href="images/favicon.png" rel="icon" />
   <link href="styles/index.css" rel="stylesheet" />
-  <script src="src/index.js" type="module"></script>
+  <script type="module">
+    import widget from './src/index.js';
+    widget({
+      pockets: [
+        { currency: 'GBP', sum: 100 },
+        { currency: 'EUR', sum: 200 },
+        { currency: 'USD', sum: 300 },
+      ],
+      ratesURL: 'mocks/rates.json',
+    });
+  </script>
 </html>
