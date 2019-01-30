@@ -1,8 +1,8 @@
-import SourceAmount from './SourceAmount.js';
+import CurrencyInput from './CurrencyInput.js';
 import formatCurrency from './format-currency.js';
 import html from './html.js';
 
-export default props =>
+export default (props, state) =>
   html`
     <div class="SourceSlide">
       <p>${props.pocket.currency}</p>
@@ -11,7 +11,8 @@ export default props =>
         ${formatCurrency(props.pocket.sum, props.pocket.currency)}
       </p>
       <p>
-        <${SourceAmount} max=${props.pocket.sum} />
+        ${!state.amount || '-'}
+        <${CurrencyInput} max=${props.pocket.sum} />
       </p>
     </div>
   `;
