@@ -6,7 +6,7 @@ import { onState } from './update.js';
 export default class extends Component {
   componentDidMount() {
     this.fetchRates();
-    this.fetchRatesInterval = setInterval(() => this.fetchRates(), 1000);
+    this.fetchRatesInterval = setInterval(() => this.fetchRates(), 10000);
   }
 
   componentWillMount() {
