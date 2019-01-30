@@ -41,4 +41,9 @@ export const setPockets = pockets =>
   }));
 
 export const setSourcePocket = pocket =>
-  update(state => ({ ...state, sourcePocket: pocket }));
+  update(state => ({
+    ...state,
+    amount:
+      state.amount && state.amount > pocket.sum ? pocket.sum : state.amount,
+    sourcePocket: pocket,
+  }));
