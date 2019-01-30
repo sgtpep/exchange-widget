@@ -49,7 +49,7 @@ export default class extends Component {
             </p>
           `}
         <nav>
-          <button onClick=${props.destroy}>Cancel</button>
+          <button onClick=${() => props.destroy()}>Cancel</button>
           <${RateDropdown} />
           <${ExchangeButton} />
         </nav>
