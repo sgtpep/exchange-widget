@@ -16,10 +16,9 @@ export const fetchRates = url => {
         ratesLoading: false,
       })),
     )
-    .catch(error => {
-      error && console.error(error);
-      update(state => ({ ...state, ratesError: true, ratesLoading: false }));
-    });
+    .catch(() =>
+      update(state => ({ ...state, ratesError: true, ratesLoading: false })),
+    );
 };
 
 export const setAmount = (key, amount) =>
