@@ -34,7 +34,7 @@ export default class extends Component {
 
   render(props, state) {
     return html`
-      <div>
+      <div class="App">
         ${state.ratesLoading &&
           !state.rates.length &&
           html`
@@ -47,11 +47,11 @@ export default class extends Component {
               <button onClick=${() => this.fetchRates()}>Retry</button>
             </p>
           `}
-        <div>
+        <nav>
           <button onClick=${props.destroy}>Cancel</button>
           <${RateDropdown} rates=${state.rates} />
           <button disabled>Exchange</button>
-        </div>
+        </nav>
         <${SourceSlider} />
         <${DestinationSlider} />
       </div>
