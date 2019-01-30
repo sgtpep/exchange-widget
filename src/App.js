@@ -50,8 +50,8 @@ export default class extends Component {
           <${RateDropdown} rates=${state.rates} />
           <button disabled>Exchange</button>
         </div>
-        <${Pockets} pockets=${props.pockets} type="source" />
-        <${Pockets} pockets=${props.pockets} type="destination" />
+        <${Pockets} type="source" />
+        <${Pockets} type="destination" />
       </div>
     `;
   }
