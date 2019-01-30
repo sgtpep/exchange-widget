@@ -1,4 +1,4 @@
-import AmountInput from './AmountInput.js';
+import SourceAmount from './SourceAmount.js';
 import formatCurrency from './format-currency.js';
 import { html } from '../node_modules/htm/preact/standalone.mjs';
 
@@ -11,7 +11,7 @@ export default props =>
         ${formatCurrency(props.pocket.sum, props.pocket.currency)}
       </p>
       <p>
-        <${AmountInput} max=${props.pocket.sum} />
+        <${SourceAmount} max=${props.pocket.sum} />
       </p>
     </div>
   `;

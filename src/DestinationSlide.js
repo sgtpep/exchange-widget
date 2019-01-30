@@ -1,4 +1,4 @@
-import ConvertedAmount from './ConvertedAmount.js';
+import DestinationAmount from './DestinationAmount.js';
 import ReversedRate from './ReversedRate.js';
 import formatCurrency from './format-currency.js';
 import { html } from '../node_modules/htm/preact/standalone.mjs';
@@ -11,7 +11,7 @@ export default props =>
         You have${' '}
         ${formatCurrency(props.pocket.sum, props.pocket.currency)}
       </p>
-      <p><${ConvertedAmount} /></p>
+      <p><${DestinationAmount} /></p>
       <p><${ReversedRate} /></p>
     </div>
   `;
