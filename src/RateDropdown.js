@@ -1,26 +1,16 @@
-import exchangeRate from './exchange-rate.js';
-import formatCurrency from './format-currency.js';
 import html from './html.js';
+import rateText from './rate-text.js';
 import { setDestinationPocket, setSourcePocket } from './actions.js';
-
-const text = (rates, fromCurrency, toCurrency) =>
-  `${formatCurrency(1, fromCurrency, {
-    maximumFractionDigits: 0,
-    minimumFractionDigits: 0,
-  })} = ${formatCurrency(
-    exchangeRate(rates, fromCurrency, toCurrency),
-    toCurrency,
-    { minimumFractionDigits: 4 },
-  )}`;
 
 let prevText;
 export default (props, state) => {
   prevText = state.ratesHidden
     ? prevText
-    : text(
+    : rateText(
         state.rates,
         state.sourcePocket.currency,
         state.destinationPocket.currency,
+        { minimumFractionDigits: 4 },
       );
   return html`
     <span class="RateDropdown animated" hidden=${state.ratesHidden}>
@@ -54,10 +44,11 @@ export default (props, state) => {
                   }`}
                 >
                   ${!state.rates.length ||
-                    text(
+                    rateText(
                       state.rates,
                       sourcePocket.currency,
                       destinationPocket.currency,
+                      { minimumFractionDigits: 4 },
                     )}
                 </option>
               `,
