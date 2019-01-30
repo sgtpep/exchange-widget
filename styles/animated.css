@@ -1,0 +1,8 @@
+.animated {
+  transition: opacity var(--duration);
+}
+.animated[hidden] {
+  display: inherit;
+  opacity: 0;
+  pointer-events: none;
+}

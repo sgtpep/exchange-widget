@@ -23,7 +23,7 @@ export default (props, state) => {
         state.destinationPocket.currency,
       );
   return html`
-    <span class="RateDropdown" hidden=${state.ratesHidden}>
+    <span class="RateDropdown animated" hidden=${state.ratesHidden}>
       <span>${prevText}</span>
       <select
         onChange=${event => {
