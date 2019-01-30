@@ -1,5 +1,7 @@
 import update from './update.js';
 
+export const exchange = () => {};
+
 export const fetchRates = url => {
   update(state => ({ ...state, ratesLoading: true }));
   fetch(url)
@@ -19,3 +21,9 @@ export const fetchRates = url => {
       update(state => ({ ...state, ratesError: true }));
     });
 };
+
+export const setAmount = (key, amount) =>
+  update(state => ({ ...state, [key]: { ...state[key], amount } }));
+
+export const setPocket = (key, pocket) =>
+  update(state => ({ ...state, [key]: { ...state[key], pocket } }));
