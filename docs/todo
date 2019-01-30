@@ -1,11 +1,4 @@
-preact
-  props
-    pockets
-      currency
-      sum
-    rates-url
-  allow to pass initial state
-  on destroy
-    abort fetch
-    cancel timeout
-  http://meiosis.js.org/tutorial/09-using-preact.html
+http://meiosis.js.org/tutorial/09-using-preact.html
+on destroy
+  abort fetch
+  cancel timeout
