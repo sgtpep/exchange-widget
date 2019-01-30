@@ -1,8 +1,5 @@
 RateDropdown
-  hide on equal
-    animation
-  hide if no pockets
-  hide if no rates
   list
     show selection
     select on click
+  hide animation
