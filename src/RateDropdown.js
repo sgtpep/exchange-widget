@@ -25,8 +25,20 @@ export default (props, state) =>
         )}
       </span>
       <select>
-        <option>rate 1</option>
-        <option>rate 2</option>
+        ${state.pockets.map(sourcePocket =>
+          state.pockets.map(
+            destinationPocket =>
+              destinationPocket.currency === sourcePocket.currency ||
+              html`
+                <option
+                  selected=${destinationPocket === state.destinationPocket &&
+                    sourcePocket === state.sourcePocket}
+                >
+                  ${sourcePocket.currency}${' → '}${destinationPocket.currency}
+                </option>
+              `,
+          ),
+        )}
       </select>
     </span>
   `;
