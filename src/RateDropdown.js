@@ -1,6 +1,7 @@
 import exchangeRate from './exchange-rate.js';
 import formatCurrency from './format-currency.js';
 import html from './html.js';
+import { setDestinationPocket, setSourcePocket } from './actions.js';
 
 export default (props, state) =>
   !state.rates.length ||
@@ -24,7 +25,22 @@ export default (props, state) =>
           },
         )}
       </span>
-      <select>
+      <select
+        onChange=${event => {
+          const [
+            sourceCurrency,
+            destinationCurrency,
+          ] = event.target.value.split(':');
+          setSourcePocket(
+            state.pockets.find(pocket => pocket.currency === sourceCurrency),
+          );
+          setDestinationPocket(
+            state.pockets.find(
+              pocket => pocket.currency === destinationCurrency,
+            ),
+          );
+        }}
+      >
         ${state.pockets.map(sourcePocket =>
           state.pockets.map(
             destinationPocket =>
@@ -33,6 +49,9 @@ export default (props, state) =>
                 <option
                   selected=${destinationPocket === state.destinationPocket &&
                     sourcePocket === state.sourcePocket}
+                  value=${`${sourcePocket.currency}:${
+                    destinationPocket.currency
+                  }`}
                 >
                   ${sourcePocket.currency}${' → '}${destinationPocket.currency}
                 </option>
