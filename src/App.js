@@ -46,6 +46,7 @@ export default class extends Component {
               <button onClick=${() => this.fetchRates()}>Retry</button>
             </p>
           `}
+        <button onClick=${props.destroy}>Cancel</button>
       </div>
     `;
   }
