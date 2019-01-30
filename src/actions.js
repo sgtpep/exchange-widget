@@ -27,9 +27,12 @@ export const fetchRates = (url, signal = undefined) => {
         ratesLoading: false,
       })),
     )
-    .catch(() =>
-      update(state => ({ ...state, ratesError: true, ratesLoading: false })),
-    );
+    .catch(error => {
+      if (!signal || !signal.aborted) {
+        error && console.error(error);
+        update(state => ({ ...state, ratesError: true, ratesLoading: false }));
+      }
+    });
 };
 
 const ratesHidden = (sourcePocket, destinationPocket, ratesEmpty) =>
