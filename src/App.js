@@ -51,7 +51,7 @@ export default class extends Component {
         <nav>
           <button onClick=${() => props.destroy()}>Cancel</button>
           <${RateDropdown} />
-          <${ExchangeButton} />
+          <${ExchangeButton} onExchange=${() => props.destroy()} />
         </nav>
         <${SourceSlider} />
         <${DestinationSlider} />

@@ -1,6 +1,12 @@
 import update from './update.js';
 
-export const exchange = () => {};
+export const exchange = (amount, rate, fromCurrency, toCurrency) => {
+  console.log('exchange:', amount, rate, fromCurrency, toCurrency);
+  update(state => ({ ...state, exchangeLoading: true }));
+  return new Promise(resolve => setTimeout(resolve, 1000)).then(() =>
+    update(state => ({ ...state, exchangeLoading: false })),
+  );
+};
 
 export const fetchRates = (url, signal = undefined) => {
   update(state => ({ ...state, ratesLoading: true }));
