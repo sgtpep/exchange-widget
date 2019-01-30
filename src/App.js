@@ -49,7 +49,7 @@ export default class extends Component {
           `}
         <nav>
           <button onClick=${props.destroy}>Cancel</button>
-          <${RateDropdown} rates=${state.rates} />
+          <${RateDropdown} />
           <button disabled>Exchange</button>
         </nav>
         <${SourceSlider} />
