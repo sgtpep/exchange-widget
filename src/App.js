@@ -50,7 +50,12 @@ export default class extends Component {
         <nav>
           <button onClick=${props.destroy}>Cancel</button>
           <${RateDropdown} />
-          <button disabled>Exchange</button>
+          <button
+            disabled=${state.destinationPocket === state.sourcePocket ||
+              !state.amount}
+          >
+            Exchange
+          </button>
         </nav>
         <${SourceSlider} />
         <${DestinationSlider} />
