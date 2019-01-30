@@ -1,4 +1,5 @@
 import DestinationSlider from './DestinationSlider.js';
+import ExchangeButton from './ExchangeButton.js';
 import RateDropdown from './RateDropdown.js';
 import SourceSlider from './SourceSlider.js';
 import html from './html.js';
@@ -50,12 +51,7 @@ export default class extends Component {
         <nav>
           <button onClick=${props.destroy}>Cancel</button>
           <${RateDropdown} />
-          <button
-            disabled=${state.destinationPocket === state.sourcePocket ||
-              !state.amount}
-          >
-            Exchange
-          </button>
+          <${ExchangeButton} />
         </nav>
         <${SourceSlider} />
         <${DestinationSlider} />

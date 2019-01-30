@@ -1,0 +1,6 @@
+.ExchangeButton {
+  transition: opacity var(--duration);
+}
+.ExchangeButton[disabled] {
+  opacity: 0.5;
+}
