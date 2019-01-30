@@ -1,8 +1,7 @@
 RateDropdown
-  style select
-    fluid width
   show rate
   hide on equal
     animation
   list
+    show selection
     select on click
