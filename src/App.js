@@ -1,6 +1,6 @@
-import * as actions from './actions.js';
 import RateDropdown from './RateDropdown.js';
 import { Component, html } from '../node_modules/htm/preact/standalone.mjs';
+import { fetchRates, setPocket } from './actions.js';
 import { onState } from './update.js';
 
 export default class extends Component {
@@ -24,11 +24,11 @@ export default class extends Component {
   fetchRates() {
     this.fetchRatesAbort && this.fetchRatesAbort.abort();
     this.fetchRatesAbort = new AbortController();
-    return actions.fetchRates(this.props.ratesURL, this.fetchRatesAbort.signal);
+    return fetchRates(this.props.ratesURL, this.fetchRatesAbort.signal);
   }
 
   getChildContext() {
-    return { ...actions };
+    return this.state;
   }
 
   render(props, state) {
