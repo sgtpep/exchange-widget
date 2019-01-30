@@ -20,7 +20,7 @@ export default class extends Component {
   render(props, _, state) {
     return html`
       <span class="SourceAmount">
-        ${state.amount && '-'}
+        ${!state.amount || '-'}
         <input
           autofocus
           max=${props.max}
