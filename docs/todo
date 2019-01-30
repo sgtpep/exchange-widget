@@ -1,8 +1,4 @@
 exchange button
-  disabled
-    equal currencies
-    not amount
-    animate
   click
 currency box
   currency name

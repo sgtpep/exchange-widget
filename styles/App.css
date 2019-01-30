@@ -3,3 +3,10 @@
   display: flex;
   justify-content: space-between;
 }
+
+.App > nav > * {
+  transition: opacity var(--duration);
+}
+.App > nav > [disabled] {
+  opacity: 0.5;
+}
