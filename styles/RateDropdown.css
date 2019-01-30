@@ -11,9 +11,6 @@
   top: 0;
   width: 100%;
 }
-.RateDropdown > select:focus {
-  outline: none;
-}
 
 .RateDropdown > span {
   white-space: nowrap;
