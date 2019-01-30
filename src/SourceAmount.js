@@ -24,16 +24,21 @@ export default class extends Component {
         <input
           autofocus
           max=${props.max}
-          min="1"
-          onInput=${event =>
-            setAmount(
-              event.target.validity.valid
-                ? isNaN(event.target.valueAsNumber)
-                  ? null
-                  : event.target.valueAsNumber
-                : state.amount,
-            )}
+          onInput=${event => {
+            const decimalsValid =
+              (event.target.valueAsNumber.toString().split('.')[1] || '')
+                .length <= 2;
+            (event.target.valueAsNumber === state.amount && decimalsValid) ||
+              setAmount(
+                event.target.validity.valid && decimalsValid
+                  ? isNaN(event.target.valueAsNumber)
+                    ? null
+                    : event.target.valueAsNumber
+                  : state.amount,
+              );
+          }}
           ref=${this.input}
+          step="any"
           type="number"
           value=${state.amount}
         />
