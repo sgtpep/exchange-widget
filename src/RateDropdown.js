@@ -3,26 +3,25 @@ import formatCurrency from './format-currency.js';
 import html from './html.js';
 import { setDestinationPocket, setSourcePocket } from './actions.js';
 
+const text = (rates, fromCurrency, toCurrency) =>
+  `${formatCurrency(1, fromCurrency, {
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
+  })} = ${formatCurrency(
+    exchangeRate(rates, fromCurrency, toCurrency),
+    toCurrency,
+    { minimumFractionDigits: 4 },
+  )}`;
+
 export default (props, state) =>
   !state.rates.length ||
   html`
     <span class="RateDropdown">
       <span>
-        ${formatCurrency(1, state.sourcePocket.currency, {
-          maximumFractionDigits: 0,
-          minimumFractionDigits: 0,
-        })}
-        ${' = '}
-        ${formatCurrency(
-          exchangeRate(
-            state.rates,
-            state.sourcePocket.currency,
-            state.destinationPocket.currency,
-          ),
+        ${text(
+          state.rates,
+          state.sourcePocket.currency,
           state.destinationPocket.currency,
-          {
-            minimumFractionDigits: 4,
-          },
         )}
       </span>
       <select
@@ -53,7 +52,11 @@ export default (props, state) =>
                     destinationPocket.currency
                   }`}
                 >
-                  ${sourcePocket.currency}${' → '}${destinationPocket.currency}
+                  ${text(
+                    state.rates,
+                    sourcePocket.currency,
+                    destinationPocket.currency,
+                  )}
                 </option>
               `,
           ),
