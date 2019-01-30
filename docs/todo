@@ -1,5 +1,5 @@
+focus input only on slide
+
 RateDropdown
-  list
-    show selection
-    select on click
+  select on click
   hide animation
