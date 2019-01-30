@@ -21,8 +21,8 @@ export const fetchRates = (url, signal = undefined) => {
     );
 };
 
-export const setAmount = (key, amount) =>
-  update(state => ({ ...state, [key]: { ...state[key], amount } }));
+export const setAmount = (type, amount) =>
+  update(state => ({ ...state, [type]: { ...state[type], amount } }));
 
-export const setPocket = (key, pocket) =>
-  update(state => ({ ...state, [key]: { ...state[key], pocket } }));
+export const setPocket = (type, pocket) =>
+  update(state => ({ ...state, [type]: { ...state[type], pocket } }));
