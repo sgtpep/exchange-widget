@@ -35,6 +35,7 @@ export default class extends Component {
     return html`
       <div>
         ${state.ratesLoading &&
+          !state.rates.length &&
           html`
             <p>Loading</p>
           `}
