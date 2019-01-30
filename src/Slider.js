@@ -3,7 +3,12 @@ import html from './html.js';
 export default props =>
   html`
     <div>
-      ${props.children.map((child, index) => index === props.index && child)}
+      ${props.children.map(
+        (child, index) =>
+          html`
+            <div hidden=${index !== props.index}>${child}</div>
+          `,
+      )}
       <p>
         ${props.children.map((child, index) => [
           html`
