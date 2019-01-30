@@ -11,8 +11,6 @@ currency box
   input
     format
     sign
-autofocus
-separator
 events
   inputted
   pair changed
@@ -20,3 +18,7 @@ events
       disable exchange button
       hide rate dropdown
   fetched data changed
+validation
+  zero
+  too much
+  wrong format
