@@ -13,7 +13,3 @@ preact+jest+enzyme
     https://stackoverflow.com/a/46956642
   https://github.com/mzgoddard/preact-render-spy/
     https://github.com/victronenergy/venus-html5-app/pull/46/commits/7d6e7cf46a98a87a944c4968e6c335aa06b13234
-preact https://preactjs.com/
-  https://preactjs.com/guide/api-reference
-htm https://github.com/developit/htm
-meiosis https://meiosis.js.org/

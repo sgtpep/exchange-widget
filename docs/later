@@ -7,17 +7,19 @@ crossbrowser test
   safari mobile
   edge
   opera
-normalize.css
-prettier
-travis
-  badge
-eslint
-babel
-  babel-plugin-htm
-autoprefixer
-minify js, css
-optimize images
-rates-url https://openexchangerates.org/api/latest.json?app_id=e0c2f3b5ba0a4cf7a0d561a763b6b351
+build
+  prettier
+  travis
+    badge
+  eslint
+  babel
+    babel-plugin-htm
+  autoprefixer
+  minify js, css
+  dist/index.html
+    rates-url https://openexchangerates.org/api/latest.json?app_id=e0c2f3b5ba0a4cf7a0d561a763b6b351
+  dist/exchange-widget.umd.js
+  dist/exchange-widget.es.js
 lighthouse
 deploy
 readme
@@ -29,15 +31,11 @@ readme
   usage
   npm scripts
   supported browsers
-package.json
-  typings https://github.com/developit/linkstate/blob/master/package.json
 tests
-test coverage
+  test coverage
 typescript
 https://gethead.info/
 https://frontendchecklist.io/
-routing
-pwa
-svg backgrounds
 storybook
 offline
+  pwa
