@@ -18,7 +18,7 @@ export const fetchRates = url => {
     )
     .catch(error => {
       error && console.error(error);
-      update(state => ({ ...state, ratesError: true }));
+      update(state => ({ ...state, ratesError: true, ratesLoading: false }));
     });
 };
 
