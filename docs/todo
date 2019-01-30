@@ -1,0 +1,6 @@
+exchange button
+  disabled
+    equal currencies
+    not amount
+    animate
+  click
