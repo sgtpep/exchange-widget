@@ -1,6 +1,9 @@
 .animated {
   transition: opacity var(--duration);
 }
+.animated[disabled] {
+  opacity: 0.5;
+}
 .animated[hidden] {
   display: inherit;
   opacity: 0;
