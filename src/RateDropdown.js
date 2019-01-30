@@ -2,10 +2,10 @@ import html from './html.js';
 import rateText from './rate-text.js';
 import { setDestinationPocket, setSourcePocket } from './actions.js';
 
-let prevText;
+let text;
 export default (props, state) => {
-  prevText = state.ratesHidden
-    ? prevText
+  text = state.ratesHidden
+    ? text
     : rateText(
         state.rates,
         state.sourcePocket.currency,
@@ -14,7 +14,7 @@ export default (props, state) => {
       );
   return html`
     <span class="RateDropdown animated" hidden=${state.ratesHidden}>
-      <span>${prevText}</span>
+      <span>${text}</span>
       <select
         onChange=${event => {
           const [

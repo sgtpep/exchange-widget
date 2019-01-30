@@ -1,17 +1,17 @@
 import exchangeRate from './exchange-rate.js';
 import html from './html.js';
 
-let prevText;
+let text;
 export default (props, state) => {
   const hidden = state.ratesHidden || !state.amount;
-  prevText = hidden
-    ? prevText
+  text = hidden
+    ? text
     : `+${exchangeRate(
         state.rates,
         state.sourcePocket.currency,
         state.destinationPocket.currency,
       ) * state.amount}`;
   return html`
-    <span class="DestinationAmount animated" hidden=${hidden}>${prevText}</span>
+    <span class="DestinationAmount animated" hidden=${hidden}>${text}</span>
   `;
 };

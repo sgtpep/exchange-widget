@@ -1,10 +1,10 @@
 import html from './html.js';
 import rateText from './rate-text.js';
 
-let prevText;
+let text;
 export default (props, state) => {
-  prevText = state.ratesHidden
-    ? prevText
+  text = state.ratesHidden
+    ? text
     : rateText(
         state.rates,
         state.destinationPocket.currency,
@@ -12,7 +12,7 @@ export default (props, state) => {
       );
   return html`
     <span class="DestinationRate animated" hidden=${state.ratesHidden}
-      >${prevText}</span
+      >${text}</span
     >
   `;
 };
