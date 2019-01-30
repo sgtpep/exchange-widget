@@ -4,7 +4,11 @@ import { setAmount } from './actions.js';
 
 export default class extends Component {
   componentDidUpdate(props, _, state) {
-    setTimeout(() => this.input.current.focus());
+    this.inputFocusTimeout = setTimeout(() => this.input.current.focus());
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.inputFocusTimeout);
   }
 
   constructor() {
