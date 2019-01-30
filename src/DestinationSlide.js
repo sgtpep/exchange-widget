@@ -1,3 +1,4 @@
+import formatCurrency from './format-currency.js';
 import { html } from '../node_modules/htm/preact/standalone.mjs';
 
 export default props =>
@@ -6,10 +7,7 @@ export default props =>
       <p>${props.pocket.currency}</p>
       <p>
         You have${' '}
-        ${props.pocket.sum.toLocaleString('en', {
-          currency: props.pocket.currency,
-          style: 'currency',
-        })}
+        ${formatCurrency(props.pocket.sum, props.pocket.currency)}
       </p>
     </div>
   `;
