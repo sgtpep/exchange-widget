@@ -1,6 +1,11 @@
-currency box
-  currency name
-  dots
+converted value
+reverse exchange rate
+slider
   swipes
-  you have
-  reverse exchange rate
+    touch
+    mouse
+  dots
+    active
+    click
+  cycle
+  animate set*Pocket
