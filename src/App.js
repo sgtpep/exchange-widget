@@ -18,10 +18,13 @@ export default class extends Component {
 
   componentWillUnmount() {
     clearInterval(this.fetchRatesInterval);
+    this.fetchRatesAbort.abort();
   }
 
   fetchRates() {
-    return actions.fetchRates(this.props.ratesURL);
+    this.fetchRatesAbort && this.fetchRatesAbort.abort();
+    this.fetchRatesAbort = new AbortController();
+    return actions.fetchRates(this.props.ratesURL, this.fetchRatesAbort.signal);
   }
 
   getChildContext() {

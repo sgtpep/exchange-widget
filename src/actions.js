@@ -2,9 +2,9 @@ import update from './update.js';
 
 export const exchange = () => {};
 
-export const fetchRates = url => {
+export const fetchRates = (url, signal = undefined) => {
   update(state => ({ ...state, ratesLoading: true }));
-  fetch(url)
+  fetch(url, { signal })
     .then(response => (response.ok ? response.json() : Promise.reject()))
     .then(data =>
       update(state => ({
