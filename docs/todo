@@ -1,4 +1,3 @@
-http://meiosis.js.org/tutorial/09-using-preact.html
 on destroy
   abort fetch
   cancel timeout
