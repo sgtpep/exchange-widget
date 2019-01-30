@@ -15,9 +15,7 @@ const text = (rates, fromCurrency, toCurrency) =>
 
 let prevText;
 export default (props, state) => {
-  const hidden =
-    state.destinationPocket === state.sourcePocket || !state.rates.length;
-  prevText = hidden
+  prevText = state.ratesHidden
     ? prevText
     : text(
         state.rates,
@@ -25,7 +23,7 @@ export default (props, state) => {
         state.destinationPocket.currency,
       );
   return html`
-    <span class="RateDropdown" hidden=${hidden}>
+    <span class="RateDropdown" hidden=${state.ratesHidden}>
       <span>${prevText}</span>
       <select
         onChange=${event => {

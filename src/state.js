@@ -5,6 +5,7 @@ export default {
   pockets: [],
   rates: [],
   ratesError: false,
+  ratesHidden: true,
   ratesLoading: false,
   sourcePocket: null,
 };

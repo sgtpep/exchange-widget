@@ -19,6 +19,11 @@ export const fetchRates = (url, signal = undefined) => {
           currency: key,
           rate: value,
         })),
+        ratesHidden: ratesHidden(
+          state.sourcePocket,
+          state.destinationPocket,
+          !Object.keys(data.rates).length,
+        ),
         ratesLoading: false,
       })),
     )
@@ -27,10 +32,17 @@ export const fetchRates = (url, signal = undefined) => {
     );
 };
 
+const ratesHidden = (sourcePocket, destinationPocket, ratesEmpty) =>
+  sourcePocket === destinationPocket || ratesEmpty;
+
 export const setAmount = amount => update(state => ({ ...state, amount }));
 
 export const setDestinationPocket = pocket =>
-  update(state => ({ ...state, destinationPocket: pocket }));
+  update(state => ({
+    ...state,
+    destinationPocket: pocket,
+    ratesHidden: ratesHidden(state.sourcePocket, pocket, !state.rates.length),
+  }));
 
 export const setPockets = pockets =>
   update(state => ({
@@ -51,5 +63,10 @@ export const setSourcePocket = pocket =>
     ...state,
     amount:
       state.amount && state.amount > pocket.sum ? pocket.sum : state.amount,
+    ratesHidden: ratesHidden(
+      pocket,
+      state.destinationPocket,
+      !state.rates.length,
+    ),
     sourcePocket: pocket,
   }));
