@@ -13,60 +13,59 @@ const text = (rates, fromCurrency, toCurrency) =>
     { minimumFractionDigits: 4 },
   )}`;
 
-let rate;
+let rateText;
 export default (props, state) => {
-  const hidden = state.destinationPocket === state.sourcePocket;
-  rate = hidden
-    ? rate
+  const hidden =
+    state.destinationPocket === state.sourcePocket || !state.rates.length;
+  rateText = hidden
+    ? rateText
     : text(
         state.rates,
         state.sourcePocket.currency,
         state.destinationPocket.currency,
       );
-  return (
-    !state.rates.length ||
-    html`
-      <span class=${`RateDropdown ${hidden ? 'hidden' : ''}`}>
-        <span>${rate}</span>
-        <select
-          onChange=${event => {
-            const [
-              sourceCurrency,
-              destinationCurrency,
-            ] = event.target.value.split(':');
-            setSourcePocket(
-              state.pockets.find(pocket => pocket.currency === sourceCurrency),
-            );
-            setDestinationPocket(
-              state.pockets.find(
-                pocket => pocket.currency === destinationCurrency,
-              ),
-            );
-          }}
-        >
-          ${state.pockets.map(sourcePocket =>
-            state.pockets.map(
-              destinationPocket =>
-                destinationPocket.currency === sourcePocket.currency ||
-                html`
-                  <option
-                    selected=${destinationPocket === state.destinationPocket &&
-                      sourcePocket === state.sourcePocket}
-                    value=${`${sourcePocket.currency}:${
-                      destinationPocket.currency
-                    }`}
-                  >
-                    ${text(
+  return html`
+    <span class=${`RateDropdown ${hidden ? 'hidden' : ''}`}>
+      <span>${rateText}</span>
+      <select
+        onChange=${event => {
+          const [
+            sourceCurrency,
+            destinationCurrency,
+          ] = event.target.value.split(':');
+          setSourcePocket(
+            state.pockets.find(pocket => pocket.currency === sourceCurrency),
+          );
+          setDestinationPocket(
+            state.pockets.find(
+              pocket => pocket.currency === destinationCurrency,
+            ),
+          );
+        }}
+      >
+        ${state.pockets.map(sourcePocket =>
+          state.pockets.map(
+            destinationPocket =>
+              destinationPocket.currency === sourcePocket.currency ||
+              html`
+                <option
+                  selected=${destinationPocket === state.destinationPocket &&
+                    sourcePocket === state.sourcePocket}
+                  value=${`${sourcePocket.currency}:${
+                    destinationPocket.currency
+                  }`}
+                >
+                  ${!state.rates.length ||
+                    text(
                       state.rates,
                       sourcePocket.currency,
                       destinationPocket.currency,
                     )}
-                  </option>
-                `,
-            ),
-          )}
-        </select>
-      </span>
-    `
-  );
+                </option>
+              `,
+          ),
+        )}
+      </select>
+    </span>
+  `;
 };
