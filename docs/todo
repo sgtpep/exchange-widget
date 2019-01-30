@@ -1,0 +1,8 @@
+RateDropdown
+  style select
+    fluid width
+  show rate
+  hide on equal
+    animation
+  list
+    select on click
