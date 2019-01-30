@@ -1,7 +1,9 @@
 export default {
-  destination: { amount: null, pocket: null },
+  amount: null,
+  destinationPocket: null,
+  pockets: [],
   rates: [],
   ratesError: false,
   ratesLoading: false,
-  source: { amount: null, pocket: null },
+  sourcePocket: null,
 };

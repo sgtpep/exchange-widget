@@ -1,5 +1,6 @@
-import Pockets from './Pockets.js';
+import DestinationSlider from './DestinationSlider.js';
 import RateDropdown from './RateDropdown.js';
+import SourceSlider from './SourceSlider.js';
 import { Component, html } from '../node_modules/htm/preact/standalone.mjs';
 import { fetchRates, setPockets } from './actions.js';
 import { onState } from './update.js';
@@ -50,8 +51,8 @@ export default class extends Component {
           <${RateDropdown} rates=${state.rates} />
           <button disabled>Exchange</button>
         </div>
-        <${Pockets} type="source" />
-        <${Pockets} type="destination" />
+        <${SourceSlider} />
+        <${DestinationSlider} />
       </div>
     `;
   }

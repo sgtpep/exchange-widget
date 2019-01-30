@@ -21,28 +21,24 @@ export const fetchRates = (url, signal = undefined) => {
     );
 };
 
-export const setAmount = (type, amount) =>
-  update(state => ({ ...state, [type]: { ...state[type], amount } }));
+export const setAmount = amount => update(state => ({ ...state, amount }));
 
-export const setPocket = (type, pocket) =>
-  update(state => ({ ...state, [type]: { ...state[type], pocket } }));
+export const setDestinationPocket = pocket =>
+  update(state => ({ ...state, destinationPocket: pocket }));
 
 export const setPockets = pockets =>
   update(state => ({
     ...state,
-    destination: {
-      ...state.destination,
-      pocket:
-        state.destination && pockets.includes(state.destination)
-          ? state.destination
-          : pockets[pockets.length === 1 ? 0 : 1],
-    },
+    destinationPocket:
+      state.destination && pockets.includes(state.destination)
+        ? state.destination
+        : pockets[pockets.length === 1 ? 0 : 1],
     pockets,
-    source: {
-      ...state.source,
-      pocket:
-        state.source && pockets.includes(state.source)
-          ? state.source
-          : pockets[0],
-    },
+    sourcePocket:
+      state.source && pockets.includes(state.source)
+        ? state.source
+        : pockets[0],
   }));
+
+export const setSourcePocket = pocket =>
+  update(state => ({ ...state, sourcePocket: pocket }));
