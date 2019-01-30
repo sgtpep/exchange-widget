@@ -5,6 +5,7 @@ import { setPocket } from './actions.js';
 export default (props, state) =>
   html`
     <div>
+      <${Pocket} type=${props.type} />
       <p>
         ${state.pockets.map((pocket, index) => [
           html`
