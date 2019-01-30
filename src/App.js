@@ -1,7 +1,7 @@
 import Pockets from './Pockets.js';
 import RateDropdown from './RateDropdown.js';
 import { Component, html } from '../node_modules/htm/preact/standalone.mjs';
-import { fetchRates, setPocket } from './actions.js';
+import { fetchRates, setPockets } from './actions.js';
 import { onState } from './update.js';
 
 export default class extends Component {
@@ -12,15 +12,7 @@ export default class extends Component {
 
   componentWillMount() {
     onState(state => this.setState(state));
-    if (this.props.pockets.length) {
-      setPocket('source', this.props.pockets[0]);
-      setPocket(
-        'destination',
-        this.props.pockets[this.props.pockets.length === 1 ? 0 : 1],
-      );
-    } else {
-      throw new Error('`pockets` property is empty');
-    }
+    setPockets(this.props.pockets);
   }
 
   componentWillUnmount() {

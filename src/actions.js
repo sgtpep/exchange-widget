@@ -26,3 +26,23 @@ export const setAmount = (type, amount) =>
 
 export const setPocket = (type, pocket) =>
   update(state => ({ ...state, [type]: { ...state[type], pocket } }));
+
+export const setPockets = pockets =>
+  update(state => ({
+    ...state,
+    destination: {
+      ...state.destination,
+      pocket:
+        state.destination && pockets.includes(state.destination)
+          ? state.destination
+          : pockets[pockets.length === 1 ? 0 : 1],
+    },
+    pockets,
+    source: {
+      ...state.source,
+      pocket:
+        state.source && pockets.includes(state.source)
+          ? state.source
+          : pockets[0],
+    },
+  }));
