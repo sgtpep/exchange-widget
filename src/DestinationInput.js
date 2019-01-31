@@ -1,8 +1,7 @@
 import CurrencyInput from './CurrencyInput.js';
 import exchangeRate from './exchange-rate.js';
 import html from './html.js';
-
-const round = number => Number(number.toFixed(2));
+import round from './round.js';
 
 export default (props, state) => {
   const rate = exchangeRate(
