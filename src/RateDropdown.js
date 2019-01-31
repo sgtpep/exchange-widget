@@ -1,23 +1,22 @@
+import animatedHideable from './animated-hideable.js';
 import html from './html.js';
 import rateText from './rate-text.js';
-import { Component } from '../node_modules/preact/dist/preact.mjs';
 import { setDestinationPocket, setSourcePocket } from './actions.js';
 
-export default class extends Component {
-  render(props, _, state) {
-    this.text = state.ratesHidden
-      ? this.text
-      : rateText(
-          state.rates,
-          state.sourcePocket.currency,
-          state.destinationPocket.currency,
-          { minimumFractionDigits: 4 },
-        );
-    return html`
-      <span
-        class=${`RateDropdown animated ${state.ratesHidden ? 'hidden' : ''}`}
-      >
-        <span>${this.text}</span>
+export default animatedHideable(
+  (props, state) => state.ratesHidden,
+  (props, state) => ({
+    text: rateText(
+      state.rates,
+      state.sourcePocket.currency,
+      state.destinationPocket.currency,
+      { minimumFractionDigits: 4 },
+    ),
+  }),
+  (props, state) =>
+    html`
+      <span class=${`RateDropdown animated ${props.hidden ? 'hidden' : ''}`}>
+        <span>${props.text}</span>
         <select
           onChange=${event => {
             const [
@@ -59,6 +58,5 @@ export default class extends Component {
           )}
         </select>
       </span>
-    `;
-  }
-}
+    `,
+);
