@@ -64,7 +64,6 @@ export default class extends Component {
       <div class="ExchangeSliders">
         <${Slider}
           index=${state.pockets.indexOf(state.sourcePocket)}
-          onMount=${(index, element) => this.focusInput(element, 'source')}
           onSlide=${(index, element) => {
             setSourcePocket(state.pockets[index]);
             this.focusInput(element, 'source');
