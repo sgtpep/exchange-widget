@@ -13,7 +13,7 @@ export default (props, state) => {
         { minimumFractionDigits: 4 },
       );
   return html`
-    <span class="RateDropdown animated" hidden=${state.ratesHidden}>
+    <span class=${`RateDropdown animated ${state.ratesHidden ? 'hidden' : ''}`}>
       <span>${text}</span>
       <select
         onChange=${event => {

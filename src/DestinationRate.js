@@ -11,7 +11,8 @@ export default (props, state) => {
         state.sourcePocket.currency,
       );
   return html`
-    <span class="DestinationRate animated" hidden=${state.ratesHidden}
+    <span
+      class=${`DestinationRate animated ${state.ratesHidden ? 'hidden' : ''}`}
       >${text}</span
     >
   `;
