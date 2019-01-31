@@ -6,3 +6,5 @@ disable animation
 loading/error indicators
 separator
 gradient background
+max width/height
+  center vertically and horizontally

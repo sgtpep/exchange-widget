@@ -1,8 +1,11 @@
-input validate two digits after dot
 second input
+  setDestinationSource: check max
+  focus
+    try select from RateDropdown
   don't exceed maximum
     revert value
     disable exchange
+  keep amount rounted to two decimals
 slider
   swipes
     touch
