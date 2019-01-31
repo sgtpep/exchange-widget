@@ -3,7 +3,9 @@ review the previous project
 cursor pointer
 hover visualization
 disable animation
-loading/error indicators
+loading indicator
+  progress
+error indicator
 separator
 gradient background
 max width/height

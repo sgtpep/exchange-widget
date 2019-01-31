@@ -1,6 +1,6 @@
-higher order component for animation
+extract RateSelect
 https://www.cssscript.com/draggable-touch-slider-carousel/
-left -> transition
+  left -> transition
 pagination
   active
   click
