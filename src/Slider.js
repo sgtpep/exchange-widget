@@ -22,12 +22,12 @@ export default class extends Component {
     this.listeners.forEach(args =>
       this.slides.current.addEventListener(...args),
     );
-    this.selectSlide(this.props.index);
   }
 
   componentWillReceiveProps(props) {
-    props.children.length < this.props.children.length &&
-      (this.index = props.children.length - 1);
+    props.index === this.index || this.goToSlide(props.index);
+    //    props.children.length - 1 < this.props.index &&
+    //      (this.index = props.children.length - 1);
   }
 
   componentWillUnmount() {
