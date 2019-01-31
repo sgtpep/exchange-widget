@@ -1,1 +1,11 @@
-slider: *Input, DestinationRate
+try duplicate children
+  focus
+commit
+
+higher order component for animation
+https://www.cssscript.com/draggable-touch-slider-carousel/
+left -> transition
+pagination
+  active
+  click
+    animate

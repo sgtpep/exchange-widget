@@ -1,3 +1,4 @@
+add keys to map items
 crossbrowser test
   chromium
   chromium mobile emulator
@@ -39,3 +40,4 @@ https://frontendchecklist.io/
 storybook
 offline
   pwa
+review code
