@@ -1,11 +1,6 @@
 second input
-  setDestinationSource: check max
-  focus
-    try select from RateDropdown
-  don't exceed maximum
-    revert value
-    disable exchange
-  keep amount rounted to two decimals
+  update max on slide
+
 slider
   swipes
     touch
