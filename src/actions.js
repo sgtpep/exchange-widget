@@ -49,19 +49,7 @@ export const setDestinationPocket = pocket =>
     ratesHidden: ratesHidden(state.sourcePocket, pocket, !state.rates.length),
   }));
 
-export const setPockets = pockets =>
-  update(state => ({
-    ...state,
-    destinationPocket:
-      state.destination && pockets.includes(state.destination)
-        ? state.destination
-        : pockets[pockets.length === 1 ? 0 : 1],
-    pockets,
-    sourcePocket:
-      state.source && pockets.includes(state.source)
-        ? state.source
-        : pockets[0],
-  }));
+export const setPockets = pockets => update(state => ({ ...state, pockets }));
 
 export const setSourcePocket = pocket =>
   update(state => ({

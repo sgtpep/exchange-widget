@@ -4,7 +4,12 @@ import RateDropdown from './RateDropdown.js';
 import SourceSlider from './SourceSlider.js';
 import html from './html.js';
 import { Component } from '../node_modules/preact/dist/preact.mjs';
-import { fetchRates, setPockets } from './actions.js';
+import {
+  fetchRates,
+  setDestinationPocket,
+  setPockets,
+  setSourcePocket,
+} from './actions.js';
 import { onState } from './update.js';
 
 export default class extends Component {
@@ -16,6 +21,10 @@ export default class extends Component {
   componentWillMount() {
     onState(state => this.setState(state));
     setPockets(this.props.pockets);
+    setDestinationPocket(
+      this.props.pockets[this.props.pockets.length === 1 ? 0 : 1],
+    );
+    setSourcePocket(this.props.pockets[0]);
   }
 
   componentWillUnmount() {
