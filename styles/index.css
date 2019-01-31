@@ -1,6 +1,6 @@
-@import './variables.css';
+@import 'variables.css';
 
-@import './App.css';
-@import './RateDropdown.css';
-@import './Slider.css';
-@import './animated.css';
+@import 'App.css';
+@import 'RateDropdown.css';
+@import 'Slider.css';
+@import 'animated.css';
