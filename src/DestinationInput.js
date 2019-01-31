@@ -14,6 +14,7 @@ export default (props, state) => {
       focused=${(state, prevState) =>
         state.destinationPocket !== prevState.destinationPocket &&
         state.sourcePocket === prevState.sourcePocket}
+      max=${rate * state.sourcePocket.sum}
       setAmount=${value => (1 / rate) * value}
       value=${state.amount && round(rate * state.amount)}
     />
