@@ -1,11 +1,4 @@
-destination focus?
-
+animate on RateSelect click
 drag out of document
 text selects
 left -> transition
-
-pagination
-  active
-  click
-    animate
-animate on RateSelect click
