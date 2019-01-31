@@ -8,7 +8,7 @@
   position: relative;
   white-space: nowrap;
 }
-.Slider > :first-child > :first-child.shifting {
+.Slider > :first-child > :first-child.animating {
   transition: left var(--duration) ease-out;
 }
 

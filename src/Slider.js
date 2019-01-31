@@ -3,17 +3,77 @@ import { Component, createRef } from '../node_modules/preact/dist/preact.mjs';
 
 export default class extends Component {
   componentDidMount() {
-    this.setupSlider();
     this.props.onMount &&
       this.props.onMount(
         this.props.index,
         this.slides.current.children[this.props.index + 1],
       );
+    this.selectSlide(this.props.index);
+    this.listeners = [
+      ['mousedown', this.onDragStart],
+      ['mousemove', this.onDragMove],
+      ['mouseup', this.onDragStop],
+      ['touchend', this.onDragStop],
+      ['touchmove', this.onDragMove],
+      ['touchstart', this.onDragStart],
+    ].map(([type, listener]) => [type, listener.bind(this)]);
+    this.listeners.forEach(args =>
+      this.slides.current.addEventListener(...args),
+    );
+  }
+
+  componentWillUnmount() {
+    this.listeners.forEach(args =>
+      this.slides.current.removeEventListener(...args),
+    );
   }
 
   constructor() {
     super();
     this.slides = createRef();
+  }
+
+  goToSlide(index) {
+    this.startAnimation();
+    this.selectSlide(index);
+  }
+
+  onAnimated() {
+    this.slides.current.classList.remove('animating');
+    const count = this.slides.current.children.length - 2;
+    this.index < 0 && this.selectSlide(count - 1);
+    this.index > count - 1 && this.selectSlide(0);
+  }
+
+  onDragMove(event) {
+    if (event.type === 'touchmove' || event.buttons === 1) {
+      event.preventDefault();
+      const { clientX } = event.touches ? event.touches[0] : event;
+      this.slides.current.style.left = `${this.slides.current.offsetLeft -
+        (this.clientX - clientX)}px`;
+      this.clientX = clientX;
+      this.dragging = true;
+    }
+  }
+
+  onDragStart(event) {
+    this.clientX = (event.touches ? event.touches[0] : event).clientX;
+    this.offsetLeft = this.slides.current.offsetLeft;
+    this.stopAnimation();
+  }
+
+  onDragStop(event) {
+    if (event.type === 'touchend' || this.dragging) {
+      const { offsetLeft } = this.slides.current;
+      const threshold = 100;
+      offsetLeft - this.offsetLeft < -threshold &&
+      this.index <= this.slides.current.children.length - 1
+        ? this.goToSlide(this.index + 1)
+        : offsetLeft - this.offsetLeft > threshold && this.index >= 0
+        ? this.goToSlide(this.index - 1)
+        : this.goToSlide(this.index);
+      this.dragging = false;
+    }
   }
 
   onSlide(index) {
@@ -59,103 +119,19 @@ export default class extends Component {
     `;
   }
 
-  setupSlider() {
-    var posX1 = 0,
-      posX2 = 0,
-      posInitial,
-      posFinal,
-      threshold = 100,
-      slides = this.slides.current.children,
-      slidesLength = slides.length - 2,
-      slideSize = this.slides.current.children[0].offsetWidth,
-      index = 0,
-      allowShift = true;
+  selectSlide(index) {
+    this.index = index;
+    this.slides.current.style.left = `${-(index + 1) * 100}%`;
+  }
 
-    const dragStart = e => {
-      e = e || window.event;
-      e.preventDefault();
-      posInitial = this.slides.current.offsetLeft;
+  startAnimation() {
+    this.animationTimeout && clearTimeout(this.animationTimeout);
+    this.animationTimeout = setTimeout(() => this.onAnimated(), 300);
+    this.slides.current.classList.add('animating');
+  }
 
-      if (e.type == 'touchstart') {
-        posX1 = e.touches[0].clientX;
-      } else {
-        posX1 = e.clientX;
-        document.onmouseup = dragEnd;
-        document.onmousemove = dragAction;
-      }
-    };
-
-    const dragAction = e => {
-      e = e || window.event;
-
-      if (e.type == 'touchmove') {
-        posX2 = posX1 - e.touches[0].clientX;
-        posX1 = e.touches[0].clientX;
-      } else {
-        posX2 = posX1 - e.clientX;
-        posX1 = e.clientX;
-      }
-      this.slides.current.style.left =
-        this.slides.current.offsetLeft - posX2 + 'px';
-    };
-
-    const dragEnd = e => {
-      posFinal = this.slides.current.offsetLeft;
-      if (posFinal - posInitial < -threshold) {
-        shiftSlide(1, 'drag');
-      } else if (posFinal - posInitial > threshold) {
-        shiftSlide(-1, 'drag');
-      } else {
-        this.slides.current.style.left = posInitial + 'px';
-      }
-
-      document.onmouseup = null;
-      document.onmousemove = null;
-    };
-
-    const shiftSlide = (dir, action) => {
-      this.slides.current.classList.add('shifting');
-
-      if (allowShift) {
-        if (!action) {
-          posInitial = this.slides.current.offsetLeft;
-        }
-
-        const offset = (posInitial / slideSize) * 100;
-        if (dir == 1) {
-          this.slides.current.style.left = offset - 100 + '%';
-          index++;
-        } else if (dir == -1) {
-          this.slides.current.style.left = offset + 100 + '%';
-          index--;
-        }
-      }
-
-      allowShift = false;
-    };
-
-    const checkIndex = () => {
-      this.slides.current.classList.remove('shifting');
-
-      if (index == -1) {
-        this.slides.current.style.left = -(slidesLength * slideSize) + 'px';
-        index = slidesLength - 1;
-      }
-
-      if (index == slidesLength) {
-        this.slides.current.style.left = -(1 * slideSize) + 'px';
-        index = 0;
-      }
-
-      allowShift = true;
-    };
-
-    this.slides.current.addEventListener('mousedown', dragStart);
-    this.slides.current.addEventListener('touchend', dragEnd);
-    this.slides.current.addEventListener('touchmove', dragAction);
-    this.slides.current.addEventListener('touchstart', dragStart);
-    this.slides.current.addEventListener('transitionend', checkIndex);
-
-    this.slides.current.style.left = '-100%';
+  stopAnimation() {
+    this.slides.current.classList.remove('animating');
+    this.animationTimeout && clearTimeout(this.animationTimeout);
   }
 }
