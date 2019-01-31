@@ -9,7 +9,7 @@ export default (props, state) =>
     <div class="SourceSlider">
       <${Slider}
         index=${state.pockets.indexOf(state.sourcePocket)}
-        onSelect=${index => setSourcePocket(state.pockets[index])}
+        onChange=${index => setSourcePocket(state.pockets[index])}
       >
         ${state.pockets.map(
           pocket =>
