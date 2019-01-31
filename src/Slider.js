@@ -60,7 +60,10 @@ export default class extends Component {
   }
 
   onDragMove(event) {
-    if (event.type === 'touchmove' || event.buttons === 1) {
+    if (
+      event.type === 'touchmove' ||
+      (event.type === 'mousemove' && event.buttons === 1)
+    ) {
       event.preventDefault();
       const { clientX } = event.touches ? event.touches[0] : event;
       this.slides.current.style.left = `${this.slides.current.offsetLeft -
@@ -77,7 +80,10 @@ export default class extends Component {
   }
 
   onDragStop(event) {
-    if (event.type === 'touchend' || this.dragging) {
+    if (
+      event.type === 'touchend' ||
+      (event.type === 'mouseup' && this.dragging)
+    ) {
       const { offsetLeft } = this.slides.current;
       const threshold = 100;
       offsetLeft - this.offsetLeft < -threshold
