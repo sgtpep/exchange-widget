@@ -25,7 +25,11 @@ export default class extends Component {
     fractional.length <= 2
       ? event.target.valueAsNumber === this.context.amount ||
         setAmount(
-          isNaN(event.target.valueAsNumber) ? null : event.target.valueAsNumber,
+          isNaN(event.target.valueAsNumber)
+            ? null
+            : (this.props.setAmount || (value => value))(
+                event.target.valueAsNumber,
+              ),
         )
       : (event.target.value = this.context.amount);
   }
