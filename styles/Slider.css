@@ -1,3 +1,22 @@
+.Slider > :first-child {
+  cursor: grab;
+  overflow: hidden;
+  position: relative;
+}
+
+.Slider > :first-child > :first-child {
+  position: relative;
+  white-space: nowrap;
+}
+.Slider > :first-child > :first-child.shifting {
+  transition: left var(--duration) ease-out;
+}
+
+.Slider > :first-child > :first-child > * {
+  display: inline-block;
+  white-space: normal;
+}
+
 .Slider > nav > .active {
   font-weight: bold;
 }
