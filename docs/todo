@@ -1,8 +1,8 @@
+destination focus?
+
 drag out of document
 text selects
 left -> transition
-review
-  componentWillUnmount: removeEventListener
 
 pagination
   active
