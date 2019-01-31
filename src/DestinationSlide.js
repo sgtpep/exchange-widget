@@ -1,4 +1,4 @@
-import DestinationAmount from './DestinationAmount.js';
+import DestinationInput from './DestinationInput.js';
 import DestinationRate from './DestinationRate.js';
 import formatCurrency from './format-currency.js';
 import html from './html.js';
@@ -13,7 +13,7 @@ export default (props, state) =>
       </p>
       <p>
         ${state.amount === null || '+ '}
-        <${DestinationAmount} />
+        <${DestinationInput} />
       </p>
       <p><${DestinationRate} /></p>
     </div>
