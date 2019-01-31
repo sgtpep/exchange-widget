@@ -16,10 +16,7 @@ export default class extends Component {
     this.siema = new Siema({
       duration: 300,
       loop: true,
-      onChange: () => {
-        this.activatePage();
-        this.props.onChange && this.props.onChange(this.siema.currentSlide);
-      },
+      onChange: () => this.onChange(),
       selector: this.base.firstElementChild,
       startIndex: this.props.index,
     });
@@ -37,6 +34,11 @@ export default class extends Component {
   constructor() {
     super();
     this.pagination = createRef();
+  }
+
+  onChange() {
+    this.activatePage();
+    this.props.onChange && this.props.onChange(this.siema.currentSlide);
   }
 
   shouldComponentUpdate() {
