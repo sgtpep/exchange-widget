@@ -12,7 +12,7 @@ export default (props, state) =>
       </p>
       <p>
         ${state.amount === null || '- '}
-        <${CurrencyInput} max=${props.pocket.sum} />
+        <${CurrencyInput} max=${props.pocket.sum} value=${state.amount} />
       </p>
     </div>
   `;

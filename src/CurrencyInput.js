@@ -29,7 +29,7 @@ export default class extends Component {
       : (event.target.value = this.context.amount);
   }
 
-  render(props, _, state) {
+  render(props) {
     return html`
       <input
         autofocus
@@ -41,9 +41,9 @@ export default class extends Component {
         step="any"
         type="number"
         value=${this.input.current &&
-        this.input.current.valueAsNumber === state.amount
+        this.input.current.valueAsNumber === props.value
           ? this.input.current.value
-          : state.amount}
+          : props.value}
       />
     `;
   }

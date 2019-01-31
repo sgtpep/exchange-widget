@@ -11,7 +11,10 @@ export default (props, state) =>
         ${'You have '}
         ${formatCurrency(props.pocket.sum, props.pocket.currency)}
       </p>
-      <p><${DestinationAmount} /></p>
+      <p>
+        ${state.amount === null || '+ '}
+        <${DestinationAmount} />
+      </p>
       <p><${DestinationRate} /></p>
     </div>
   `;
