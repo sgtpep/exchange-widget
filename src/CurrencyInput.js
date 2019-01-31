@@ -17,29 +17,33 @@ export default class extends Component {
     this.input = createRef();
   }
 
+  onInput(event) {
+    const [integer, fractional = ''] = event.target.value.split(/[.,]/);
+    event.target.validity.valid &&
+    !/^0./.test(integer) &&
+    fractional.length <= 2
+      ? event.target.valueAsNumber === this.context.amount ||
+        setAmount(
+          isNaN(event.target.valueAsNumber) ? null : event.target.valueAsNumber,
+        )
+      : (event.target.value = this.context.amount);
+  }
+
   render(props, _, state) {
     return html`
       <input
         autofocus
         class="CurrencyInput"
         max=${props.max}
-        onInput=${event => {
-          const decimalsValid =
-            (event.target.valueAsNumber.toString().split('.')[1] || '')
-              .length <= 2;
-          (event.target.valueAsNumber === state.amount && decimalsValid) ||
-            setAmount(
-              event.target.validity.valid && decimalsValid
-                ? isNaN(event.target.valueAsNumber)
-                  ? null
-                  : event.target.valueAsNumber
-                : state.amount,
-            );
-        }}
+        min="0"
+        onInput=${event => this.onInput(event)}
         ref=${this.input}
         step="any"
         type="number"
-        value=${state.amount}
+        value=${this.input.current &&
+        this.input.current.valueAsNumber === state.amount
+          ? this.input.current.value
+          : state.amount}
       />
     `;
   }
