@@ -12,6 +12,12 @@
   transition: left var(--duration) ease-out;
 }
 
+.Slider > :first-child > :first-child::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+
 .Slider > :first-child > :first-child > * {
   float: left;
   white-space: normal;
