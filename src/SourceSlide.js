@@ -1,3 +1,4 @@
+import SourceInput from './SourceInput.js';
 import formatCurrency from './format-currency.js';
 import html from './html.js';
 
@@ -9,5 +10,6 @@ export default (props, state) =>
         ${'You have '}
         ${formatCurrency(props.pocket.sum, props.pocket.currency)}
       </p>
+      <p><${SourceInput} pocket=${props.pocket} /></p>
     </div>
   `;

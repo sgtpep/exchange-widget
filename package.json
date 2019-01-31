@@ -2,8 +2,7 @@
   "dependencies": {
     "htm": "^2.0.0",
     "kefir": "^3.8.6",
-    "preact": "^8.4.2",
-    "siema": "github:pawelgrzybek/siema#878e361"
+    "preact": "^8.4.2"
   },
   "devDependencies": {
     "http-server": "^0.11.1"
