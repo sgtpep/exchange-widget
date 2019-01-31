@@ -12,7 +12,12 @@ export default (props, state) =>
       </p>
       <p>
         ${state.amount === null || '- '}
-        <${CurrencyInput} max=${props.pocket.sum} value=${state.amount} />
+        <${CurrencyInput}
+          focused=${(state, prevState) =>
+            state.sourcePocket !== prevState.sourcePocket}
+          max=${props.pocket.sum}
+          value=${state.amount}
+        />
       </p>
     </div>
   `;

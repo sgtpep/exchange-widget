@@ -4,6 +4,9 @@ import html from './html.js';
 
 export default (props, state) => html`
   <${CurrencyInput}
+    focused=${(state, prevState) =>
+      state.destinationPocket !== prevState.destinationPocket &&
+      state.sourcePocket === prevState.sourcePocket}
     value=${state.amount &&
       Number(
         (

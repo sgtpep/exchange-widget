@@ -4,7 +4,8 @@ import { setAmount } from './actions.js';
 
 export default class extends Component {
   componentDidUpdate(props, _, state) {
-    state.sourcePocket === this.context.sourcePocket ||
+    props.focused &&
+      props.focused(state, this.context) &&
       (this.inputFocusTimeout = setTimeout(() => this.input.current.focus()));
   }
 
