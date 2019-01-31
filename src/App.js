@@ -39,6 +39,11 @@ export default class extends Component {
     return fetchRates(this.props.ratesURL, this.fetchRatesAbort.signal);
   }
 
+  focusInput(element) {
+    const input = element.querySelector('input');
+    input && input.focus();
+  }
+
   getChildContext() {
     return this.state;
   }
@@ -65,7 +70,12 @@ export default class extends Component {
         </nav>
         <${Slider}
           index=${state.pockets.indexOf(state.sourcePocket)}
-          onSlide=${index => setSourcePocket(state.pockets[index])}
+          onMount=${(index, element) => this.focusInput(element)}
+          onSlide=${(index, element) => {
+            setSourcePocket(state.pockets[index]);
+            this.focusInput(element);
+          }}
+          ref=${this.sourceSlider}
         >
           ${state.pockets.map(
             pocket =>
@@ -76,7 +86,10 @@ export default class extends Component {
         <//>
         <${Slider}
           index=${state.pockets.indexOf(state.destinationPocket)}
-          onSlide=${index => setDestinationPocket(state.pockets[index])}
+          onSlide=${(index, element) => {
+            setDestinationPocket(state.pockets[index]);
+            this.focusInput(element);
+          }}
         >
           ${state.pockets.map(
             pocket =>

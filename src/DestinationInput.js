@@ -19,10 +19,6 @@ export default class extends Component {
       <span class=${`DestinationInput animated ${hidden ? 'hidden' : ''}`}>
         ${state.amount === null || '+ '}
         <${CurrencyInput}
-          focused=${(state, prevState) =>
-            prevState.sourcePocket === state.sourcePocket &&
-            prevState.destinationPocket === props.pocket &&
-            prevState.destinationPocket !== state.destinationPocket}
           max=${rate * state.sourcePocket.sum}
           setAmount=${value => (1 / rate) * value}
           value=${this.value}

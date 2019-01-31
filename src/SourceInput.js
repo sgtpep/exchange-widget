@@ -7,9 +7,6 @@ export default (props, state) =>
     <span class="SourceInput">
       ${state.amount === null || '- '}
       <${CurrencyInput}
-        focused=${(state, prevState) =>
-          prevState.sourcePocket === props.pocket &&
-          prevState.sourcePocket !== state.sourcePocket}
         max=${props.pocket.sum}
         value=${state.amount && round(state.amount)}
       />

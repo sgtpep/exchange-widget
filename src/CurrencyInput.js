@@ -3,16 +3,6 @@ import { Component, createRef } from '../node_modules/preact/dist/preact.mjs';
 import { setAmount } from './actions.js';
 
 export default class extends Component {
-  componentDidUpdate(props, _, state) {
-    props.focused &&
-      props.focused(state, this.context) &&
-      (this.inputFocusTimeout = setTimeout(() => this.input.current.focus()));
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.inputFocusTimeout);
-  }
-
   constructor() {
     super();
     this.input = createRef();
@@ -37,7 +27,6 @@ export default class extends Component {
   render(props) {
     return html`
       <input
-        autofocus
         class="CurrencyInput"
         min="0"
         onInput=${event => this.onInput(event)}
