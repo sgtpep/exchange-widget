@@ -1,8 +1,6 @@
-import DestinationSlide from './DestinationSlide.js';
 import ExchangeButton from './ExchangeButton.js';
+import ExchangeSliders from './ExchangeSliders.js';
 import RateDropdown from './RateDropdown.js';
-import Slider from './Slider.js';
-import SourceSlide from './SourceSlide.js';
 import html from './html.js';
 import { Component } from '../node_modules/preact/dist/preact.mjs';
 import {
@@ -39,15 +37,6 @@ export default class extends Component {
     return fetchRates(this.props.ratesURL, this.fetchRatesAbort.signal);
   }
 
-  focusInput(element) {
-    const input = element.querySelector('input');
-    if (input) {
-      const { scrollLeft } = element.parentElement.parentElement;
-      input.focus({ preventScroll: true });
-      element.parentElement.parentElement.scrollLeft = scrollLeft;
-    }
-  }
-
   getChildContext() {
     return this.state;
   }
@@ -72,36 +61,7 @@ export default class extends Component {
           <${RateDropdown} />
           <${ExchangeButton} onExchange=${() => props.destroy()} />
         </nav>
-        <${Slider}
-          index=${state.pockets.indexOf(state.sourcePocket)}
-          onMount=${(index, element) => this.focusInput(element)}
-          onSlide=${(index, element) => {
-            setSourcePocket(state.pockets[index]);
-            this.focusInput(element);
-          }}
-          ref=${this.sourceSlider}
-        >
-          ${state.pockets.map(
-            pocket =>
-              html`
-                <${SourceSlide} pocket=${pocket} />
-              `,
-          )}
-        <//>
-        <${Slider}
-          index=${state.pockets.indexOf(state.destinationPocket)}
-          onSlide=${(index, element) => {
-            setDestinationPocket(state.pockets[index]);
-            this.focusInput(element);
-          }}
-        >
-          ${state.pockets.map(
-            pocket =>
-              html`
-                <${DestinationSlide} pocket=${pocket} />
-              `,
-          )}
-        <//>
+        <${ExchangeSliders} />
       </div>
     `;
   }
