@@ -1,9 +1,1 @@
-slider
-  swipes
-    touch
-    mouse
-  dots
-    active
-    click
-  cycle
-  animate on set*Pocket
+slider: *Input, DestinationRate
