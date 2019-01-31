@@ -30,6 +30,11 @@ export default class extends Component {
       );
   }
 
+  componentWillReceiveProps(props) {
+    props.children.length < this.props.children.length &&
+      (this.index = props.children.length - 1);
+  }
+
   componentWillUnmount() {
     this.listeners.forEach(args =>
       this.slides.current.removeEventListener(...args),
