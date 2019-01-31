@@ -11,7 +11,7 @@ export default (props, state) =>
         ${formatCurrency(props.pocket.sum, props.pocket.currency)}
       </p>
       <p>
-        ${!state.amount || '-'}
+        ${state.amount === null || '- '}
         <${CurrencyInput} max=${props.pocket.sum} />
       </p>
     </div>
