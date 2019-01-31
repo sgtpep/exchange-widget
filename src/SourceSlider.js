@@ -1,6 +1,8 @@
+import CurrencyInput from './CurrencyInput.js';
 import Slider from './Slider.js';
 import SourceSlide from './SourceSlide.js';
 import html from './html.js';
+import round from './round.js';
 import { setSourcePocket } from './actions.js';
 
 export default (props, state) =>
@@ -17,5 +19,14 @@ export default (props, state) =>
             `,
         )}
       <//>
+      <p>
+        ${state.amount === null || '- '}
+        <${CurrencyInput}
+          focused=${(state, prevState) =>
+            state.sourcePocket !== prevState.sourcePocket}
+          max=${state.sourcePocket.sum}
+          value=${state.amount && round(state.amount)}
+        />
+      </p>
     </div>
   `;

@@ -1,3 +1,5 @@
+import DestinationInput from './DestinationInput.js';
+import DestinationRate from './DestinationRate.js';
 import DestinationSlide from './DestinationSlide.js';
 import Slider from './Slider.js';
 import html from './html.js';
@@ -17,5 +19,10 @@ export default (props, state) =>
             `,
         )}
       <//>
+      <p>
+        ${state.amount === null || '+ '}
+        <${DestinationInput} />
+      </p>
+      <p><${DestinationRate} /></p>
     </div>
   `;
