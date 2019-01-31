@@ -11,15 +11,18 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    this.listeners = [
-      ['mousedown', this.onDragStart],
+    this.globalListeners = [
       ['mousemove', this.onDragMove],
       ['mouseup', this.onDragStop],
+    ].map(([type, listener]) => [type, listener.bind(this)]);
+    this.globalListeners.forEach(args => addEventListener(...args));
+    this.slidesListeners = [
+      ['mousedown', this.onDragStart],
       ['touchend', this.onDragStop],
       ['touchmove', this.onDragMove],
       ['touchstart', this.onDragStart],
     ].map(([type, listener]) => [type, listener.bind(this)]);
-    this.listeners.forEach(args =>
+    this.slidesListeners.forEach(args =>
       this.slides.current.addEventListener(...args),
     );
   }
@@ -33,7 +36,8 @@ export default class extends Component {
   }
 
   componentWillUnmount() {
-    this.listeners.forEach(args =>
+    this.globalListeners.forEach(args => removeEventListener(...args));
+    this.slidesListeners.forEach(args =>
       this.slides.current.removeEventListener(...args),
     );
   }
@@ -58,29 +62,31 @@ export default class extends Component {
 
   onDragMove(event) {
     if (
-      event.type === 'touchmove' ||
-      (event.type === 'mousemove' && event.buttons === 1)
+      this.dragging &&
+      (event.type === 'touchmove' ||
+        (event.type === 'mousemove' && event.buttons === 1))
     ) {
       event.preventDefault();
       const { clientX } = event.touches ? event.touches[0] : event;
       this.slides.current.style.left = `${this.slides.current.offsetLeft -
         (this.clientX - clientX)}px`;
       this.clientX = clientX;
-      this.dragging = true;
     }
   }
 
   onDragStart(event) {
     this.clientX = (event.touches ? event.touches[0] : event).clientX;
+    this.dragging = true;
     this.offsetLeft = this.slides.current.offsetLeft;
     this.stopAnimation();
   }
 
   onDragStop(event) {
     if (
-      event.type === 'touchend' ||
-      (event.type === 'mouseup' && this.dragging)
+      this.dragging &&
+      (event.type === 'touchend' || (event.type === 'mouseup' && this.dragging))
     ) {
+      this.dragging = false;
       const { offsetLeft } = this.slides.current;
       const threshold = 100;
       offsetLeft - this.offsetLeft < -threshold
@@ -88,7 +94,6 @@ export default class extends Component {
         : offsetLeft - this.offsetLeft > threshold
         ? this.goToSlide(this.index - 1)
         : this.goToSlide(this.index);
-      this.dragging = false;
     }
   }
 
