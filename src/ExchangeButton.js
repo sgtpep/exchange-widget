@@ -1,5 +1,6 @@
 import exchangeRate from './exchange-rate.js';
 import html from './html.js';
+import round from './round.js';
 import { exchange } from './actions.js';
 
 export default (props, state) => html`
@@ -10,7 +11,7 @@ export default (props, state) => html`
       state.exchangeLoading}
     onClick=${() =>
       exchange(
-        state.amount,
+        round(state.amount),
         exchangeRate(
           state.rates,
           state.sourcePocket.currency,

@@ -1,6 +1,7 @@
 import CurrencyInput from './CurrencyInput.js';
 import formatCurrency from './format-currency.js';
 import html from './html.js';
+import round from './round.js';
 
 export default (props, state) =>
   html`
@@ -16,7 +17,7 @@ export default (props, state) =>
           focused=${(state, prevState) =>
             state.sourcePocket !== prevState.sourcePocket}
           max=${props.pocket.sum}
-          value=${state.amount}
+          value=${round(state.amount)}
         />
       </p>
     </div>
