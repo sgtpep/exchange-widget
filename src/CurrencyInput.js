@@ -28,7 +28,7 @@ export default class extends Component {
           isNaN(event.target.valueAsNumber)
             ? null
             : (this.props.setAmount || (value => value))(
-                event.target.valueAsNumber,
+                Math.min(event.target.valueAsNumber, this.props.max),
               ),
         )
       : (event.target.value = this.props.value);
@@ -39,7 +39,6 @@ export default class extends Component {
       <input
         autofocus
         class="CurrencyInput"
-        max=${props.max}
         min="0"
         onInput=${event => this.onInput(event)}
         ref=${this.input}
