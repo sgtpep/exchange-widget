@@ -20,7 +20,9 @@
         ],
         ratesURL: 'mocks/rates.json',
       },
-      () => document.write('<p>Widget destroyed. <a href>Reload</a></p>'),
+      () =>
+        (document.body.innerHTML =
+          '<p>Widget destroyed. <a href>Reload</a></p>'),
     );
   </script>
 </html>
