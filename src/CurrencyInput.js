@@ -31,7 +31,7 @@ export default class extends Component {
                 event.target.valueAsNumber,
               ),
         )
-      : (event.target.value = this.context.amount);
+      : (event.target.value = this.props.value);
   }
 
   render(props) {
