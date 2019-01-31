@@ -19,10 +19,7 @@ export default (props, state) =>
             `,
         )}
       <//>
-      <p>
-        ${state.amount === null || '+ '}
-        <${DestinationInput} />
-      </p>
+      <p><${DestinationInput} /></p>
       <p><${DestinationRate} /></p>
     </div>
   `;

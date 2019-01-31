@@ -13,6 +13,7 @@ export default (props, state) => {
     <span
       class=${`DestinationInput animated ${state.ratesHidden ? 'hidden' : ''}`}
     >
+      ${state.amount === null || '+ '}
       <${CurrencyInput}
         focused=${(state, prevState) =>
           state.destinationPocket !== prevState.destinationPocket &&
