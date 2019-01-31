@@ -17,7 +17,7 @@ export default (props, state) =>
           focused=${(state, prevState) =>
             state.sourcePocket !== prevState.sourcePocket}
           max=${props.pocket.sum}
-          value=${round(state.amount)}
+          value=${state.amount && round(state.amount)}
         />
       </p>
     </div>
