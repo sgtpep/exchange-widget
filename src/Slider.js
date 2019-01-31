@@ -25,9 +25,11 @@ export default class extends Component {
   }
 
   componentWillReceiveProps(props) {
-    props.index === this.index || this.goToSlide(props.index);
-    //    props.children.length - 1 < this.props.index &&
-    //      (this.index = props.children.length - 1);
+    const index = Math.max(
+      Math.min(props.index, this.props.children.length - 1),
+      0,
+    );
+    index === this.index || this.goToSlide(index);
   }
 
   componentWillUnmount() {
