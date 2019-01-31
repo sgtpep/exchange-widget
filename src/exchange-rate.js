@@ -1,12 +1,12 @@
-const currencyRate = (rates, currency) =>
-  (rates.find(rate => rate.currency === currency) || {}).rate;
-
 const exchangeRate = (rates, fromCurrency, toCurrency) =>
   fromCurrency === 'USD'
-    ? currencyRate(rates, toCurrency)
+    ? rate(rates, toCurrency)
     : toCurrency === 'USD'
-    ? 1 / currencyRate(rates, fromCurrency)
-    : currencyRate(rates, toCurrency) * (1 / currencyRate(rates, fromCurrency));
+    ? 1 / rate(rates, fromCurrency)
+    : rate(rates, toCurrency) * (1 / rate(rates, fromCurrency));
+
+const rate = (rates, currency) =>
+  (rates.find(rate => rate.currency === currency) || {}).rate;
 
 const cache = new Map();
 let prevRates;
