@@ -26,18 +26,20 @@ export default class extends Component {
 
   render(props) {
     return html`
-      <input
-        class="CurrencyInput"
-        min="0"
-        onInput=${event => this.onInput(event)}
-        ref=${this.input}
-        step="any"
-        type="number"
-        value=${this.input.current &&
-        this.input.current.valueAsNumber === props.value
-          ? this.input.current.value
-          : props.value}
-      />
+      <span class="CurrencyInput">
+        ${this.props.prefix}
+        <input
+          min="0"
+          onInput=${event => this.onInput(event)}
+          ref=${this.input}
+          step="any"
+          type="number"
+          value=${this.input.current &&
+          this.input.current.valueAsNumber === props.value
+            ? this.input.current.value
+            : props.value}
+        />
+      </span>
     `;
   }
 }

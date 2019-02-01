@@ -5,9 +5,9 @@ import round from './round.js';
 export default (props, state) =>
   html`
     <span class="SourceInput">
-      ${state.amount === null || '- '}
       <${CurrencyInput}
         max=${props.pocket.sum}
+        prefix=${state.amount === null || '-'}
         value=${state.amount && round(state.amount)}
       />
     </span>

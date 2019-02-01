@@ -22,9 +22,9 @@ export default animatedHideable(
       <span
         class=${`DestinationInput animated ${props.hidden ? 'hidden' : ''}`}
       >
-        ${state.amount === null || '+ '}
         <${CurrencyInput}
           max=${props.rate * state.sourcePocket.sum}
+          prefix=${state.amount === null || '+'}
           setAmount=${value => (1 / props.rate) * value}
           value=${props.value}
         />
