@@ -2,16 +2,16 @@ import html from './html.js';
 import { Component } from '../node_modules/preact/dist/preact.mjs';
 
 export default class extends Component {
-  componentDidMount() {
-    //    this.hidingTimeout = setTimeout(
-    //      () => this.base.classList.add(
-    //      10,
-    //    );
+  componentWillReceiveProps(props) {
+    if (props.visible) {
+      this.base.classList.remove('hidden'),
+        this.hidingTimeout && clearTimeout(this.hidingTimeout);
+      this.hidingTimeout = setTimeout(
+        () => this.base.classList.add('hidden'),
+        3000,
+      );
+    }
   }
-
-  //  componentWillReceiveProps(props) {
-  //    props.visible || this.updateProgress(1);
-  //  }
 
   componentWillUnmount() {
     clearInterval(this.hidingTimeout);

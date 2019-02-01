@@ -1,9 +1,3 @@
-error indicator
-  show animated
-  hide on timeout
-    animated
-  clearInterval on show
-
 gradient background
 separator
 slider
