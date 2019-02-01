@@ -1,3 +1,7 @@
 .ExchangeSliders > * {
   height: 50%;
 }
+
+.ExchangeSliders > :last-child {
+  background-color: #2980b9;
+}
