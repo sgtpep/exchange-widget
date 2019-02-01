@@ -7,7 +7,7 @@ readme
     typescript as an external tool
   usage
   npm scripts
-  supported browsers
+  grammar
 tests
   packages.json:test
 
