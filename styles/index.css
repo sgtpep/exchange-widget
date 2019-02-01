@@ -1,11 +1,11 @@
 @import 'App.css';
 @import 'CurrencyInput.css';
 @import 'ErrorIndicator.css';
+@import 'ExchangeSlide.css';
 @import 'ExchangeSliders.css';
 @import 'Header.css';
 @import 'LoadingIndicator.css';
 @import 'RateDropdown.css';
-@import 'SlideCurrency.css';
 @import 'Slider.css';
 @import 'animated.css';
 @import 'border-box.css';
