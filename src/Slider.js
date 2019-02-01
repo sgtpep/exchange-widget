@@ -3,10 +3,13 @@ import { Component, createRef } from '../node_modules/preact/dist/preact.mjs';
 
 export default class extends Component {
   activatePage(index) {
-    [...this.pagination.current.querySelectorAll('.active')].forEach(element =>
-      element.classList.remove('active'),
+    const element = this.pagination.current.children[
+      this.normalizeIndex(index)
+    ];
+    [...this.pagination.current.querySelectorAll('.active')].forEach(
+      activeElement =>
+        activeElement === element || activeElement.classList.remove('active'),
     );
-    const element = this.pagination.current.children[index];
     element && element.classList.add('active');
   }
 
@@ -53,14 +56,14 @@ export default class extends Component {
     this.slides = createRef();
   }
 
+  normalizeIndex(index) {
+    const count = this.slides.current.children.length - 2;
+    return index < 0 ? count - 1 : index > count - 1 ? 0 : index;
+  }
+
   onAnimation(index) {
     this.slides.current.classList.remove('animating');
-    const count = this.slides.current.children.length - 2;
-    index < 0
-      ? this.selectSlide(count - 1)
-      : index > count - 1
-      ? this.selectSlide(0)
-      : this.selectSlide(index);
+    this.selectSlide(this.normalizeIndex(index));
   }
 
   onDragMove(event) {
@@ -140,7 +143,6 @@ export default class extends Component {
   selectSlide(index) {
     if (index !== this.index) {
       this.slides.current.style.left = `${-(index + 1) * 100}%`;
-      this.activatePage(index);
       this.index === undefined ||
         (this.props.onSlide &&
           this.props.onSlide(index, this.slides.current.children[index + 1]));
@@ -149,6 +151,7 @@ export default class extends Component {
   }
 
   startAnimation(index) {
+    this.activatePage(index);
     this.animationTimeout && clearTimeout(this.animationTimeout);
     this.animationTimeout = setTimeout(() => this.onAnimation(index), 300);
     this.slides.current.classList.add('animating');
