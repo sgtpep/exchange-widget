@@ -4,8 +4,8 @@ import html from './html.js';
 
 export default props => html`
   <nav class="Header">
-    <button onClick=${() => props.destroy()}>Cancel</button>
-    <${RateDropdown} />
-    <${ExchangeButton} onExchange=${() => props.destroy()} />
+    <div><button onClick=${() => props.destroy()}>Cancel</button></div>
+    <div><${RateDropdown} /></div>
+    <div><${ExchangeButton} onExchange=${() => props.destroy()} /></div>
   </nav>
 `;

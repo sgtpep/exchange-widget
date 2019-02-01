@@ -1,7 +1,20 @@
 .Header {
+  display: flex;
+}
+
+.Header > * {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  flex: 1;
+  justify-content: center;
+}
+
+.Header > :first-child > :first-child {
+  margin-right: auto;
+}
+
+.Header > :last-child > :first-child {
+  margin-left: auto;
 }
 
 .Header button {
