@@ -11,6 +11,7 @@
     "autoprefixer": "^9.4.7",
     "babel-plugin-htm": "^2.0.0",
     "core-js": "^2.6.3",
+    "eslint": "*",
     "http-server": "^0.11.1",
     "postcss-cli": "^6.1.1",
     "postcss-csso": "^3.0.0",
@@ -26,6 +27,6 @@
   "scripts": {
     "build": "postcss -m -o ./dist/exchange-widget.min.css ./styles/index.css && rollup -c",
     "start": "http-server -c-1 -p 8000",
-    "test": "prettier -l './**/*.{css,html,js,json}'"
+    "test": "prettier -l './**/*.{css,html,js,json}' && eslint './**/*.js'"
   }
 }
