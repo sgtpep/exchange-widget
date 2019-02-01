@@ -8,6 +8,7 @@ crossbrowser test
   edge
   opera
 readme
+  https://sgtpep.github.io/exchange-widget/dist/
   unconventional
     no transpilation: template literals, no webpack/preact-cli
     functional style: lambdas
