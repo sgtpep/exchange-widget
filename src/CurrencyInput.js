@@ -6,9 +6,10 @@ export default class extends Component {
   componentDidUpdate() {
     if (this.inputValue !== this.input.current.value) {
       this.inputValue = this.input.current.value;
-      this.inputText.current.textContent = this.input.current.value || '0';
-      this.input.current.style.width = `${this.inputText.current.offsetWidth +
-        30}px`;
+      this.inputText.current.textContent = this.input.current.value;
+      this.prefix.current.style.right = `${
+        this.inputText.current.clientWidth
+      }px`;
     }
   }
 
@@ -16,6 +17,7 @@ export default class extends Component {
     super();
     this.input = createRef();
     this.inputText = createRef();
+    this.prefix = createRef();
   }
 
   onInput(event) {
@@ -37,7 +39,7 @@ export default class extends Component {
   render(props) {
     return html`
       <span class="CurrencyInput">
-        <span>${this.props.prefix}</span>
+        <span ref=${this.prefix}>${this.props.prefix}</span>
         <input
           min="0"
           onInput=${event => this.onInput(event)}
