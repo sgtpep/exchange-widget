@@ -1,6 +1,5 @@
-text color
-progress bar
 error indicator
+RatesDropdown: variable height
 gradient background
 separator
 max width/height
@@ -10,3 +9,4 @@ slider
     active
 text shadow
 demo.mpv
+https://flatuicolors.com/palette/defo
