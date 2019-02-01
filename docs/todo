@@ -1,0 +1,18 @@
+disable tab
+
+build
+  https://github.com/RadValentin/postcss-prefix-selector
+  prettier
+  travis
+    badge
+  eslint
+  babel
+    babel-plugin-htm
+  autoprefixer
+  minify js, css
+  dist/index.html
+    rates-url https://openexchangerates.org/api/latest.json?app_id=e0c2f3b5ba0a4cf7a0d561a763b6b351
+  dist/exchange-widget.umd.js
+  dist/exchange-widget.es.js
+  lighthouse
+  deploy

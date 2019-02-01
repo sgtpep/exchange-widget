@@ -1,6 +1,3 @@
-enter
-esc
-add keys to map items
 crossbrowser test
   chromium
   chromium mobile emulator
@@ -10,22 +7,8 @@ crossbrowser test
   safari mobile
   edge
   opera
-build
-  https://github.com/RadValentin/postcss-prefix-selector
-  prettier
-  travis
-    badge
-  eslint
-  babel
-    babel-plugin-htm
-  autoprefixer
-  minify js, css
-  dist/index.html
-    rates-url https://openexchangerates.org/api/latest.json?app_id=e0c2f3b5ba0a4cf7a0d561a763b6b351
-  dist/exchange-widget.umd.js
-  dist/exchange-widget.es.js
-lighthouse
-deploy
+tests
+  test coverage
 readme
   unconventional
     no transpilation: template literals, no webpack/preact-cli
@@ -35,11 +18,9 @@ readme
   usage
   npm scripts
   supported browsers
-tests
-  test coverage
-typescript
 https://gethead.info/
 https://frontendchecklist.io/
+typescript
 storybook
 offline
   pwa
