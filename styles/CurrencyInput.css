@@ -5,8 +5,15 @@
 }
 
 .CurrencyInput > :first-child {
+  left: 0;
   pointer-events: none;
   position: absolute;
+  right: 0;
+  text-align: right;
+}
+
+.CurrencyInput > :first-child > :last-child {
+  visibility: hidden;
 }
 
 .CurrencyInput > input {
@@ -27,9 +34,4 @@
 
 .CurrencyInput > input::selection {
   background-color: white;
-}
-
-.CurrencyInput > input + span {
-  position: absolute;
-  visibility: hidden;
 }

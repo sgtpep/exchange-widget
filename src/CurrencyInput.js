@@ -3,21 +3,10 @@ import { Component, createRef } from '../node_modules/preact/dist/preact.mjs';
 import { setAmount } from './actions.js';
 
 export default class extends Component {
-  componentDidUpdate() {
-    if (this.inputValue !== this.input.current.value) {
-      this.inputValue = this.input.current.value;
-      this.inputText.current.textContent = this.input.current.value;
-      this.prefix.current.style.right = `${
-        this.inputText.current.clientWidth
-      }px`;
-    }
-  }
-
   constructor() {
     super();
+    this.hiddenText = createRef();
     this.input = createRef();
-    this.inputText = createRef();
-    this.prefix = createRef();
   }
 
   onInput(event) {
@@ -34,25 +23,41 @@ export default class extends Component {
               ),
         )
       : (event.target.value = this.props.value);
+    this.prevKey === 'Backspace' &&
+      event.target.value &&
+      ([event.target.value, event.target.value] = [
+        `0${event.target.value}`,
+        event.target.value,
+      ]);
+    this.hiddenText.current.textContent = `${event.target.value}${
+      this.prevKey === '.' && !this.hiddenText.current.textContent.includes('.')
+        ? '.'
+        : ''
+    }`;
+  }
+
+  onKeyDown(event) {
+    this.prevKey = event.key;
   }
 
   render(props) {
+    const value =
+      this.input.current && this.input.current.valueAsNumber === props.value
+        ? this.input.current.value
+        : props.value;
     return html`
       <span class="CurrencyInput">
-        <span ref=${this.prefix}>${this.props.prefix}</span>
+        <span>${props.prefix}<span ref=${this.hiddenText}>${value}</span></span>
         <input
           min="0"
           onInput=${event => this.onInput(event)}
+          onKeyDown=${event => this.onKeyDown(event)}
           ref=${this.input}
           step="any"
-          tabindex=${this.props.tabindex}
+          tabindex=${props.tabindex}
           type="number"
-          value=${this.input.current &&
-          this.input.current.valueAsNumber === props.value
-            ? this.input.current.value
-            : props.value}
+          value=${value}
         />
-        <span ref=${this.inputText} />
       </span>
     `;
   }
