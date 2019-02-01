@@ -1,5 +1,11 @@
+.ExchangeSliders {
+  display: flex;
+  flex-direction: column;
+}
+
 .ExchangeSliders > * {
-  height: 50%;
+  flex: 1;
+  overflow: hidden;
 }
 
 .ExchangeSliders > :last-child {

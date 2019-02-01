@@ -52,10 +52,8 @@ export default class extends Component {
           ${'Failed to update rates '}
           <button onClick=${() => this.fetchRates()}>Retry</button>
         <//>
-        <main>
-          <${Header} destroy=${props.destroy} />
-          <${ExchangeSliders} />
-        </main>
+        <${Header} destroy=${props.destroy} />
+        <${ExchangeSliders} />
       </div>
     `;
   }
