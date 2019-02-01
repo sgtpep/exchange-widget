@@ -1,10 +1,13 @@
-header: height: spacing
-dots
-  active
+center dropdown
 slide layout
 separator
-gradient background
 cancel/exchange
 rates
+  background
+  border
+  size
+  arrow
+input
+  outline
 demo.mpv
 https://flatuicolors.com/palette/defo
