@@ -21,4 +21,5 @@
 
 .ExchangeSlide-currency {
   font-size: var(--input-font-size);
+  margin-right: 0.5em;
 }
