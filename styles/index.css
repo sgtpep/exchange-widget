@@ -3,7 +3,7 @@
 @import 'prevent-selection.css';
 @import 'variables.css';
 
-@import 'App.css';
+@import 'Header.css';
 @import 'RateDropdown.css';
 @import 'Slider.css';
 @import 'animated.css';

@@ -1,6 +1,5 @@
-import ExchangeButton from './ExchangeButton.js';
 import ExchangeSliders from './ExchangeSliders.js';
-import RateDropdown from './RateDropdown.js';
+import Header from './Header.js';
 import html from './html.js';
 import { Component } from '../node_modules/preact/dist/preact.mjs';
 import {
@@ -56,11 +55,7 @@ export default class extends Component {
               <button onClick=${() => this.fetchRates()}>Retry</button>
             </p>
           `}
-        <nav>
-          <button onClick=${() => props.destroy()}>Cancel</button>
-          <${RateDropdown} />
-          <${ExchangeButton} onExchange=${() => props.destroy()} />
-        </nav>
+        <${Header} />
         <${ExchangeSliders} />
       </div>
     `;
