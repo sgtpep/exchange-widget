@@ -1,15 +1,12 @@
-rollup
-  babel-plugin-htm
-  minimize x2
 postcss
   autoprefixer
   https://github.com/RadValentin/postcss-prefix-selector
   minimize
 
+lighthouse
+pages
 prettier
 travis
   badge
 eslint
 rates-url https://openexchangerates.org/api/latest.json?app_id=e0c2f3b5ba0a4cf7a0d561a763b6b351
-lighthouse
-deploy
