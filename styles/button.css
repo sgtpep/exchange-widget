@@ -14,7 +14,7 @@
 }
 .App button:active {
   background-color: white;
-  color: #2980b9;
+  color: var(--dark-background-color);
   text-shadow: none;
 }
 .App button:focus {
