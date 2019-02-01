@@ -1,14 +1,12 @@
 text color
-hover visualization
-disable animation
-loading indicator
-  progress
+progress bar
 error indicator
-separator
 gradient background
+separator
 max width/height
   center vertically and horizontally
 slider
   dots
     active
 text shadow
+demo.mpv
