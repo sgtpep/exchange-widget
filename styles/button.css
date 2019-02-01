@@ -1,0 +1,17 @@
+.App button {
+  background: none;
+  border-radius: 0.375em;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: 0.25em 0.375em;
+  transition: background-color calc(var(--duration) / 2),
+    color calc(var(--duration) / 2);
+}
+.App button:active {
+  background-color: white;
+  color: #2980b9;
+  text-shadow: none;
+}
+.App button:focus {
+  outline: none;
+}

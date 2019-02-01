@@ -1,9 +1,9 @@
-*,
-*:after,
-*:before {
-  box-sizing: inherit;
+.App {
+  box-sizing: border-box;
 }
 
-html {
-  box-sizing: border-box;
+.App *,
+.App *:after,
+.App *:before {
+  box-sizing: inherit;
 }

@@ -1,10 +1,10 @@
-.animated {
+.App .animated {
   transition: opacity var(--duration);
 }
-.animated.hidden {
+.App .animated.hidden {
   opacity: 0;
   pointer-events: none;
 }
-.animated[disabled] {
+.App .animated[disabled] {
   opacity: 0.5;
 }
