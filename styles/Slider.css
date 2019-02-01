@@ -1,10 +1,12 @@
 .Slider > :first-child {
   cursor: grab;
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
 
 .Slider > :first-child > :first-child {
+  height: 100%;
   position: relative;
 }
 .Slider > :first-child > :first-child.animating {
