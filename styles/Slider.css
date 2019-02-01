@@ -6,7 +6,6 @@
 
 .Slider > :first-child > :first-child {
   position: relative;
-  white-space: nowrap;
 }
 .Slider > :first-child > :first-child.animating {
   transition: left var(--duration) ease-out;
@@ -20,7 +19,6 @@
 
 .Slider > :first-child > :first-child > * {
   float: left;
-  white-space: normal;
 }
 
 .Slider > nav > * {
