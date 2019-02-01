@@ -3,3 +3,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.Header button:not([disabled]) {
+  cursor: pointer;
+}

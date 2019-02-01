@@ -23,6 +23,9 @@
   white-space: normal;
 }
 
+.Slider > nav > * {
+  cursor: pointer;
+}
 .Slider > nav > .active {
   font-weight: bold;
 }
