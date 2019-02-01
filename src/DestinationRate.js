@@ -3,7 +3,7 @@ import html from './html.js';
 import rateText from './rate-text.js';
 
 export default animatedHideable(
-  (props, state) => props.pocket === state.sourcePocket,
+  (props, state) => state.ratesHidden,
   (props, state) => ({
     text: rateText(
       state.rates,

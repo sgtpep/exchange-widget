@@ -5,7 +5,7 @@ import html from './html.js';
 import round from './round.js';
 
 export default animatedHideable(
-  (props, state) => props.pocket === state.sourcePocket,
+  (props, state) => state.ratesHidden,
   (props, state) => {
     const rate = exchangeRate(
       state.rates,
