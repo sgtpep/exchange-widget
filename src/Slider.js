@@ -37,7 +37,7 @@ export default class extends Component {
       Math.min(props.index, this.props.children.length - 1),
       0,
     );
-    index === this.index || this.goToSlide(index);
+    index === this.index || this.startAnimation(index);
   }
 
   componentWillUnmount() {
@@ -53,16 +53,14 @@ export default class extends Component {
     this.slides = createRef();
   }
 
-  goToSlide(index) {
-    this.startAnimation();
-    this.selectSlide(index);
-  }
-
-  onAnimated() {
+  onAnimation(index) {
     this.slides.current.classList.remove('animating');
     const count = this.slides.current.children.length - 2;
-    this.index < 0 && this.selectSlide(count - 1);
-    this.index > count - 1 && this.selectSlide(0);
+    index < 0
+      ? this.selectSlide(count - 1)
+      : index > count - 1
+      ? this.selectSlide(0)
+      : this.selectSlide(index);
   }
 
   onDragMove(event) {
@@ -94,10 +92,10 @@ export default class extends Component {
       const { offsetLeft } = this.slides.current;
       const threshold = 100;
       offsetLeft - this.offsetLeft < -threshold
-        ? this.goToSlide(this.index + 1)
+        ? this.startAnimation(this.index + 1)
         : offsetLeft - this.offsetLeft > threshold
-        ? this.goToSlide(this.index - 1)
-        : this.goToSlide(this.index);
+        ? this.startAnimation(this.index - 1)
+        : this.startAnimation(this.index);
     }
   }
 
@@ -130,7 +128,7 @@ export default class extends Component {
         <nav ref=${this.pagination}>
           ${props.children.map((child, index) => [
             html`
-              <a onClick=${() => this.goToSlide(index)}>${index + 1}</a>
+              <a onClick=${() => this.startAnimation(index)}>${index + 1}</a>
             `,
             ' ',
           ])}
@@ -140,22 +138,21 @@ export default class extends Component {
   }
 
   selectSlide(index) {
-    const prevIndex = this.index;
-    this.index = index;
-    this.slides.current.style.left = `${-(index + 1) * 100}%`;
-    this.activatePage(index);
-    index === prevIndex ||
-      prevIndex === undefined ||
-      (index >= 0 &&
-        index <= this.slides.current.children.length - 3 &&
-        this.props.onSlide &&
-        this.props.onSlide(index, this.slides.current.children[index + 1]));
+    if (index !== this.index) {
+      this.slides.current.style.left = `${-(index + 1) * 100}%`;
+      this.activatePage(index);
+      this.index === undefined ||
+        (this.props.onSlide &&
+          this.props.onSlide(index, this.slides.current.children[index + 1]));
+      this.index = index;
+    }
   }
 
-  startAnimation() {
+  startAnimation(index) {
     this.animationTimeout && clearTimeout(this.animationTimeout);
-    this.animationTimeout = setTimeout(() => this.onAnimated(), 300);
+    this.animationTimeout = setTimeout(() => this.onAnimation(index), 300);
     this.slides.current.classList.add('animating');
+    this.slides.current.style.left = `${-(index + 1) * 100}%`;
   }
 
   stopAnimation() {
