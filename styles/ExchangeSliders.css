@@ -7,7 +7,7 @@
 }
 
 .ExchangeSliders > :last-child::before {
-  --size: 20px;
+  --size: 1.5em;
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
   border-top: calc(var(--size) * 0.8) solid var(--background-color);
@@ -17,9 +17,4 @@
   position: absolute;
   top: 0;
   transform: translateX(-50%);
-}
-@media (min-width: 480px) {
-  .ExchangeSliders > :last-child:before {
-    --size: 30px;
-  }
 }
