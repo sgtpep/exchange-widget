@@ -7,10 +7,12 @@
   },
   "devDependencies": {
     "http-server": "^0.11.1",
+    "postcss-cli": "^6.1.1",
+    "postcss-import": "^12.0.1",
     "rollup": "^1.1.2"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "postcss -m -o ./dist/exchange-widget.min.css ./styles/index.css && rollup -c",
     "start": "http-server -c-1 -p 8000"
   }
 }
