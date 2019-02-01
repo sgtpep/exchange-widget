@@ -25,6 +25,11 @@ export default class extends Component {
     this.slidesListeners.forEach(args =>
       this.slides.current.addEventListener(...args),
     );
+    this.props.onMount &&
+      this.props.onMount(
+        this.props.index,
+        this.slides.current.children[this.props.index + 1],
+      );
   }
 
   componentWillReceiveProps(props) {
@@ -142,7 +147,8 @@ export default class extends Component {
     this.index = index;
     this.slides.current.style.left = `${-(index + 1) * 100}%`;
     this.activatePage(index);
-    prevIndex === index ||
+    index === prevIndex ||
+      prevIndex === undefined ||
       (index >= 0 &&
         index <= this.slides.current.children.length - 3 &&
         this.props.onSlide &&
