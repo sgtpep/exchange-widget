@@ -1,14 +1,11 @@
-text-shadow px
-
+layout
+  max width/height
+    center vertically and horizontally
 dots
   active
 separator
 gradient background
 cancel/exchange
+rates
 demo.mpv
-layout
-  max width/height
-    center vertically and horizontally
-  RatesDropdown: variable height
-text shadow
 https://flatuicolors.com/palette/defo
