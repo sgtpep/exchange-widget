@@ -11,6 +11,8 @@ export default class extends Component {
         activeElement === element || activeElement.classList.remove('active'),
     );
     element && element.classList.add('active');
+    this.index === undefined ||
+      this.pagination.current.classList.add('initialized');
   }
 
   componentDidMount() {
@@ -28,6 +30,7 @@ export default class extends Component {
     this.slidesListeners.forEach(args =>
       this.slides.current.addEventListener(...args),
     );
+    this.selectSlide(this.props.index);
     this.props.onMount &&
       this.props.onMount(
         this.props.index,
@@ -76,8 +79,9 @@ export default class extends Component {
     ) {
       event.preventDefault();
       const { clientX } = event.touches ? event.touches[0] : event;
-      this.slides.current.style.left = `${this.slides.current.offsetLeft -
-        (this.clientX - clientX)}px`;
+      this.translateSlides(
+        `${this.slidesOffset() - (this.clientX - clientX)}px`,
+      );
       this.clientX = clientX;
     }
   }
@@ -85,7 +89,7 @@ export default class extends Component {
   onDragStart(event) {
     this.clientX = (event.touches ? event.touches[0] : event).clientX;
     this.dragging = true;
-    this.offsetLeft = this.slides.current.offsetLeft;
+    this.prevSlidesOffset = this.slidesOffset();
     this.stopAnimation();
   }
 
@@ -95,11 +99,11 @@ export default class extends Component {
       (event.type === 'mouseup' && this.dragging)
     ) {
       this.dragging = false;
-      const { offsetLeft } = this.slides.current;
+      const slidesOffset = this.slidesOffset();
       const threshold = 100;
-      offsetLeft - this.offsetLeft < -threshold
+      slidesOffset - this.prevSlidesOffset < -threshold
         ? this.startAnimation(this.index + 1)
-        : offsetLeft - this.offsetLeft > threshold
+        : slidesOffset - this.prevSlidesOffset > threshold
         ? this.startAnimation(this.index - 1)
         : this.startAnimation(this.index);
     }
@@ -145,7 +149,8 @@ export default class extends Component {
 
   selectSlide(index) {
     if (index !== this.index) {
-      this.slides.current.style.left = `${-(index + 1) * 100}%`;
+      this.activatePage(index);
+      this.translateSlides(this.slidesTranslateX(index));
       this.index === undefined ||
         (this.props.onSlide &&
           this.props.onSlide(index, this.slides.current.children[index + 1]));
@@ -153,16 +158,34 @@ export default class extends Component {
     }
   }
 
+  slidesOffset() {
+    const style = getComputedStyle(this.slides.current);
+    return new (window.DOMMatrix ||
+      window.CSSMatrix ||
+      window.WebKitCSSMatrix ||
+      window.MSCSSMatrix)(style.transform || style.webkitTransform).m41;
+  }
+
+  slidesTranslateX(index) {
+    return `${(-100 / (this.props.children.length + 2)) * (index + 1)}%`;
+  }
+
   startAnimation(index) {
-    this.activatePage(index);
-    this.animationTimeout && clearTimeout(this.animationTimeout);
-    this.animationTimeout = setTimeout(() => this.onAnimation(index), 300);
-    this.slides.current.classList.add('animating');
-    this.slides.current.style.left = `${-(index + 1) * 100}%`;
+    if (index !== this.index) {
+      this.activatePage(index);
+      this.animationTimeout && clearTimeout(this.animationTimeout);
+      this.animationTimeout = setTimeout(() => this.onAnimation(index), 300);
+      this.slides.current.classList.add('animating');
+      this.translateSlides(this.slidesTranslateX(index));
+    }
   }
 
   stopAnimation() {
     this.slides.current.classList.remove('animating');
     this.animationTimeout && clearTimeout(this.animationTimeout);
+  }
+
+  translateSlides(length) {
+    this.slides.current.style.transform = this.slides.current.style.webkitTransform = `translateX(${length})`;
   }
 }
