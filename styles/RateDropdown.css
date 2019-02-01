@@ -14,6 +14,23 @@
 }
 
 .RateDropdown > span {
+  background-color: var(--dark-background-color);
+  border-radius: 0.375em;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   display: inline-block;
+  font-size: 1.25em;
+  padding: 0.125em 0.5em;
+  vertical-align: middle;
   white-space: nowrap;
+}
+
+.RateDropdown > span::after {
+  --size: 0.375em;
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid;
+  content: '';
+  display: inline-block;
+  margin-left: 0.375em;
+  margin-bottom: calc(var(--size) * 0.25);
 }
