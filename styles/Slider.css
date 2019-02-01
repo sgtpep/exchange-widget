@@ -1,3 +1,7 @@
+.Slider {
+  position: relative;
+}
+
 .Slider > :first-child {
   cursor: grab;
   height: 100%;
@@ -23,9 +27,25 @@
   float: left;
 }
 
-.Slider > nav > * {
-  cursor: pointer;
+.Slider > nav {
+  bottom: 1em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.Slider > nav > .active {
-  font-weight: bold;
+
+.Slider > nav > * {
+  --size: 0.75em;
+  background: white;
+  border-radius: 50%;
+  color: transparent;
+  cursor: pointer;
+  display: inline-block;
+  height: var(--size);
+  text-shadow: none;
+  transition: opacity var(--duration);
+  width: var(--size);
+}
+.Slider > nav > :not(.active) {
+  opacity: 0.4;
 }
