@@ -18,6 +18,7 @@ export const fetchRates = (url, signal = undefined) => {
         rates: Object.entries(data.rates)
           .map(([currency, rate]) => ({ currency, rate }))
           .filter(rate => ['EUR', 'GBP', 'USD'].includes(rate.currency)),
+        ratesError: false,
         ratesHidden: ratesHidden(
           state.sourcePocket,
           state.destinationPocket,

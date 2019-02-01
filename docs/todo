@@ -1,5 +1,4 @@
 error indicator
-  hide on successful retry
   show animated
   hide on timeout
     animated
