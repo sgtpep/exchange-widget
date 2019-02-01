@@ -1,2 +1,11 @@
 edge
   readme
+
+readme
+  usage
+  unconventional decision
+    no transpilation: template literals, no webpack/preact-cli
+    functional style: lambdas
+    meiosis for state
+    typescript as an external tool
+  grammar
