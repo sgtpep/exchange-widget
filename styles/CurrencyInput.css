@@ -1,0 +1,14 @@
+.CurrencyInput {
+  font-size: var(--input-font-size);
+}
+
+.CurrencyInput input {
+  background: none;
+  border: none;
+  color: inherit;
+  text-shadow: inherit;
+  width: 5em;
+}
+.CurrencyInput input:focus {
+  outline: none;
+}
