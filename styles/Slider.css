@@ -25,6 +25,7 @@
 
 .Slider > :first-child > :first-child > * {
   float: left;
+  height: 100%;
 }
 
 .Slider > nav {

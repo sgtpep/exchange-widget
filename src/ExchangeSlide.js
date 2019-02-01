@@ -7,21 +7,21 @@ import html from './html.js';
 export default (props, state) =>
   html`
     <div class="ExchangeSlide">
-      <div class="ExchangeSlide-currency">${props.pocket.currency}</div>
       <div>
-        ${'You have '}
-        ${formatCurrency(props.pocket.sum, props.pocket.currency)}
+        <div class="ExchangeSlide-currency">${props.pocket.currency}</div>
+        <${props.type === 'source' ? SourceInput : DestinationInput}
+          pocket=${props.pocket}
+        />
       </div>
-      ${props.type === 'source' &&
-        html`
-          <${SourceInput} pocket=${props.pocket} />
-        `}
-      ${props.type === 'destination' &&
-        html`
-          <div>
-            <${DestinationInput} pocket=${props.pocket} />
+      <div>
+        <div>
+          ${'You have '}
+          ${formatCurrency(props.pocket.sum, props.pocket.currency)}
+        </div>
+        ${props.type === 'destination' &&
+          html`
             <${DestinationRate} pocket=${props.pocket} />
-          </div>
-        `}
+          `}
+      </div>
     </div>
   `;
