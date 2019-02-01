@@ -1,4 +1,11 @@
 module.exports = ctx => ({
   map: ctx.options.map,
-  plugins: { 'postcss-import': {}, autoprefixer: {} },
+  plugins: {
+    'postcss-import': {},
+    'postcss-prefix-selector': {
+      exclude: [/^(:root|body|html|\.App)($|[^\w-])/],
+      prefix: '.App',
+    },
+    autoprefixer: {},
+  },
 });
