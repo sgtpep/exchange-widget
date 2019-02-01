@@ -22,8 +22,8 @@ export default class extends Component {
     this.slidesListeners = [
       ['mousedown', this.onDragStart],
       ['touchend', this.onDragStop],
-      ['touchmove', this.onDragMove],
-      ['touchstart', this.onDragStart],
+      ['touchmove', this.onDragMove, { passive: true }],
+      ['touchstart', this.onDragStart, { passive: true }],
     ].map(([type, listener]) => [type, listener.bind(this)]);
     this.slidesListeners.forEach(args =>
       this.slides.current.addEventListener(...args),
