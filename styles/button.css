@@ -1,18 +1,24 @@
-.App button {
+.App button,
+.App .button {
   background: none;
   border-radius: 0.375em;
   border: 1px solid white;
   box-shadow: var(--box-shadow);
   color: inherit;
-  padding: 0.375em 0.5em;
+  display: inline-block;
+  line-height: inherit;
+  padding: 0.375em 0.75em;
   text-shadow: inherit;
   transition: background-color calc(var(--duration) / 2),
     color calc(var(--duration) / 2);
+  white-space: nowrap;
 }
-.App button:not([disabled]) {
+.App button:not([disabled]),
+.App .button.disabled {
   cursor: pointer;
 }
-.App button:active {
+.App button:active,
+.App .button:active {
   background-color: white;
   color: var(--dark-background-color);
   text-shadow: none;

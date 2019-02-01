@@ -13,19 +13,11 @@
   width: 100%;
 }
 
-.RateDropdown > span {
+.RateDropdown > .button {
   background-color: var(--dark-background-color);
-  border-radius: 0.375em;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: var(--box-shadow);
-  display: inline-block;
-  font-size: 1.25em;
-  padding: 0.125em 0.5em;
-  vertical-align: middle;
-  white-space: nowrap;
 }
 
-.RateDropdown > span::after {
+.RateDropdown > .button::after {
   --size: 0.375em;
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
