@@ -6,6 +6,11 @@ export default {
       sourcemap: true,
     },
     {
+      file: './dist/exchange-widget.min.js',
+      format: 'iife',
+      sourcemap: true,
+    },
+    {
       file: './dist/exchange-widget.umd.min.js',
       format: 'umd',
       name: 'exchange-widget',
