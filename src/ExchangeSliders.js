@@ -6,8 +6,6 @@ import { setDestinationPocket, setSourcePocket } from './actions.js';
 
 export default class extends Component {
   componentDidMount() {
-    this.onMouseUp = this.onMouseUp.bind(this);
-    this.base.addEventListener('mouseup', this.onMouseUp);
     this.onDestinationFocus = this.onFocus.bind(this, 'destination');
     this.destination.current.base.addEventListener(
       'focus',
@@ -23,7 +21,6 @@ export default class extends Component {
   }
 
   componentWillUnmount() {
-    this.base.removeEventListener('mouseup', this.onMouseUp);
     this.destination.current.base.removeEventListener(
       'focus',
       this.onDestinationFocus,
@@ -55,10 +52,6 @@ export default class extends Component {
   onFocus(type) {
     event.target.tagName === 'INPUT' &&
       ([this.focusedInput, this.focusedInputType] = [event.target, type]);
-  }
-
-  onMouseUp() {
-    this.focusedInput && this.focusedInput.focus();
   }
 
   render(props, _, state) {
