@@ -1,6 +1,5 @@
-import DestinationSlide from './DestinationSlide.js';
+import ExchangeSlide from './ExchangeSlide.js';
 import Slider from './Slider.js';
-import SourceSlide from './SourceSlide.js';
 import html from './html.js';
 import { Component, createRef } from '../node_modules/preact/dist/preact.mjs';
 import { setDestinationPocket, setSourcePocket } from './actions.js';
@@ -77,7 +76,7 @@ export default class extends Component {
           ${state.pockets.map(
             pocket =>
               html`
-                <${SourceSlide} pocket=${pocket} />
+                <${ExchangeSlide} pocket=${pocket} type="source" />
               `,
           )}
         <//>
@@ -92,7 +91,7 @@ export default class extends Component {
           ${state.pockets.map(
             pocket =>
               html`
-                <${DestinationSlide} pocket=${pocket} />
+                <${ExchangeSlide} pocket=${pocket} type="destination" />
               `,
           )}
         <//>
