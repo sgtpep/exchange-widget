@@ -60,7 +60,9 @@ export default class extends Component {
 
   fetchRates() {
     this.fetchRatesAbort && this.fetchRatesAbort.abort();
-    this.fetchRatesAbort = new AbortController();
+    this.fetchRatesAbort = window.AbortController
+      ? new AbortController()
+      : { abort: () => {} };
     return fetchRates(this.props.ratesURL, this.fetchRatesAbort.signal);
   }
 
