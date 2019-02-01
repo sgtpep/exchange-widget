@@ -6,7 +6,7 @@ export default class extends Component {
   componentDidUpdate() {
     if (this.inputValue !== this.input.current.value) {
       this.inputValue = this.input.current.value;
-      this.inputText.current.textContent = this.input.current.value;
+      this.inputText.current.textContent = this.input.current.value || '0';
       this.input.current.style.width = `${this.inputText.current.offsetWidth +
         30}px`;
     }
