@@ -1,3 +1,4 @@
+import fetchJSON from './fetch-json.js';
 import update from './update.js';
 
 export const exchange = (amount, rate, fromCurrency, toCurrency) => {
@@ -10,9 +11,10 @@ export const exchange = (amount, rate, fromCurrency, toCurrency) => {
 
 export const fetchRates = (url, signal = undefined) => {
   update(state => ({ ...state, ratesLoading: true }));
-  fetch(url, { signal })
-    .then(response => (response.ok ? response.json() : Promise.reject()))
-    .then(data =>
+  fetchJSON(
+    url,
+    signal,
+    data =>
       update(state => ({
         ...state,
         rates: Object.entries(data.rates)
@@ -26,17 +28,9 @@ export const fetchRates = (url, signal = undefined) => {
         ),
         ratesLoading: false,
       })),
-    )
-    .catch(error => {
-      if (
-        error.message !== 'NetworkError when attempting to fetch resource.' &&
-        error.name !== 'AbortError' &&
-        !(signal && signal.aborted)
-      ) {
-        error && console.error(error);
-        update(state => ({ ...state, ratesError: true, ratesLoading: false }));
-      }
-    });
+    () =>
+      update(state => ({ ...state, ratesError: true, ratesLoading: false })),
+  );
 };
 
 const ratesHidden = (sourcePocket, destinationPocket, ratesEmpty) =>
