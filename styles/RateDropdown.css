@@ -4,6 +4,7 @@
 }
 
 .RateDropdown > select {
+  cursor: pointer;
   height: 100%;
   left: 0;
   opacity: 0;
