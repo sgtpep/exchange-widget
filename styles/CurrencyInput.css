@@ -1,22 +1,31 @@
 .CurrencyInput {
+  display: inline-block;
   font-size: var(--input-font-size);
+  white-space: nowrap;
 }
 
-.CurrencyInput input {
+.CurrencyInput > :first-child {
+  margin-right: -30px;
+  pointer-events: none;
+}
+
+.CurrencyInput > input {
   background: none;
   border: none;
   color: inherit;
   padding: 0;
+  text-align: right;
   text-shadow: inherit;
 }
-.CurrencyInput input:focus {
+.CurrencyInput > input:focus {
   outline: none;
 }
 
-.CurrencyInput input::selection {
+.CurrencyInput > input::selection {
   background-color: white;
 }
 
-.CurrencyInput input + span {
+.CurrencyInput > input + span {
+  position: absolute;
   visibility: hidden;
 }

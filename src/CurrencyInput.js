@@ -37,7 +37,7 @@ export default class extends Component {
   render(props) {
     return html`
       <span class="CurrencyInput">
-        ${this.props.prefix}
+        <span>${this.props.prefix}</span>
         <input
           min="0"
           onInput=${event => this.onInput(event)}
