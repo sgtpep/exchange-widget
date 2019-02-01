@@ -6,9 +6,13 @@
   background: none;
   border: none;
   color: inherit;
+  padding: 0;
   text-shadow: inherit;
-  width: 5em;
 }
 .CurrencyInput input:focus {
   outline: none;
+}
+
+.CurrencyInput input + span {
+  visibility: hidden;
 }

@@ -3,9 +3,19 @@ import { Component, createRef } from '../node_modules/preact/dist/preact.mjs';
 import { setAmount } from './actions.js';
 
 export default class extends Component {
+  componentDidUpdate() {
+    if (this.inputValue !== this.input.current.value) {
+      this.inputValue = this.input.current.value;
+      this.inputText.current.textContent = this.input.current.value;
+      this.input.current.style.width = `${this.inputText.current.offsetWidth +
+        30}px`;
+    }
+  }
+
   constructor() {
     super();
     this.input = createRef();
+    this.inputText = createRef();
   }
 
   onInput(event) {
@@ -39,6 +49,7 @@ export default class extends Component {
             ? this.input.current.value
             : props.value}
         />
+        <span ref=${this.inputText} />
       </span>
     `;
   }
