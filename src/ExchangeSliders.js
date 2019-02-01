@@ -34,17 +34,17 @@ export default class extends Component {
     this.source = createRef();
   }
 
-  focusInput(parent, type) {
+  focusSlideInput(element, type) {
     const input =
       type === this.focusedInputType || !this.focusedInputType
-        ? parent.querySelector('input')
+        ? element.querySelector('input')
         : this.focusedInput;
     if (input) {
-      const { scrollLeft, scrollTop } = parent.parentElement.parentElement;
+      const { scrollLeft, scrollTop } = element.parentElement.parentElement;
       input.focus({ preventScroll: true });
       [
-        parent.parentElement.parentElement.scrollLeft,
-        parent.parentElement.parentElement.scrollTop,
+        element.parentElement.parentElement.scrollLeft,
+        element.parentElement.parentElement.scrollTop,
       ] = [scrollLeft, scrollTop];
     }
   }
@@ -59,10 +59,10 @@ export default class extends Component {
       <div class="ExchangeSliders">
         <${Slider}
           index=${state.pockets.indexOf(state.sourcePocket)}
-          onMount=${(index, element) => this.focusInput(element, 'source')}
+          onMount=${(index, element) => this.focusSlideInput(element, 'source')}
           onSlide=${(index, element) => {
             setSourcePocket(state.pockets[index]);
-            this.focusInput(element, 'source');
+            this.focusSlideInput(element, 'source');
           }}
           ref=${this.source}
         >
@@ -77,7 +77,7 @@ export default class extends Component {
           index=${state.pockets.indexOf(state.destinationPocket)}
           onSlide=${(index, element) => {
             setDestinationPocket(state.pockets[index]);
-            this.focusInput(element, 'destination');
+            this.focusSlideInput(element, 'destination');
           }}
           ref=${this.destination}
         >
