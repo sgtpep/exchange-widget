@@ -3,6 +3,10 @@ import { Component, createRef } from '../node_modules/preact/dist/preact.mjs';
 import { setAmount } from './actions.js';
 
 export default class extends Component {
+  componentDidUpdate() {
+    this.updateHiddenText();
+  }
+
   constructor() {
     super();
     this.hiddenText = createRef();
@@ -23,31 +27,23 @@ export default class extends Component {
               ),
         )
       : (event.target.value = this.props.value);
-    this.prevKey === 'Backspace' &&
+    (this.prevKey === 'Backspace' || this.prevWhich === 8) &&
       event.target.value &&
       ([event.target.value, event.target.value] = [
         `0${event.target.value}`,
         event.target.value,
       ]);
-    this.hiddenText.current.textContent = `${event.target.value}${
-      this.prevKey === '.' && !this.hiddenText.current.textContent.includes('.')
-        ? '.'
-        : ''
-    }`;
+    this.updateHiddenText();
   }
 
   onKeyDown(event) {
-    this.prevKey = event.key;
+    [this.prevKey, this.prevWhich] = [event.key, event.which];
   }
 
   render(props) {
-    const value =
-      this.input.current && this.input.current.valueAsNumber === props.value
-        ? this.input.current.value
-        : props.value;
     return html`
       <span class="CurrencyInput">
-        <span>${props.prefix}<span ref=${this.hiddenText}>${value}</span></span>
+        <span>${props.prefix}<span ref=${this.hiddenText}></span></span>
         <input
           min="0"
           onInput=${event => this.onInput(event)}
@@ -56,9 +52,21 @@ export default class extends Component {
           step="any"
           tabindex=${props.tabindex}
           type="number"
-          value=${value}
+          value=${this.input.current &&
+          this.input.current.valueAsNumber === props.value
+            ? this.input.current.value
+            : props.value}
         />
       </span>
     `;
+  }
+
+  updateHiddenText() {
+    this.hiddenText.current.textContent = `${this.input.current.value}${
+      (this.prevKey === '.' || this.prevWhich === 229) &&
+      !this.hiddenText.current.textContent.includes('.')
+        ? '.'
+        : ''
+    }`;
   }
 }
