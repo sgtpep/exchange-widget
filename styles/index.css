@@ -1,3 +1,12 @@
+@import '../node_modules/normalize.css/normalize.css';
+@import 'animated.css';
+@import 'border-box.css';
+@import 'break-words.css';
+@import 'button.css';
+@import 'font.css';
+@import 'hide-spins.css';
+@import 'variables.css';
+
 @import 'App.css';
 @import 'CurrencyInput.css';
 @import 'ErrorIndicator.css';
@@ -7,10 +16,3 @@
 @import 'LoadingIndicator.css';
 @import 'RateDropdown.css';
 @import 'Slider.css';
-@import 'animated.css';
-@import 'border-box.css';
-@import 'break-words.css';
-@import 'button.css';
-@import 'font.css';
-@import 'hide-spins.css';
-@import 'variables.css';

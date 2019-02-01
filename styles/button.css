@@ -1,5 +1,5 @@
-.App button,
-.App .button {
+button,
+.button {
   background: none;
   border-radius: 0.375em;
   border: 1px solid white;
@@ -13,16 +13,16 @@
     color calc(var(--duration) / 2);
   white-space: nowrap;
 }
-.App button:not([disabled]),
-.App .button.disabled {
+button:not([disabled]),
+.button.disabled {
   cursor: pointer;
 }
-.App button:active,
-.App .button:active {
+button:active,
+.button:active {
   background-color: white;
   color: var(--dark-background-color);
   text-shadow: none;
 }
-.App button:focus {
+button:focus {
   outline: none;
 }
