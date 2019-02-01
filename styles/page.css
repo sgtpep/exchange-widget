@@ -1,1 +1,12 @@
 @import '../node_modules/normalize.css/normalize.css';
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
