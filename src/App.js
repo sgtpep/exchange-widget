@@ -38,6 +38,11 @@ export default class extends Component {
     this.fetchRatesAbort.abort();
   }
 
+  destroy() {
+    this.base.classList.add('hidden');
+    setTimeout(this.props.destroy, 300);
+  }
+
   exchange() {
     this.state.ratesHidden ||
       !this.state.amount ||
@@ -50,7 +55,7 @@ export default class extends Component {
         ),
         this.state.sourcePocket.currency,
         this.state.destinationPocket.currency,
-      ).then(() => this.props.destroy());
+      ).then(() => this.destroy());
   }
 
   fetchRates() {
@@ -67,13 +72,13 @@ export default class extends Component {
     event.key === 'Enter'
       ? this.exchange()
       : event.key === 'Escape'
-      ? this.props.destroy()
+      ? this.destroy()
       : null;
   }
 
   render(props, state) {
     return html`
-      <div class="App">
+      <div class="App animated">
         <${LoadingIndicator}
           visible=${state.ratesLoading && !state.rates.length}
         />
@@ -81,7 +86,10 @@ export default class extends Component {
           ${'Failed to update rates '}
           <button onClick=${() => this.fetchRates()}>Retry</button>
         <//>
-        <${Header} destroy=${props.destroy} exchange=${() => this.exchange()} />
+        <${Header}
+          destroy=${() => this.destroy()}
+          exchange=${() => this.exchange()}
+        />
         <${ExchangeSliders} />
       </div>
     `;
