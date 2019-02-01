@@ -80,12 +80,10 @@ export default class extends Component {
   }
 
   onDragStart(event) {
-    if (!['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
-      this.clientX = (event.touches ? event.touches[0] : event).clientX;
-      this.dragging = true;
-      this.offsetLeft = this.slides.current.offsetLeft;
-      this.stopAnimation();
-    }
+    this.clientX = (event.touches ? event.touches[0] : event).clientX;
+    this.dragging = true;
+    this.offsetLeft = this.slides.current.offsetLeft;
+    this.stopAnimation();
   }
 
   onDragStop(event) {
