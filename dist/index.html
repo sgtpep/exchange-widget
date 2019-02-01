@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <meta charset="utf-8" />
+  <meta
+    content="initial-scale=1, viewport-fit=cover, width=device-width"
+    name="viewport"
+  />
+  <title>Exchange Widget</title>
+  <link href="../images/favicon.png" rel="icon" />
+  <link href="../styles/page.css" rel="stylesheet" />
+  <link href="exchange-widget.min.css" rel="stylesheet" />
+  <body>
+    <script src="exchange-widget.umd.min.js"></script>
+    <script>
+      exchangeWidget(
+        document.body,
+        {
+          pockets: [
+            { currency: 'GBP', sum: 100 },
+            { currency: 'EUR', sum: 200 },
+            { currency: 'USD', sum: 300 },
+          ],
+          ratesURL: 'mocks/rates.json',
+        },
+        () =>
+          (document.body.innerHTML =
+            '<p style="text-align: center">Widget destroyed. <a href>Reload</a></p>'),
+      );
+    </script>
+  </body>
+</html>
