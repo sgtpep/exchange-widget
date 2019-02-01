@@ -14,18 +14,14 @@
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
-  color: white;
   display: inline-block;
   padding: 0.5em 0.75em;
-  text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
 }
 
 .ErrorIndicator button {
   background: none;
   border-radius: 0.375em;
-  border: 1px solid;
-  color: inherit;
+  border: 1px solid white;
   cursor: pointer;
   padding: 0.25em 0.375em;
-  text-shadow: inherit;
 }
