@@ -13,7 +13,7 @@
   background: #eb3b5a;
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--box-shadow);
   display: inline-block;
   padding: 0.5em 0.75em;
 }
