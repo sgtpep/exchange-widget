@@ -171,13 +171,11 @@ export default class extends Component {
   }
 
   startAnimation(index) {
-    if (index !== this.index) {
-      this.activatePage(index);
-      this.animationTimeout && clearTimeout(this.animationTimeout);
-      this.animationTimeout = setTimeout(() => this.onAnimation(index), 300);
-      this.slides.current.classList.add('animating');
-      this.translateSlides(this.slidesTranslateX(index));
-    }
+    this.activatePage(index);
+    this.animationTimeout && clearTimeout(this.animationTimeout);
+    this.animationTimeout = setTimeout(() => this.onAnimation(index), 300);
+    this.slides.current.classList.add('animating');
+    this.translateSlides(this.slidesTranslateX(index));
   }
 
   stopAnimation() {
