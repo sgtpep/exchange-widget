@@ -1,24 +1,15 @@
 rollup
-  exchange-widget.css
-  exchange-widget.min.css
-  exchange-widget.min.css.map
+  babel-plugin-htm
+  minimize x2
 postcss
-  exchange-widget.js
-  exchange-widget.umd.min.js
-  exchange-widget.umd.min.js.map
-  exchange-widget.es.min.js
-  exchange-widget.es.min.js.map
+  autoprefixer
+  https://github.com/RadValentin/postcss-prefix-selector
+  minimize
 
-uptocoaching
-https://github.com/RadValentin/postcss-prefix-selector
 prettier
 travis
   badge
 eslint
-babel
-  babel-plugin-htm
-autoprefixer
-minify js, css
 rates-url https://openexchangerates.org/api/latest.json?app_id=e0c2f3b5ba0a4cf7a0d561a763b6b351
 lighthouse
 deploy
