@@ -18,10 +18,11 @@ From a project directory run `npm install` and then `npm start` to start such an
 
 ## Tested Browsers
 
-- Chromium 71.0.3578.80
+- Chromium 71
 - Firefox 60.5.0esr
-- Opera 58.0.3135.53
-- Google Chrome for Android 71.0.3578.99
+- Opera 58
+- Google Chrome for Android 71
 - Safari 10.1.2
+- Edge 42
 
 Unfortunately, I didn't have an opportunity to test in Safari on iOS and the latest Safari on macOS.
