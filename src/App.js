@@ -81,7 +81,7 @@ export default class extends Component {
           ${'Failed to update rates '}
           <button onClick=${() => this.fetchRates()}>Retry</button>
         <//>
-        <${Header} destroy=${props.destroy} exchange=${props.exchange} />
+        <${Header} destroy=${props.destroy} exchange=${() => this.exchange()} />
         <${ExchangeSliders} />
       </div>
     `;
