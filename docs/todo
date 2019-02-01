@@ -1,12 +1,19 @@
 error indicator
-RatesDropdown: variable height
+  hide on successful retry
+  show animated
+  hide on timeout
+    animated
+  clearInterval on show
+
 gradient background
 separator
-max width/height
-  center vertically and horizontally
 slider
   dots
     active
 text shadow
 demo.mpv
 https://flatuicolors.com/palette/defo
+layout
+  max width/height
+    center vertically and horizontally
+  RatesDropdown: variable height
