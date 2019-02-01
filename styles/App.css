@@ -1,5 +1,5 @@
 .App {
-  background-color: #3498db;
+  background-color: var(--background-color);
   color: white;
   display: flex;
   flex-direction: column;

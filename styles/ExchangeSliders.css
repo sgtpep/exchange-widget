@@ -5,3 +5,21 @@
 .ExchangeSliders > :last-child {
   background-color: #2980b9;
 }
+
+.ExchangeSliders > :last-child:before {
+  --size: 20px;
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: calc(var(--size) * 0.8) solid var(--background-color);
+  content: '';
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+}
+@media (min-width: 480px) {
+  .ExchangeSliders > :last-child:before {
+    --size: 30px;
+  }
+}
