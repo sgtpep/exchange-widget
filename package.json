@@ -17,7 +17,8 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-inject": "^2.2.0",
-    "rollup-plugin-node-resolve": "^4.0.0"
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-uglify": "^6.0.2"
   },
   "scripts": {
     "build": "postcss -m -o ./dist/exchange-widget.min.css ./styles/index.css && rollup -c",

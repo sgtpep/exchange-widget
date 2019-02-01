@@ -36,5 +36,6 @@ export default {
       include: './src/**/*.js',
     }),
     nodeResolve(),
+    uglify(),
   ],
 };
