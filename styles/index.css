@@ -1,5 +1,7 @@
 @import '../node_modules/normalize.css/normalize.css';
 @import 'border-box.css';
+@import 'break-words.css';
+@import 'font.css';
 @import 'prevent-selection.css';
 @import 'variables.css';
 
