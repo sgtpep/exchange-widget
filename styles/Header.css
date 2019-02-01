@@ -1,6 +1,16 @@
 .Header {
   display: flex;
-  font-size: 1.25em;
+  font-size: 0.8em;
+}
+@media (min-width: 480px) {
+  .Header {
+    font-size: 1em;
+  }
+}
+@media (min-width: 640px) {
+  .Header {
+    font-size: 1.2em;
+  }
 }
 
 .Header > * {
