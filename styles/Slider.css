@@ -28,14 +28,14 @@
 }
 
 .Slider > nav {
-  bottom: 1em;
+  bottom: 0.5em;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .Slider > nav > * {
-  --size: 0.75em;
+  --size: 0.625em;
   background: white;
   border-radius: 50%;
   color: transparent;
@@ -45,6 +45,9 @@
   text-shadow: none;
   transition: opacity var(--duration);
   width: var(--size);
+}
+.Slider > nav > :not(:last-child) {
+  margin-right: 0.25em;
 }
 .Slider > nav > :not(.active) {
   opacity: 0.4;
