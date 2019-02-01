@@ -3,7 +3,7 @@
 }
 
 .ExchangeSliders > :last-child {
-  background-color: #2980b9;
+  background-color: var(--dark-background-color);
 }
 
 .ExchangeSliders > :last-child::before {
