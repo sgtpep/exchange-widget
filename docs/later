@@ -18,8 +18,10 @@ readme
   supported browsers
 tests
   test coverage
+
 typescript
 storybook
 offline
   pwa
 review code
+lighthouse
