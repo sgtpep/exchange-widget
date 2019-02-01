@@ -4,6 +4,9 @@
   justify-content: space-between;
 }
 
+.Header button {
+  margin: 0.75em;
+}
 .Header button:not([disabled]) {
   cursor: pointer;
 }
