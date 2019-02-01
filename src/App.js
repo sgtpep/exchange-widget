@@ -55,7 +55,7 @@ export default class extends Component {
               <button onClick=${() => this.fetchRates()}>Retry</button>
             </p>
           `}
-        <${Header} destroy=${destroy} />
+        <${Header} destroy=${props.destroy} />
         <${ExchangeSliders} />
       </div>
     `;
