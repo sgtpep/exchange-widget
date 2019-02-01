@@ -24,4 +24,13 @@
   border: 1px solid white;
   cursor: pointer;
   padding: 0.25em 0.375em;
+  transition: background-color 0.1s;
+}
+.ErrorIndicator button:active {
+  background-color: white;
+  color: #c0392b;
+  text-shadow: none;
+}
+.ErrorIndicator button:focus {
+  outline: none;
 }
