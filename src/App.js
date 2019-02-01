@@ -1,5 +1,6 @@
 import ExchangeSliders from './ExchangeSliders.js';
 import Header from './Header.js';
+import LoadingIndicator from './LoadingIndicator.js';
 import html from './html.js';
 import { Component } from '../node_modules/preact/dist/preact.mjs';
 import {
@@ -43,11 +44,9 @@ export default class extends Component {
   render(props, state) {
     return html`
       <div class="App">
-        ${state.ratesLoading &&
-          !state.rates.length &&
-          html`
-            <p>Loading</p>
-          `}
+        <${LoadingIndicator}
+          visible=${state.ratesLoading && !state.rates.length}
+        />
         ${state.ratesError &&
           html`
             <p>

@@ -6,6 +6,7 @@
 @import 'variables.css';
 
 @import 'Header.css';
+@import 'LoadingIndicator.css';
 @import 'RateDropdown.css';
 @import 'Slider.css';
 @import 'animated.css';
