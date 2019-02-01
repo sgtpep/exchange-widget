@@ -1,3 +1,4 @@
+import ErrorIndicator from './ErrorIndicator.js';
 import ExchangeSliders from './ExchangeSliders.js';
 import Header from './Header.js';
 import LoadingIndicator from './LoadingIndicator.js';
@@ -47,13 +48,10 @@ export default class extends Component {
         <${LoadingIndicator}
           visible=${state.ratesLoading && !state.rates.length}
         />
-        ${state.ratesError &&
-          html`
-            <p>
-              Failed to update rates
-              <button onClick=${() => this.fetchRates()}>Retry</button>
-            </p>
-          `}
+        <${ErrorIndicator} visible=${state.ratesError}>
+          ${'Failed to update rates '}
+          <button onClick=${() => this.fetchRates()}>Retry</button>
+        <//>
         <${Header} destroy=${props.destroy} />
         <${ExchangeSliders} />
       </div>

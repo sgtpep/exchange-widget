@@ -6,6 +6,7 @@
 @import 'prevent-selection.css';
 @import 'variables.css';
 
+@import 'ErrorIndicator.css';
 @import 'Header.css';
 @import 'LoadingIndicator.css';
 @import 'RateDropdown.css';

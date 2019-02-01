@@ -1,0 +1,30 @@
+.ErrorIndicator {
+  height: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 1000;
+}
+
+.ErrorIndicator > :first-child {
+  background: #e74c3c;
+  border-bottom-left-radius: 0.375em;
+  border-bottom-right-radius: 0.375em;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+  color: white;
+  display: inline-block;
+  padding: 0.5em 0.75em;
+  text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
+}
+
+.ErrorIndicator button {
+  background: none;
+  border-radius: 0.375em;
+  border: 1px solid;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.25em 0.375em;
+  text-shadow: inherit;
+}
