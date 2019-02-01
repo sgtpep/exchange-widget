@@ -1,4 +1,9 @@
+import babel from 'rollup-plugin-babel';
+import commonJS from 'rollup-plugin-commonjs';
+import nodeResolve from 'rollup-plugin-node-resolve';
+
 export default {
+  input: './src/index.js',
   output: [
     {
       file: './dist/exchange-widget.es.min.js',
@@ -18,5 +23,12 @@ export default {
       sourcemap: true,
     },
   ],
-  input: './src/index.js',
+  plugins: [
+    babel({
+      ignore: ['./node_modules'],
+      presets: [['@babel/env', { useBuiltIns: 'usage' }]],
+    }),
+    commonJS(),
+    nodeResolve(),
+  ],
 };
