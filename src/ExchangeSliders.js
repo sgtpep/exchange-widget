@@ -49,7 +49,7 @@ export default class extends Component {
     }
   }
 
-  onFocus(type) {
+  onFocus(type, event) {
     event.target.tagName === 'INPUT' &&
       ([this.focusedInput, this.focusedInputType] = [event.target, type]);
   }
