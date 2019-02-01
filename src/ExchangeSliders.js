@@ -44,9 +44,12 @@ export default class extends Component {
         ? parent.querySelector('input')
         : this.focusedInput;
     if (input) {
-      const { scrollLeft } = parent.parentElement.parentElement;
+      const { scrollLeft, scrollTop } = parent.parentElement.parentElement;
       input.focus({ preventScroll: true });
-      parent.parentElement.parentElement.scrollLeft = scrollLeft;
+      [
+        parent.parentElement.parentElement.scrollLeft,
+        parent.parentElement.parentElement.scrollTop,
+      ] = [scrollLeft, scrollTop];
     }
   }
 
