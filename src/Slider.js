@@ -67,9 +67,8 @@ export default class extends Component {
 
   onDragMove(event) {
     if (
-      this.dragging &&
-      (event.type === 'touchmove' ||
-        (event.type === 'mousemove' && event.buttons === 1))
+      event.type === 'touchmove' ||
+      (event.type === 'mousemove' && this.dragging)
     ) {
       event.preventDefault();
       const { clientX } = event.touches ? event.touches[0] : event;
@@ -88,8 +87,8 @@ export default class extends Component {
 
   onDragStop(event) {
     if (
-      this.dragging &&
-      (event.type === 'touchend' || (event.type === 'mouseup' && this.dragging))
+      event.type === 'touchend' ||
+      (event.type === 'mouseup' && this.dragging)
     ) {
       this.dragging = false;
       const { offsetLeft } = this.slides.current;
