@@ -1,6 +1,8 @@
 .Header {
+  align-items: center;
   display: flex;
   font-size: 0.875em;
+  justify-content: space-between;
 }
 @media (min-width: 480px) {
   .Header {
@@ -13,11 +15,13 @@
   }
 }
 
-.Header > * {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: center;
+@media (min-width: 480px) {
+  .Header > * {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
 }
 
 .Header > :first-child > :first-child {
