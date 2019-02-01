@@ -9,5 +9,6 @@ The currency exchange widget inspired by a popular mobile app. Demo: https://sgt
 - Chromium 71.0.3578.80
 - Firefox 60.5.0esr
 - Opera 58.0.3135.53
+- Google Chrome for Android 71.0.3578.99
 
 Unfortunately, I didn't have an opportunity to test in Safari on iOS.

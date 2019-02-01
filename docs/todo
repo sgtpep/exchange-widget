@@ -1,7 +1,4 @@
-crossbrowser test
-  chrome mobile
-    readme
-  safari
-    readme
-  edge
-    readme
+safari
+  readme
+edge
+  readme
