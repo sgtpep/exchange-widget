@@ -14,8 +14,3 @@
 .App > :last-child {
   flex: 1;
 }
-
-.App button {
-  color: inherit;
-  text-shadow: inherit;
-}
