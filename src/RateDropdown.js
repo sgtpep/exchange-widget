@@ -13,7 +13,7 @@ export default animatedHideable(
       { minimumFractionDigits: 4 },
     ),
   }),
-  (props, state) =>
+  props =>
     html`
       <span class=${`RateDropdown animated ${props.hidden ? 'hidden' : ''}`}>
         <span class="button">${props.text}</span>

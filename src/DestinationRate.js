@@ -11,7 +11,7 @@ export default animatedHideable(
       state.sourcePocket.currency,
     ),
   }),
-  (props, state) =>
+  props =>
     html`
       <span class=${`DestinationRate animated ${props.hidden ? 'hidden' : ''}`}>
         ${props.text}

@@ -2,6 +2,7 @@ import fetchJSON from './fetch-json.js';
 import update from './update.js';
 
 export const exchange = (amount, rate, fromCurrency, toCurrency) => {
+  // eslint-disable-next-line no-console
   console.log('exchange:', amount, rate, fromCurrency, toCurrency);
   update(state => ({ ...state, exchangeLoading: true }));
   return new Promise(resolve => setTimeout(resolve, 1000)).then(() =>

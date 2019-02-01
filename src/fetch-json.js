@@ -13,6 +13,7 @@ export default (
         error.name !== 'AbortError' &&
         !(signal && signal.aborted)
       ) {
+        // eslint-disable-next-line no-console
         error instanceof Error && console.error(error);
         onError && onError(error);
       }

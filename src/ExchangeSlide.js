@@ -4,7 +4,7 @@ import SourceInput from './SourceInput.js';
 import formatCurrency from './format-currency.js';
 import html from './html.js';
 
-export default (props, state) =>
+export default props =>
   html`
     <div class="ExchangeSlide">
       <div>
