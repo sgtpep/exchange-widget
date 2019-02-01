@@ -1,12 +1,14 @@
-gradient background
+text-shadow px
+
+dots
+  active
 separator
-slider
-  dots
-    active
-text shadow
+gradient background
+cancel/exchange
 demo.mpv
-https://flatuicolors.com/palette/defo
 layout
   max width/height
     center vertically and horizontally
   RatesDropdown: variable height
+text shadow
+https://flatuicolors.com/palette/defo
