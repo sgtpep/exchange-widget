@@ -7,8 +7,6 @@ crossbrowser test
   safari mobile
   edge
   opera
-tests
-  test coverage
 readme
   unconventional
     no transpilation: template literals, no webpack/preact-cli
@@ -18,8 +16,8 @@ readme
   usage
   npm scripts
   supported browsers
-https://gethead.info/
-https://frontendchecklist.io/
+tests
+  test coverage
 typescript
 storybook
 offline
