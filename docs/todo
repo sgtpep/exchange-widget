@@ -1,5 +1,4 @@
 postcss
-  autoprefixer
   https://github.com/RadValentin/postcss-prefix-selector
   minimize
 
