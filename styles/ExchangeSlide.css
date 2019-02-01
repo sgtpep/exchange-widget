@@ -19,6 +19,10 @@
   justify-content: space-between;
 }
 
+.ExchangeSlide > :last-child {
+  margin-bottom: 2em;
+}
+
 .ExchangeSlide-currency {
   font-size: var(--input-font-size);
   margin-right: 0.5em;
