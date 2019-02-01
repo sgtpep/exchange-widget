@@ -26,6 +26,7 @@ export default animatedHideable(
           max=${props.rate * state.sourcePocket.sum}
           prefix=${state.amount === null || '+'}
           setAmount=${value => (1 / props.rate) * value}
+          tabindex="-1"
           value=${props.value}
         />
       </span>

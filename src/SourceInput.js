@@ -8,6 +8,7 @@ export default (props, state) =>
       <${CurrencyInput}
         max=${props.pocket.sum}
         prefix=${state.amount === null || '-'}
+        tabindex="-1"
         value=${state.amount && round(state.amount)}
       />
     </span>

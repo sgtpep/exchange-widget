@@ -1,5 +1,3 @@
-disable tab
-
 build
   https://github.com/RadValentin/postcss-prefix-selector
   prettier

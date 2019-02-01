@@ -45,6 +45,7 @@ export default class extends Component {
           onInput=${event => this.onInput(event)}
           ref=${this.input}
           step="any"
+          tabindex=${this.props.tabindex}
           type="number"
           value=${this.input.current &&
           this.input.current.valueAsNumber === props.value
