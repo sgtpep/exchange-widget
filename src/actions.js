@@ -28,7 +28,11 @@ export const fetchRates = (url, signal = undefined) => {
       })),
     )
     .catch(error => {
-      if (!signal || !signal.aborted) {
+      if (
+        error.message !== 'NetworkError when attempting to fetch resource.' &&
+        error.name !== 'AbortError' &&
+        !(signal && signal.aborted)
+      ) {
         error && console.error(error);
         update(state => ({ ...state, ratesError: true, ratesLoading: false }));
       }
