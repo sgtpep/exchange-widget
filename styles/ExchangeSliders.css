@@ -6,7 +6,7 @@
   background-color: #2980b9;
 }
 
-.ExchangeSliders > :last-child:before {
+.ExchangeSliders > :last-child::before {
   --size: 20px;
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;

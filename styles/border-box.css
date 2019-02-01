@@ -3,7 +3,7 @@
 }
 
 .App *,
-.App *:after,
-.App *:before {
+.App *::after,
+.App *::before {
   box-sizing: inherit;
 }
