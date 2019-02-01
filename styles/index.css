@@ -1,13 +1,12 @@
-@import 'animated.css';
-@import 'border-box.css';
-@import 'break-words.css';
-@import 'button.css';
-@import 'font.css';
-@import 'variables.css';
-
 @import 'App.css';
 @import 'ErrorIndicator.css';
 @import 'Header.css';
 @import 'LoadingIndicator.css';
 @import 'RateDropdown.css';
 @import 'Slider.css';
+@import 'animated.css';
+@import 'border-box.css';
+@import 'break-words.css';
+@import 'button.css';
+@import 'font.css';
+@import 'variables.css';

@@ -1,5 +1,5 @@
 .App .animated {
-  transition: opacity var(--duration);
+  transition: all var(--duration);
 }
 .App .animated.hidden {
   opacity: 0;
