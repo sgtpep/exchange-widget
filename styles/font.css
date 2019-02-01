@@ -1,5 +1,10 @@
 .App {
-  font: 20px / 1.5 BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen,
+  font: 16px / 1.5 BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica,
     Arial, sans-serif;
+}
+@media (min-width: 480px) {
+  .App {
+    font-size: 20px;
+  }
 }
