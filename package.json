@@ -2,6 +2,7 @@
   "dependencies": {
     "htm": "^2.0.0",
     "kefir": "^3.8.6",
+    "normalize.css": "^8.0.1",
     "preact": "^8.4.2"
   },
   "devDependencies": {
