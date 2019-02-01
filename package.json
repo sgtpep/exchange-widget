@@ -15,6 +15,7 @@
     "postcss-cli": "^6.1.1",
     "postcss-csso": "^3.0.0",
     "postcss-import": "^12.0.1",
+    "prettier": "*",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
@@ -24,6 +25,7 @@
   },
   "scripts": {
     "build": "postcss -m -o ./dist/exchange-widget.min.css ./styles/index.css && rollup -c",
-    "start": "http-server -c-1 -p 8000"
+    "start": "http-server -c-1 -p 8000",
+    "test": "prettier -l './**/*.{css,html,js,json}'"
   }
 }
