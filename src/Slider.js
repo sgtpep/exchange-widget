@@ -57,8 +57,11 @@ export default class extends Component {
   }
 
   normalizeIndex(index) {
-    const count = this.slides.current.children.length - 2;
-    return index < 0 ? count - 1 : index > count - 1 ? 0 : index;
+    return index < 0
+      ? this.props.children.length - 1
+      : index > this.props.children.length - 1
+      ? 0
+      : index;
   }
 
   onAnimation(index) {
