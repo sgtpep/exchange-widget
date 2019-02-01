@@ -1,7 +1,4 @@
-center dropdown
-slide layout
 separator
-cancel/exchange
 rates
   background
   border
@@ -9,5 +6,7 @@ rates
   arrow
 input
   outline
+slide layout
 demo.mpv
 https://flatuicolors.com/palette/defo
+mobile
