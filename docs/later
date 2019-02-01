@@ -1,12 +1,3 @@
-crossbrowser test
-  chromium
-  chromium mobile emulator
-  firefox
-  chrome mobile
-  safari
-  safari mobile
-  edge
-  opera
 readme
   https://sgtpep.github.io/exchange-widget/dist/
   unconventional
