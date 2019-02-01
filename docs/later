@@ -18,8 +18,9 @@ readme
   npm scripts
   supported browsers
 tests
-  test coverage
+  packages.json:test
 
+test coverage
 typescript
 storybook
 offline
