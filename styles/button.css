@@ -2,6 +2,7 @@
   background: none;
   border-radius: 0.375em;
   border: 1px solid white;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   padding: 0.25em 0.375em;
   transition: background-color calc(var(--duration) / 2),
