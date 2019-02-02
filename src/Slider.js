@@ -63,7 +63,7 @@ export default class extends Component {
       : index;
   }
 
-  onAnimation(index) {
+  onAnimationTimeout(index) {
     this.slides.current.classList.remove('animating');
     this.selectSlide(this.normalizeIndex(index));
   }
@@ -169,7 +169,10 @@ export default class extends Component {
   startAnimation(index) {
     this.activatePage(index);
     this.animationTimeout && clearTimeout(this.animationTimeout);
-    this.animationTimeout = setTimeout(() => this.onAnimation(index), 300);
+    this.animationTimeout = setTimeout(
+      () => this.onAnimationTimeout(index),
+      300,
+    );
     this.slides.current.classList.add('animating');
     this.translateSlides(this.slidesTranslateX(index));
   }
