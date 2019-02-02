@@ -35,7 +35,8 @@ export default class extends Component {
         )
       : (event.target.value = this.props.value);
     if (
-      (this.prevKey === 'Backspace' || this.prevWhich === 8) &&
+      this.prevKey === 'Backspace' &&
+      (this.prevInputValue || '').startsWith(event.target.value) &&
       event.target.value
     ) {
       const { value } = event.target;
@@ -43,14 +44,15 @@ export default class extends Component {
       event.target.value = value;
     }
     this.updateHiddenText();
+    this.prevInputValue = event.target.value;
   }
 
   onKeyDown(event) {
-    [this.prevKey, this.prevWhich] = [event.key, event.which];
+    this.prevKey = event.which === 8 ? 'Backspace' : event.key;
   }
 
   onTextInput(event) {
-    this.prevTextInput = event.data;
+    this.prevKey = event.data;
   }
 
   render(props) {
@@ -76,8 +78,7 @@ export default class extends Component {
 
   updateHiddenText() {
     this.hiddenText.current.textContent = `${this.input.current.value}${
-      ([',', '.'].includes(this.prevKey) ||
-        [',', '.'].includes(this.prevTextInput)) &&
+      [',', '.'].includes(this.prevKey) &&
       !this.hiddenText.current.textContent.includes(',') &&
       !this.hiddenText.current.textContent.includes('.')
         ? '.'
