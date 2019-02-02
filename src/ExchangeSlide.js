@@ -9,9 +9,13 @@ export default props =>
     <div class="ExchangeSlide">
       <div>
         <div class="ExchangeSlide-currency">${props.pocket.currency}</div>
-        <${props.type === 'source' ? SourceInput : DestinationInput}
-          pocket=${props.pocket}
-        />
+        ${props.type === 'source'
+          ? html`
+              <${SourceInput} pocket=${props.pocket} />
+            `
+          : html`
+              <${DestinationInput} pocket=${props.pocket} />
+            `}
       </div>
       <div>
         <div>
