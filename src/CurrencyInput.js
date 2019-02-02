@@ -22,15 +22,16 @@ export default class extends Component {
 
   onInput(event) {
     const [integer, fractional = ''] = event.target.value.split(/[.,]/);
+    const number = parseFloat(event.target.value);
     event.target.validity.valid &&
     !/^0./.test(integer) &&
     fractional.length <= 2
-      ? event.target.valueAsNumber === this.context.amount ||
+      ? number === this.context.amount ||
         setAmount(
-          isNaN(event.target.valueAsNumber)
+          isNaN(number)
             ? null
             : (this.props.setAmount || (value => value))(
-                Math.min(event.target.valueAsNumber, this.props.max),
+                Math.min(number, this.props.max),
               ),
         )
       : (event.target.value = this.props.value);
@@ -68,7 +69,7 @@ export default class extends Component {
           tabindex=${props.tabindex}
           type="number"
           value=${this.input.current &&
-          this.input.current.valueAsNumber === props.value
+          parseFloat(this.input.current.value) === props.value
             ? this.input.current.value
             : props.value}
         />
