@@ -3,6 +3,13 @@ import { Component, createRef } from '../node_modules/preact/dist/preact.mjs';
 import { setAmount } from './actions.js';
 
 export default class extends Component {
+  componentDidMount() {
+    this.input.current.addEventListener(
+      'textInput',
+      this.onTextInput.bind(this),
+    );
+  }
+
   componentDidUpdate() {
     this.updateHiddenText();
   }
@@ -42,6 +49,10 @@ export default class extends Component {
     [this.prevKey, this.prevWhich] = [event.key, event.which];
   }
 
+  onTextInput(event) {
+    this.prevTextInput = event.data;
+  }
+
   render(props) {
     return html`
       <span class="CurrencyInput">
@@ -65,7 +76,9 @@ export default class extends Component {
 
   updateHiddenText() {
     this.hiddenText.current.textContent = `${this.input.current.value}${
-      (this.prevKey === '.' || this.prevWhich === 229) &&
+      ([',', '.'].includes(this.prevKey) ||
+        [',', '.'].includes(this.prevTextInput)) &&
+      !this.hiddenText.current.textContent.includes(',') &&
       !this.hiddenText.current.textContent.includes('.')
         ? '.'
         : ''
