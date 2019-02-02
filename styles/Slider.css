@@ -6,7 +6,6 @@
   cursor: grab;
   height: 100%;
   overflow: hidden;
-  position: relative;
 }
 
 .Slider > :first-child > :first-child {
