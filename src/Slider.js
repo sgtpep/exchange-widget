@@ -118,28 +118,26 @@ export default class extends Component {
   render(props) {
     return html`
       <div class="Slider">
-        <div>
-          <div
-            ref=${this.slides}
-            style=${{ width: `${(props.children.length + 2) * 100}%` }}
-          >
-            ${[
-              ...(props.children.length
-                ? [props.children[props.children.length - 1]]
-                : []),
-              ...props.children,
-              ...(props.children.length ? [props.children[0]] : []),
-            ].map(
-              child =>
-                html`
-                  <div
-                    style=${{ width: `${100 / (props.children.length + 2)}%` }}
-                  >
-                    ${child}
-                  </div>
-                `,
-            )}
-          </div>
+        <div
+          ref=${this.slides}
+          style=${{ width: `${(props.children.length + 2) * 100}%` }}
+        >
+          ${[
+            ...(props.children.length
+              ? [props.children[props.children.length - 1]]
+              : []),
+            ...props.children,
+            ...(props.children.length ? [props.children[0]] : []),
+          ].map(
+            child =>
+              html`
+                <div
+                  style=${{ width: `${100 / (props.children.length + 2)}%` }}
+                >
+                  ${child}
+                </div>
+              `,
+          )}
         </div>
         <nav ref=${this.pagination}>
           ${props.children.map((child, index) => [

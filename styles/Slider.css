@@ -1,28 +1,24 @@
 .Slider {
+  overflow: hidden;
   position: relative;
 }
 
 .Slider > :first-child {
   cursor: grab;
   height: 100%;
-  overflow: hidden;
-}
-
-.Slider > :first-child > :first-child {
-  height: 100%;
   position: relative;
 }
-.Slider > :first-child > :first-child.animating {
+.Slider > :first-child.animating {
   transition: transform var(--duration) ease-out;
 }
 
-.Slider > :first-child > :first-child::after {
+.Slider > :first-child::after {
   clear: both;
   content: '';
   display: block;
 }
 
-.Slider > :first-child > :first-child > * {
+.Slider > :first-child > * {
   float: left;
   height: 100%;
 }
