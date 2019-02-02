@@ -6,26 +6,16 @@ import { setDestinationPocket, setSourcePocket } from './actions.js';
 
 export default class extends Component {
   componentDidMount() {
-    this.onDestinationFocus = this.onFocus.bind(this, 'destination');
     this.destination.current.base.addEventListener(
       'focus',
-      this.onDestinationFocus,
+      this.onFocus.bind(this, 'destination'),
       true,
     );
-    this.onSourceFocus = this.onFocus.bind(this, 'source');
     this.source.current.base.addEventListener(
       'focus',
-      this.onSourceFocus,
+      this.onFocus.bind(this, 'source'),
       true,
     );
-  }
-
-  componentWillUnmount() {
-    this.destination.current.base.removeEventListener(
-      'focus',
-      this.onDestinationFocus,
-    );
-    this.source.current.base.removeEventListener('focus', this.onSourceFocus);
   }
 
   constructor() {

@@ -16,19 +16,18 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    this.globalListeners = [
+    this.listeners = [
       ['mousemove', this.onDragMove],
       ['mouseup', this.onDragStop],
     ].map(([type, listener]) => [type, listener.bind(this)]);
-    this.globalListeners.forEach(args => addEventListener(...args));
-    this.slidesListeners = [
+    this.listeners.forEach(args => addEventListener(...args));
+    [
       ['mousedown', this.onDragStart],
       ['touchend', this.onDragStop],
       ['touchmove', this.onDragMove, { passive: true }],
       ['touchstart', this.onDragStart, { passive: true }],
-    ].map(([type, listener]) => [type, listener.bind(this)]);
-    this.slidesListeners.forEach(args =>
-      this.slides.current.addEventListener(...args),
+    ].forEach(([type, listener, ...args]) =>
+      this.slides.current.addEventListener(type, listener.bind(this), ...args),
     );
     this.selectSlide(this.props.index);
     this.props.onMount &&
@@ -47,10 +46,7 @@ export default class extends Component {
   }
 
   componentWillUnmount() {
-    this.globalListeners.forEach(args => removeEventListener(...args));
-    this.slidesListeners.forEach(args =>
-      this.slides.current.removeEventListener(...args),
-    );
+    this.listeners.forEach(args => removeEventListener(...args));
   }
 
   constructor() {
