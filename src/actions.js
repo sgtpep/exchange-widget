@@ -10,11 +10,16 @@ export const exchange = (amount, rate, fromCurrency, toCurrency) => {
   );
 };
 
-export const fetchRates = (url, signal = undefined) => {
+export const fetchRates = (urls, signal = undefined) => {
   update(state => ({ ...state, ratesLoading: true }));
-  fetchJSON(
-    url,
-    signal,
+  (Array.isArray(urls) ? urls : [urls]).reduce(
+    (promise, url) => promise.then(() => fetchRatesJSON(url, signal)),
+    Promise.resolve(),
+  );
+};
+
+const fetchRatesJSON = (url, signal = undefined) =>
+  fetchJSON(url, signal).then(
     data =>
       update(state => ({
         ...state,
@@ -30,9 +35,12 @@ export const fetchRates = (url, signal = undefined) => {
         ratesLoading: false,
       })),
     () =>
-      update(state => ({ ...state, ratesError: true, ratesLoading: false })),
+      update(state => ({
+        ...state,
+        ratesError: true,
+        ratesLoading: false,
+      })),
   );
-};
 
 const ratesHidden = (sourcePocket, destinationPocket, ratesEmpty) =>
   sourcePocket === destinationPocket || ratesEmpty;
