@@ -9,6 +9,7 @@ export default (url, signal = undefined) =>
       error.message !== 'NetworkError when attempting to fetch resource.' &&
         !['AbortError', 'Error'].includes(error.name) &&
         !(signal && signal.aborted) &&
+        // eslint-disable-next-line no-console
         console.error(error);
       throw error;
     });
