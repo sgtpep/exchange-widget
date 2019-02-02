@@ -1,9 +1,7 @@
-focus breaks slider
-angle higher 
-vertical layout
 readme
-
-readme
+  input[number]
+    input[text], but no number software keyboard
+    limitations: '0.' => '0', no selectionStart, etc.
   unconventional decision
     no transpilation: template literals, no webpack/preact-cli
     functional style: lambdas
