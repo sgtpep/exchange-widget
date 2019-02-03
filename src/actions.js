@@ -26,19 +26,23 @@ export const fetchRates = (urls, signal = undefined) => {
 const fetchRatesJSON = (url, signal = undefined) =>
   fetchJSON(url, signal).then(
     data => {
-      update(state => ({
-        ...state,
-        rates: Object.entries(data.rates)
-          .map(([currency, rate]) => ({ currency, rate }))
-          .filter(rate => ['EUR', 'GBP'].includes(rate.currency)),
-        ratesError: false,
-        ratesHidden: ratesHidden(
+      update(state => {
+        const ratesHidden = getRatesHidden(
           state.sourcePocket,
           state.destinationPocket,
-          !Object.keys(data.rates).length
-        ),
-        ratesLoading: false,
-      }));
+          Object.keys(data.rates).length
+        );
+        return {
+          ...state,
+          exchangeDisabled: getExchangeDisabled(ratesHidden, state.amount),
+          rates: Object.entries(data.rates)
+            .map(([currency, rate]) => ({ currency, rate }))
+            .filter(rate => ['EUR', 'GBP'].includes(rate.currency)),
+          ratesError: false,
+          ratesHidden,
+          ratesLoading: false,
+        };
+      });
       return data;
     },
     () => {
@@ -50,34 +54,61 @@ const fetchRatesJSON = (url, signal = undefined) =>
     }
   );
 
-const ratesHidden = (sourcePocket, destinationPocket, ratesEmpty) =>
+const getExchangeDisabled = (ratesHidden, amount) => ratesHidden || !amount;
+
+const getRatesHidden = (sourcePocket, destinationPocket, ratesLength) =>
   !sourcePocket ||
   !destinationPocket ||
   sourcePocket === destinationPocket ||
-  ratesEmpty;
+  !ratesLength;
 
-export const setAmount = amount => update(state => ({ ...state, amount }));
-
-export const setDestinationPocket = pocket =>
+export const setAmount = amount =>
   update(state => ({
     ...state,
-    destinationPocket: pocket,
-    ratesHidden: ratesHidden(state.sourcePocket, pocket, !state.rates.length),
+    amount,
+    exchangeDisabled: getExchangeDisabled(
+      getRatesHidden(
+        state.sourcePocket,
+        state.destinationPocket,
+        state.rates.length
+      ),
+      amount
+    ),
   }));
+
+export const setDestinationPocket = pocket =>
+  update(state => {
+    const ratesHidden = getRatesHidden(
+      state.sourcePocket,
+      pocket,
+      state.rates.length
+    );
+    return {
+      ...state,
+      destinationPocket: pocket,
+      exchangeDisabled: getExchangeDisabled(ratesHidden, state.amount),
+      ratesHidden,
+    };
+  });
 
 export const setPockets = pockets => update(state => ({ ...state, pockets }));
 
 export const setSourcePocket = pocket =>
-  update(state => ({
-    ...state,
-    amount: state.amount > pocket.sum ? pocket.sum : state.amount,
-    ratesHidden: ratesHidden(
+  update(state => {
+    const amount = state.amount > pocket.sum ? pocket.sum : state.amount;
+    const ratesHidden = getRatesHidden(
       pocket,
       state.destinationPocket,
-      !state.rates.length
-    ),
-    sourcePocket: pocket,
-  }));
+      state.rates.length
+    );
+    return {
+      ...state,
+      amount,
+      exchangeDisabled: getExchangeDisabled(ratesHidden, amount),
+      ratesHidden,
+      sourcePocket: pocket,
+    };
+  });
 
 const { onUpdate, update } = stream(state);
 export default onUpdate;

@@ -10,7 +10,7 @@ export default (props, state) => html`
     <div>
       <button
         class="animated"
-        disabled=${state.ratesHidden || !state.amount || state.exchangeLoading}
+        disabled=${state.exchangeDisabled || state.exchangeLoading}
         onClick=${() => props.exchange()}
       >
         Exchange

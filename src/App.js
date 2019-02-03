@@ -43,8 +43,7 @@ export default class extends Component {
   }
 
   exchange() {
-    this.state.ratesHidden ||
-      !this.state.amount ||
+    this.state.exchangeDisabled ||
       exchange(
         round(this.state.amount, 2),
         exchangeRate(
