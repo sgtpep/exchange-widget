@@ -2,7 +2,7 @@ import fetchJSON from './fetch-json.js';
 import state from './state.js';
 import stream from './stream.js';
 
-const update = stream(state);
+const { onUpdate, update } = stream(state);
 
 export const exchange = (amount, rate, fromCurrency, toCurrency) => {
   // eslint-disable-next-line no-console
@@ -75,3 +75,5 @@ export const setSourcePocket = pocket =>
     ),
     sourcePocket: pocket,
   }));
+
+export default onUpdate;

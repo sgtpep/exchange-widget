@@ -1,9 +1,8 @@
 require = require('esm')(module);
-const stream = require('./stream').default;
-const { onUpdate } = require('./stream');
+const stream = require('./stream');
 
-test('state updates', () => {
-  const update = stream({ foo: 1 });
+test('update state', () => {
+  const { onUpdate, update } = stream({ foo: 1 });
   const callback = jest.fn();
   onUpdate(callback);
   expect(callback).toHaveBeenLastCalledWith({ foo: 1 });

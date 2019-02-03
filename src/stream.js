@@ -1,14 +1,13 @@
 import Kefir from '../node_modules/kefir/dist/kefir.esm.js';
 
-let stream;
-
-export const onUpdate = callback => stream.observe(callback);
-
-export default initialValue => {
+export default value => {
   let emit;
-  stream = Kefir.stream(emitter => (emit = emitter.emit)).scan(
+  const stream = Kefir.stream(emitter => (emit = emitter.emit)).scan(
     (value, patch) => patch(value),
-    initialValue,
+    value,
   );
-  return value => emit(value);
+  return {
+    onUpdate: callback => stream.observe(callback),
+    update: value => emit(value),
+  };
 };

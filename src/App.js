@@ -6,14 +6,13 @@ import exchangeRate from './exchange-rate.js';
 import html from './html.js';
 import round from './round.js';
 import { Component } from '../node_modules/preact/dist/preact.mjs';
-import {
+import onState, {
   exchange,
   fetchRates,
   setDestinationPocket,
   setPockets,
   setSourcePocket,
 } from './actions.js';
-import { onUpdate } from './stream.js';
 
 export default class extends Component {
   componentDidMount() {
@@ -24,7 +23,7 @@ export default class extends Component {
   }
 
   componentWillMount() {
-    onUpdate(state => this.setState(state));
+    onState(state => this.setState(state));
     setPockets(this.props.pockets);
     setDestinationPocket(
       this.props.pockets[this.props.pockets.length === 1 ? 0 : 1],
