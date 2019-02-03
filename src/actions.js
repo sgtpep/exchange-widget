@@ -3,8 +3,9 @@ import state from './state.js';
 import stream from './stream.js';
 
 export const exchange = (amount, rate, fromCurrency, toCurrency) => {
-  // eslint-disable-next-line no-console
-  console.log('exchange:', amount, rate, fromCurrency, toCurrency);
+  (typeof process !== 'undefined' && process.env.JEST_WORKER_ID) ||
+    // eslint-disable-next-line no-console
+    console.log('exchange:', amount, rate, fromCurrency, toCurrency);
   update(state => ({ ...state, exchangeLoading: true }));
   return new Promise(resolve => setTimeout(resolve, 1000)).then(() =>
     update(state => ({ ...state, exchangeLoading: false }))
