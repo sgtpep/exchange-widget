@@ -76,6 +76,24 @@ test('exchange currencies', async () => {
   expect(onState).lastCalledWith({ ...state, exchangeLoading: false });
 });
 
+test('enable exchange', async () => {
+  actions.setDestinationPocket(eurPocket);
+  actions.setSourcePocket(usdPocket);
+  fetchMock.getOnce('rates', ratesResponse);
+  await actions.fetchRates('rates');
+  const amount = 100;
+  actions.setAmount(amount);
+  expect(onState).lastCalledWith({
+    ...state,
+    amount,
+    destinationPocket: eurPocket,
+    exchangeDisabled: false,
+    rates,
+    ratesHidden: false,
+    sourcePocket: usdPocket,
+  });
+});
+
 test('set amount', () => {
   const amount = 100;
   actions.setAmount(amount);
