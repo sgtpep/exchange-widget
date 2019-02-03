@@ -6,7 +6,9 @@ test('format 1.005 USD', () =>
 
 describe('currency symbols', () => {
   test('format 1 USD', () => expect(formatCurrency(1, 'USD')).toBe('$1.00'));
+
   test('format 1 EUR', () => expect(formatCurrency(1, 'EUR')).toBe('€1.00'));
+
   test('format 1 GBP', () => expect(formatCurrency(1, 'GBP')).toBe('£1.00'));
 });
 
@@ -18,6 +20,7 @@ describe('formatting options', () => {
         minimumFractionDigits: 0,
       }),
     ).toBe('$2'));
+
   test('formats 1.0005 USD with three decimals', () =>
     expect(formatCurrency(1.0005, 'USD', { minimumFractionDigits: 3 })).toBe(
       '$1.001',
