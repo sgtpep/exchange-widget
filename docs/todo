@@ -1,4 +1,12 @@
-src/actions.js
+aliases
+fetchRates
+  skips failed
+ratesHidden
+  false on empty source
+  false on empty destination
+  false on equal pockets
+  true after rates and pockets
+
 src/LoadingIndicator.js
 src/ErrorIndicator.js
 src/DestinationRate.js
@@ -17,3 +25,5 @@ src/App.js
 src/CurrencyInput.js
 
 renew subscription
+release
+test
