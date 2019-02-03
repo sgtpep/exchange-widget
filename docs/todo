@@ -1,8 +1,6 @@
-src/rate-text.js
 src/fetch-json.js
-src/update.js
-src/actions.js
 src/animated-hideable.js
+src/actions.js
 src/App.js
 src/CurrencyInput.js
 src/DestinationInput.js
