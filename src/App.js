@@ -47,7 +47,7 @@ export default class extends Component {
     this.state.ratesHidden ||
       !this.state.amount ||
       exchange(
-        round(this.state.amount),
+        round(this.state.amount, 2),
         exchangeRate(
           this.state.rates,
           this.state.sourcePocket.currency,

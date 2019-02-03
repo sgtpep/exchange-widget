@@ -14,7 +14,7 @@ export default animatedHideable(
     );
     return {
       rate,
-      value: state.amount && round(rate * state.amount),
+      value: state.amount && round(rate * state.amount, 2),
     };
   },
   (props, state) =>

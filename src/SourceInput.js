@@ -9,7 +9,7 @@ export default (props, state) =>
         max=${props.pocket.sum}
         prefix=${state.amount === null || '-'}
         tabindex="-1"
-        value=${state.amount && round(state.amount)}
+        value=${state.amount && round(state.amount, 2)}
       />
     </span>
   `;
