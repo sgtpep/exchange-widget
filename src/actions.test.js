@@ -67,6 +67,50 @@ describe('rates loading', () => {
   });
 });
 
+test('exchange currencies', async () => {
+  const promise = actions.exchange(100, 0.9, 'USD', 'EUR');
+  expect(onState).lastCalledWith({ ...state, exchangeLoading: true });
+  await expect(promise).resolves.toBeTruthy();
+  expect(onState).lastCalledWith({ ...state, exchangeLoading: false });
+});
+
+test('set amount', () => {
+  const amount = 100;
+  actions.setAmount(amount);
+  expect(onState).lastCalledWith({ ...state, amount });
+});
+
+test('set the destination pocket', () => {
+  const pocket = { currency: 'USD', sum: 100 };
+  actions.setDestinationPocket(pocket);
+  expect(onState).lastCalledWith({ ...state, destinationPocket: pocket });
+});
+
+test('set pockets', () => {
+  const pockets = [{ currency: 'USD', sum: 100 }];
+  actions.setPockets(pockets);
+  expect(onState).lastCalledWith({ ...state, pockets });
+});
+
+describe('source pocket', () => {
+  test('set the source pocket', () => {
+    const pocket = { currency: 'USD', sum: 100 };
+    actions.setSourcePocket(pocket);
+    expect(onState).lastCalledWith({ ...state, sourcePocket: pocket });
+  });
+
+  test('set the source pocket with sum lower than current amount', () => {
+    actions.setAmount(200);
+    const pocket = { currency: 'USD', sum: 100 };
+    actions.setSourcePocket(pocket);
+    expect(onState).lastCalledWith({
+      ...state,
+      amount: pocket.sum,
+      sourcePocket: pocket,
+    });
+  });
+});
+
 describe('rates hiding', async () => {
   const eurPocket = { currency: 'EUR', sum: 100 };
   const usdPocket = { currency: 'USD', sum: 100 };
@@ -120,50 +164,6 @@ describe('rates hiding', async () => {
       rates,
       ratesHidden: false,
       sourcePocket: usdPocket,
-    });
-  });
-});
-
-test('exchange currencies', async () => {
-  const promise = actions.exchange(100, 0.9, 'USD', 'EUR');
-  expect(onState).lastCalledWith({ ...state, exchangeLoading: true });
-  await expect(promise).resolves.toBeTruthy();
-  expect(onState).lastCalledWith({ ...state, exchangeLoading: false });
-});
-
-test('set amount', () => {
-  const amount = 100;
-  actions.setAmount(amount);
-  expect(onState).lastCalledWith({ ...state, amount });
-});
-
-test('set the destination pocket', () => {
-  const pocket = { currency: 'USD', sum: 100 };
-  actions.setDestinationPocket(pocket);
-  expect(onState).lastCalledWith({ ...state, destinationPocket: pocket });
-});
-
-test('set pockets', () => {
-  const pockets = [{ currency: 'USD', sum: 100 }];
-  actions.setPockets(pockets);
-  expect(onState).lastCalledWith({ ...state, pockets });
-});
-
-describe('source pocket', () => {
-  test('set the source pocket', () => {
-    const pocket = { currency: 'USD', sum: 100 };
-    actions.setSourcePocket(pocket);
-    expect(onState).lastCalledWith({ ...state, sourcePocket: pocket });
-  });
-
-  test('set the source pocket with sum lower than current amount', () => {
-    actions.setAmount(200);
-    const pocket = { currency: 'USD', sum: 100 };
-    actions.setSourcePocket(pocket);
-    expect(onState).lastCalledWith({
-      ...state,
-      amount: pocket.sum,
-      sourcePocket: pocket,
     });
   });
 });
