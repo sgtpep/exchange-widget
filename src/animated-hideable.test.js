@@ -34,7 +34,6 @@ test('props are not cached and hidden prop is not set until hiding', () => {
       <div hidden=${false}>foo</div>
     `,
   );
-
   hidden.mockReturnValueOnce(false);
   cached.mockReturnValueOnce({ text: 'bar' });
   render();
