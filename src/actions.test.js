@@ -59,15 +59,11 @@ describe('rates loading', () => {
   });
 });
 
-test('exchange currencies', () => {
-  const promise = actions.exchange(100, 0.9, 'USD', 'EUR').then(() =>
-    expect(onState).toHaveBeenLastCalledWith({
-      ...state,
-      exchangeLoading: false,
-    })
-  );
-  expect(onState).toHaveBeenLastCalledWith({ ...state, exchangeLoading: true });
-  return promise;
+test('exchange currencies', async () => {
+  const promise = actions.exchange(100, 0.9, 'USD', 'EUR');
+  expect(onState).lastCalledWith({ ...state, exchangeLoading: true });
+  await expect(promise).resolves.toBeUndefined();
+  expect(onState).lastCalledWith({ ...state, exchangeLoading: false });
 });
 
 test('set amount', () => {
