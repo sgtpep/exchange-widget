@@ -50,6 +50,21 @@ describe('rates loading', () => {
     await expect(actions.fetchRates('rates3')).resolves.toEqual(response);
     expect(onState).lastCalledWith({ ...state, rates });
   });
+
+  test('try to load rates from multiple sources', async () => {
+    fetchMock.getOnce('foo', 404);
+    fetchMock.getOnce('bar', 404);
+    fetchMock.getOnce('rates', response);
+    fetchMock.getOnce('baz', 404);
+    await expect(
+      actions.fetchRates(['foo', 'bar', 'rates', 'baz'])
+    ).resolves.toEqual(response);
+    expect(fetchMock.calls().map(call => call[0])).toEqual([
+      '/foo',
+      '/bar',
+      '/rates',
+    ]);
+  });
 });
 
 test('exchange currencies', async () => {
