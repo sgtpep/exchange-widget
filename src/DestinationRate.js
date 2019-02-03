@@ -13,7 +13,7 @@ export default animatedHideable(
   }),
   props =>
     html`
-      <span class=${`DestinationRate animated ${props.hidden ? 'hidden' : ''}`}>
+      <span class=${`DestinationRate animated${props.hidden ? ' hidden' : ''}`}>
         ${props.text}
       </span>
     `

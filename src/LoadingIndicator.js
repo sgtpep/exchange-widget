@@ -21,7 +21,7 @@ export default class extends Component {
   render(props) {
     return html`
       <div
-        class=${`LoadingIndicator animated ${props.visible ? '' : 'hidden'}`}
+        class=${`LoadingIndicator animated${props.visible ? '' : ' hidden'}`}
       />
     `;
   }

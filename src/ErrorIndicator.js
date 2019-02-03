@@ -19,7 +19,7 @@ export default class extends Component {
 
   render(props) {
     return html`
-      <div class=${`ErrorIndicator animated ${props.visible ? '' : 'hidden'}`}>
+      <div class=${`ErrorIndicator animated${props.visible ? '' : ' hidden'}`}>
         <div>${props.children}</div>
       </div>
     `;

@@ -15,7 +15,7 @@ export default animatedHideable(
   }),
   props =>
     html`
-      <span class=${`RateDropdown animated ${props.hidden ? 'hidden' : ''}`}>
+      <span class=${`RateDropdown animated${props.hidden ? ' hidden' : ''}`}>
         <span class="button">${props.text}</span>
         <${RateSelect} />
       </span>
