@@ -67,7 +67,7 @@ describe('rates loading', () => {
   });
 });
 
-describe.only('rates visibility', async () => {
+describe('rates visibility', async () => {
   const eurPocket = { currency: 'EUR', sum: 100 };
   const usdPocket = { currency: 'USD', sum: 100 };
   const rates = [
