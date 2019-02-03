@@ -1,4 +1,3 @@
-src/exchange-rate.js
 src/rate-text.js
 src/fetch-json.js
 src/update.js
