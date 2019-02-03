@@ -9,7 +9,7 @@ test('cache an exchange rate', () => {
   expect(exchangeRate(rates, 'USD', 'EUR')).toBe(0.9);
 });
 
-describe('calculate exchange rates', () => {
+describe('exchange rate directions', () => {
   test('calculate an exchange rate from USD', () =>
     expect(exchangeRate(rates, 'USD', 'EUR')).toBe(0.9));
 
