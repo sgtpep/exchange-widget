@@ -17,20 +17,18 @@ test('reject on an unsuccessful response', () => {
   return expect(fetchJSON('data')).rejects.toEqual(new Error('Not Found'));
 });
 
-test('reject on a malformed json and log to the console', () => {
+test('reject on a malformed json and log to the console', async () => {
   const consoleError = jest
     .spyOn(console, 'error')
     .mockImplementation(() => {});
-  fetchMock.getOnce('path', 'malformed');
-  return fetchJSON('path').catch(reason => {
-    const error = expect.objectContaining({
-      message:
-        'invalid json response body at /path reason: Unexpected token m in JSON at position 0',
-      name: 'FetchError',
-    });
-    expect(consoleError).toHaveBeenLastCalledWith(error);
-    expect(reason).toEqual(error);
+  fetchMock.getOnce('data', 'malformed');
+  const error = expect.objectContaining({
+    message:
+      'invalid json response body at /data reason: Unexpected token m in JSON at position 0',
+    name: 'FetchError',
   });
+  await expect(fetchJSON('data')).rejects.toEqual(error);
+  expect(consoleError).toHaveBeenLastCalledWith(error);
 });
 
 test('reject on abort', () => {
