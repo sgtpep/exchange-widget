@@ -1,6 +1,6 @@
 const { shallow } = require('preact-render-spy');
 
-const require = require('esm')(module);
+require = require('esm')(module);
 const animatedHideable = require('./animated-hideable');
 const html = require('./html');
 
