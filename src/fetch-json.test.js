@@ -6,18 +6,18 @@ const fetchJSON = require('./fetch-json');
 
 afterEach(() => fetchMock.reset());
 
-test('resolves on success', () => {
+test('resolve on success', () => {
   const data = { foo: 1, bar: 2 };
   fetchMock.getOnce('path', data);
   return expect(fetchJSON('path')).resolves.toEqual(data);
 });
 
-test('rejects on an unsuccessful response', () => {
+test('reject on an unsuccessful response', () => {
   fetchMock.getOnce('path', 404);
   return expect(fetchJSON('path')).rejects.toEqual(new Error('Not Found'));
 });
 
-test('rejects on a malformed json and logs to the console', () => {
+test('reject on a malformed json and log to the console', () => {
   const consoleError = jest
     .spyOn(console, 'error')
     .mockImplementation(() => {});
@@ -33,7 +33,7 @@ test('rejects on a malformed json and logs to the console', () => {
   });
 });
 
-test('rejects on abort', () => {
+test('reject on abort', () => {
   fetchMock.getOnce('path', {});
   const controller = new AbortController();
   controller.abort();
