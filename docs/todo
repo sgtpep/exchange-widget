@@ -1,16 +1,19 @@
 src/actions.js
-src/App.js
-src/CurrencyInput.js
-src/DestinationInput.js
-src/DestinationRate.js
-src/ErrorIndicator.js
-src/ExchangeSlide.js
-src/ExchangeSliders.js
-src/Header.js
 src/LoadingIndicator.js
+src/ErrorIndicator.js
+src/DestinationRate.js
+src/DestinationInput.js
+src/SourceInput.js
+src/Header.js
 src/RateDropdown.js
 src/RateSelect.js
+src/ExchangeSlide.js
+  source
+  destination
+
+src/ExchangeSliders.js
 src/Slider.js
-src/SourceInput.js
+src/App.js
+src/CurrencyInput.js
 
 renew subscription
