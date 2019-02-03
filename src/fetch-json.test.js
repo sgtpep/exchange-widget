@@ -28,7 +28,7 @@ test('reject on a malformed json and log to the console', async () => {
     name: 'FetchError',
   });
   await expect(fetchJSON('data')).rejects.toEqual(error);
-  expect(consoleError).toHaveBeenLastCalledWith(error);
+  expect(consoleError).lastCalledWith(error);
 });
 
 test('reject on abort', () => {

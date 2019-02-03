@@ -24,38 +24,31 @@ describe('rates loading', () => {
   test('start loading rates', () => {
     fetchMock.getOnce('rates', response);
     actions.fetchRates('rates');
-    expect(onState).toHaveBeenLastCalledWith({ ...state, ratesLoading: true });
+    expect(onState).lastCalledWith({ ...state, ratesLoading: true });
   });
 
   test('load rates successfully', async () => {
     fetchMock.getOnce('rates', response);
     await expect(actions.fetchRates('rates')).resolves.toEqual(response);
-    expect(onState).toHaveBeenLastCalledWith({ ...state, rates });
+    expect(onState).lastCalledWith({ ...state, rates });
   });
 
   test('fail loading rates', async () => {
     fetchMock.getOnce('rates', 404);
     await expect(actions.fetchRates('rates')).rejects.toBeUndefined();
-    expect(onState).toHaveBeenLastCalledWith({
-      ...state,
-      ratesError: true,
-    });
+    expect(onState).lastCalledWith({ ...state, ratesError: true });
   });
 
   test('load rates consecutively', async () => {
     fetchMock.getOnce('rates', response);
     await expect(actions.fetchRates('rates')).resolves.toEqual(response);
-    expect(onState).toHaveBeenLastCalledWith({ ...state, rates });
+    expect(onState).lastCalledWith({ ...state, rates });
     fetchMock.getOnce('rates2', 404);
     await expect(actions.fetchRates('rates2')).rejects.toBeUndefined();
-    expect(onState).toHaveBeenLastCalledWith({
-      ...state,
-      rates,
-      ratesError: true,
-    });
+    expect(onState).lastCalledWith({ ...state, rates, ratesError: true });
     fetchMock.getOnce('rates3', response);
     await expect(actions.fetchRates('rates3')).resolves.toEqual(response);
-    expect(onState).toHaveBeenLastCalledWith({ ...state, rates });
+    expect(onState).lastCalledWith({ ...state, rates });
   });
 });
 
@@ -69,39 +62,33 @@ test('exchange currencies', async () => {
 test('set amount', () => {
   const amount = 100;
   actions.setAmount(amount);
-  expect(onState).toHaveBeenLastCalledWith({ ...state, amount });
+  expect(onState).lastCalledWith({ ...state, amount });
 });
 
 test('set the destination pocket', () => {
   const pocket = { currency: 'USD', sum: 100 };
   actions.setDestinationPocket(pocket);
-  expect(onState).toHaveBeenLastCalledWith({
-    ...state,
-    destinationPocket: pocket,
-  });
+  expect(onState).lastCalledWith({ ...state, destinationPocket: pocket });
 });
 
 test('set pockets', () => {
   const pockets = [{ currency: 'USD', sum: 100 }];
   actions.setPockets(pockets);
-  expect(onState).toHaveBeenLastCalledWith({ ...state, pockets });
+  expect(onState).lastCalledWith({ ...state, pockets });
 });
 
 describe('source pocket', () => {
   test('set the source pocket', () => {
     const pocket = { currency: 'USD', sum: 100 };
     actions.setSourcePocket(pocket);
-    expect(onState).toHaveBeenLastCalledWith({
-      ...state,
-      sourcePocket: pocket,
-    });
+    expect(onState).lastCalledWith({ ...state, sourcePocket: pocket });
   });
 
   test('set the source pocket with sum lower than current amount', () => {
     actions.setAmount(200);
     const pocket = { currency: 'USD', sum: 100 };
     actions.setSourcePocket(pocket);
-    expect(onState).toHaveBeenLastCalledWith({
+    expect(onState).lastCalledWith({
       ...state,
       amount: pocket.sum,
       sourcePocket: pocket,
