@@ -127,7 +127,7 @@ describe('rates visibility', async () => {
 test('exchange currencies', async () => {
   const promise = actions.exchange(100, 0.9, 'USD', 'EUR');
   expect(onState).lastCalledWith({ ...state, exchangeLoading: true });
-  await expect(promise).resolves.toBeUndefined();
+  await expect(promise).resolves.toBeTruthy();
   expect(onState).lastCalledWith({ ...state, exchangeLoading: false });
 });
 
