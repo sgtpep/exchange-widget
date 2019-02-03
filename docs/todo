@@ -1,4 +1,8 @@
 src/fetch-json.js
+  not ok -> console message, rejects with error
+  ok -> resolves, data
+  abort with signal -> rejects with error
+
 src/actions.js
 src/App.js
 src/CurrencyInput.js
