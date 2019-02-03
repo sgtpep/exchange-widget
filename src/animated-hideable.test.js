@@ -28,7 +28,7 @@ beforeEach(() => {
     `);
 });
 
-test("component doesn't cache props before hiding", () => {
+test('props are not cached and hidden prop is not set until hiding', () => {
   expect(context.output()).toEqual(
     html`
       <div hidden=${false}>foo</div>
@@ -45,7 +45,7 @@ test("component doesn't cache props before hiding", () => {
   );
 });
 
-test('component cache props on hiding', () => {
+test('props are cached and hidden prop is set on hiding', () => {
   hidden.mockReturnValueOnce(true);
   cached.mockReturnValueOnce({ text: 'bar' });
   render();
