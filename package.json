@@ -26,7 +26,8 @@
   },
   "scripts": {
     "build": "postcss -m -o ./dist/exchange-widget.min.css ./styles/index.css && rollup -c",
-    "start": "http-server -c-1 -p 8000",
-    "test": "prettier -l './**/*.{css,html,js,json,md}' && eslint './**/*.js'"
+    "format": "prettier --write './**/*.{css,html,js,json,md,yml}'",
+    "lint": "eslint './**/*.js'",
+    "start": "http-server -c-1 -p 8000"
   }
 }

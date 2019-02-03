@@ -13,8 +13,10 @@ From a project directory run `npm install` and then `npm start` to start an HTTP
 ## NPM Scripts
 
 - `build`: Generates the production code by combining, transpiling and minimizing of styles and scripts.
+- `format`: Formats the code using `prettier`.
+- `lint`: Checks the code for linting errors using `eslint`.
 - `start`: Starts the development web server for serving static content on `http://localhost:8000/`.
-- `test`: Checks code formatting, checks for linting errors, runs tests.
+- `test`: Runs tests in `jest`.
 
 ## Unconventional Decisions
 
