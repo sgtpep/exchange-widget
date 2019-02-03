@@ -9,7 +9,7 @@
       "jest": true,
       "node": true
     },
-    "files": "**/*.test.js",
+    "files": ["jest.*.js", "**/*.test.js"],
     "rules": {
       "no-global-assign": ["error", { "exceptions": ["require"] }]
     }
