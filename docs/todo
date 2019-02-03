@@ -1,5 +1,4 @@
 src/fetch-json.js
-src/animated-hideable.js
 src/actions.js
 src/App.js
 src/CurrencyInput.js
