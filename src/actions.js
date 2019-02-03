@@ -51,7 +51,10 @@ const fetchRatesJSON = (url, signal = undefined) =>
   );
 
 const ratesHidden = (sourcePocket, destinationPocket, ratesEmpty) =>
-  sourcePocket === destinationPocket || ratesEmpty;
+  !sourcePocket ||
+  !destinationPocket ||
+  sourcePocket === destinationPocket ||
+  ratesEmpty;
 
 export const setAmount = amount => update(state => ({ ...state, amount }));
 
