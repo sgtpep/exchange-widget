@@ -14,11 +14,13 @@ export const exchange = (amount, rate, fromCurrency, toCurrency) => {
 
 export const fetchRates = (urls, signal = undefined) => {
   update(state => ({ ...state, ratesLoading: true }));
-  (Array.isArray(urls) ? urls : [urls]).reduce(
-    (promise, url) =>
-      promise.then(result => result || fetchRatesJSON(url, signal)),
-    Promise.resolve(),
-  );
+  return (Array.isArray(urls) ? urls : [urls])
+    .reduce(
+      (promise, url) =>
+        promise.then(result => result || fetchRatesJSON(url, signal)),
+      Promise.resolve()
+    )
+    .then(result => result || Promise.reject());
 };
 
 const fetchRatesJSON = (url, signal = undefined) =>
