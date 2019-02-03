@@ -9,7 +9,10 @@
       "jest": true,
       "node": true
     },
-    "files": "**/*.test.js"
+    "files": "**/*.test.js",
+    "rules": {
+      "no-global-assign": ["error", { "exceptions": ["require"] }]
+    }
   },
   "parserOptions": {
     "ecmaVersion": 2019,
