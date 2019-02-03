@@ -2,7 +2,7 @@ require = require('esm')(module);
 const stream = require('./stream').default;
 const { onUpdate } = require('./stream');
 
-test('update state', () => {
+test('state updates', () => {
   const update = stream({ foo: 1 });
   const callback = jest.fn();
   onUpdate(callback);

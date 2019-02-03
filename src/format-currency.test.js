@@ -1,7 +1,7 @@
 require = require('esm')(module);
 const formatCurrency = require('./format-currency');
 
-test('format 1.005 USD', () =>
+test('formats 1.005 USD', () =>
   expect(formatCurrency(1.005, 'USD')).toBe('$1.01'));
 
 describe('currency symbols', () => {
@@ -13,7 +13,7 @@ describe('currency symbols', () => {
 });
 
 describe('formatting options', () => {
-  test('format 1.5 USD to an integer', () =>
+  test('formats 1.5 USD to an integer', () =>
     expect(
       formatCurrency(1.5, 'USD', {
         maximumFractionDigits: 0,
