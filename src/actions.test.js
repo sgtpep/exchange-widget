@@ -4,6 +4,16 @@ const fs = require('fs');
 require = require('esm')(module);
 const state = require('./state');
 
+const eurPocket = { currency: 'EUR', sum: 100 };
+const rates = [
+  { currency: 'EUR', rate: 0.874485 },
+  { currency: 'GBP', rate: 0.764586 },
+];
+const ratesResponse = require('../mocks/rates');
+const usdPocket = { currency: 'USD', sum: 100 };
+
+afterEach(() => fetchMock.reset());
+
 let actions;
 const onState = jest.fn();
 beforeEach(() => {
@@ -13,23 +23,15 @@ beforeEach(() => {
 });
 
 describe('rates loading', () => {
-  const rates = [
-    { currency: 'EUR', rate: 0.874485 },
-    { currency: 'GBP', rate: 0.764586 },
-  ];
-  const response = JSON.parse(fs.readFileSync('./mocks/rates.json', 'utf8'));
-
-  afterEach(() => fetchMock.reset());
-
   test('start loading rates', () => {
-    fetchMock.getOnce('rates', response);
+    fetchMock.getOnce('rates', ratesResponse);
     actions.fetchRates('rates');
     expect(onState).lastCalledWith({ ...state, ratesLoading: true });
   });
 
   test('load rates successfully', async () => {
-    fetchMock.getOnce('rates', response);
-    await expect(actions.fetchRates('rates')).resolves.toEqual(response);
+    fetchMock.getOnce('rates', ratesResponse);
+    await expect(actions.fetchRates('rates')).resolves.toEqual(ratesResponse);
     expect(onState).lastCalledWith({ ...state, rates });
   });
 
@@ -40,25 +42,25 @@ describe('rates loading', () => {
   });
 
   test('load rates consecutively', async () => {
-    fetchMock.getOnce('rates', response);
-    await expect(actions.fetchRates('rates')).resolves.toEqual(response);
+    fetchMock.getOnce('rates', ratesResponse);
+    await expect(actions.fetchRates('rates')).resolves.toEqual(ratesResponse);
     expect(onState).lastCalledWith({ ...state, rates });
     fetchMock.getOnce('rates2', 404);
     await expect(actions.fetchRates('rates2')).rejects.toBeUndefined();
     expect(onState).lastCalledWith({ ...state, rates, ratesError: true });
-    fetchMock.getOnce('rates3', response);
-    await expect(actions.fetchRates('rates3')).resolves.toEqual(response);
+    fetchMock.getOnce('rates3', ratesResponse);
+    await expect(actions.fetchRates('rates3')).resolves.toEqual(ratesResponse);
     expect(onState).lastCalledWith({ ...state, rates });
   });
 
   test('try to load rates from multiple sources', async () => {
     fetchMock.getOnce('foo', 404);
     fetchMock.getOnce('bar', 404);
-    fetchMock.getOnce('rates', response);
+    fetchMock.getOnce('rates', ratesResponse);
     fetchMock.getOnce('baz', 404);
     await expect(
       actions.fetchRates(['foo', 'bar', 'rates', 'baz'])
-    ).resolves.toEqual(response);
+    ).resolves.toEqual(ratesResponse);
     expect(fetchMock.calls().map(call => call[0])).toEqual([
       '/foo',
       '/bar',
@@ -81,48 +83,36 @@ test('set amount', () => {
 });
 
 test('set the destination pocket', () => {
-  const pocket = { currency: 'USD', sum: 100 };
-  actions.setDestinationPocket(pocket);
-  expect(onState).lastCalledWith({ ...state, destinationPocket: pocket });
+  actions.setDestinationPocket(usdPocket);
+  expect(onState).lastCalledWith({ ...state, destinationPocket: usdPocket });
 });
 
 test('set pockets', () => {
-  const pockets = [{ currency: 'USD', sum: 100 }];
+  const pockets = [usdPocket];
   actions.setPockets(pockets);
   expect(onState).lastCalledWith({ ...state, pockets });
 });
 
 describe('source pocket', () => {
   test('set the source pocket', () => {
-    const pocket = { currency: 'USD', sum: 100 };
-    actions.setSourcePocket(pocket);
-    expect(onState).lastCalledWith({ ...state, sourcePocket: pocket });
+    actions.setSourcePocket(usdPocket);
+    expect(onState).lastCalledWith({ ...state, sourcePocket: usdPocket });
   });
 
   test('set the source pocket with sum lower than current amount', () => {
     actions.setAmount(200);
-    const pocket = { currency: 'USD', sum: 100 };
-    actions.setSourcePocket(pocket);
+    actions.setSourcePocket(usdPocket);
     expect(onState).lastCalledWith({
       ...state,
-      amount: pocket.sum,
-      sourcePocket: pocket,
+      amount: usdPocket.sum,
+      sourcePocket: usdPocket,
     });
   });
 });
 
 describe('rates hiding', async () => {
-  const eurPocket = { currency: 'EUR', sum: 100 };
-  const usdPocket = { currency: 'USD', sum: 100 };
-  const rates = [
-    { currency: 'EUR', rate: 0.874485 },
-    { currency: 'GBP', rate: 0.764586 },
-  ];
-
-  afterEach(() => fetchMock.reset());
-
   beforeEach(async () => {
-    fetchMock.getOnce('rates', fs.readFileSync('./mocks/rates.json', 'utf8'));
+    fetchMock.getOnce('rates', ratesResponse);
     await actions.fetchRates('rates');
   });
 
