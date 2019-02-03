@@ -5,7 +5,7 @@ const animatedHideable = require('./animated-hideable');
 const html = require('./html');
 
 let cached, context, hidden, render;
-beforeEach(function() {
+beforeEach(() => {
   [cached, hidden] = [jest.fn(), jest.fn()];
   const Component = animatedHideable(
     hidden,
