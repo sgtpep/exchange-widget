@@ -31,6 +31,6 @@
     "format": "prettier --write './**/*.{css,html,js,json,md,yml}'",
     "lint": "eslint './**/*.js'",
     "start": "http-server -c-1 -p 8000",
-    "test": "node -r esm ./node_modules/.bin/jest --notify --watch"
+    "test": "jest --notify --watch"
   }
 }
