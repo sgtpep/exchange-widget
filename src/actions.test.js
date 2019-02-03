@@ -67,7 +67,7 @@ describe('rates loading', () => {
   });
 });
 
-describe('rates visibility', async () => {
+describe('rates hiding', async () => {
   const eurPocket = { currency: 'EUR', sum: 100 };
   const usdPocket = { currency: 'USD', sum: 100 };
   const rates = [
@@ -165,11 +165,5 @@ describe('source pocket', () => {
       amount: pocket.sum,
       sourcePocket: pocket,
     });
-  });
-});
-
-describe('rates hiding', () => {
-  test('', () => {
-    // TODO
   });
 });
