@@ -67,6 +67,63 @@ describe('rates loading', () => {
   });
 });
 
+describe.only('rates visibility', async () => {
+  const eurPocket = { currency: 'EUR', sum: 100 };
+  const usdPocket = { currency: 'USD', sum: 100 };
+  const rates = [
+    { currency: 'EUR', rate: 0.874485 },
+    { currency: 'GBP', rate: 0.764586 },
+  ];
+
+  afterEach(() => fetchMock.reset());
+
+  beforeEach(async () => {
+    fetchMock.getOnce('rates', fs.readFileSync('./mocks/rates.json', 'utf8'));
+    await actions.fetchRates('rates');
+  });
+
+  test('hide rates if the destination pocket is not set', () => {
+    actions.setSourcePocket(usdPocket);
+    expect(onState).lastCalledWith({
+      ...state,
+      rates,
+      sourcePocket: usdPocket,
+    });
+  });
+
+  test('hide rates if the source pocket is not set', () => {
+    actions.setDestinationPocket(usdPocket);
+    expect(onState).lastCalledWith({
+      ...state,
+      destinationPocket: usdPocket,
+      rates,
+    });
+  });
+
+  test('hide rates if the destination and source pockets have the same currency', () => {
+    actions.setDestinationPocket(usdPocket);
+    actions.setSourcePocket(usdPocket);
+    expect(onState).lastCalledWith({
+      ...state,
+      destinationPocket: usdPocket,
+      rates,
+      sourcePocket: usdPocket,
+    });
+  });
+
+  test('show rates if the destination and source pockets have different currencies', () => {
+    actions.setDestinationPocket(eurPocket);
+    actions.setSourcePocket(usdPocket);
+    expect(onState).lastCalledWith({
+      ...state,
+      destinationPocket: eurPocket,
+      rates,
+      ratesHidden: false,
+      sourcePocket: usdPocket,
+    });
+  });
+});
+
 test('exchange currencies', async () => {
   const promise = actions.exchange(100, 0.9, 'USD', 'EUR');
   expect(onState).lastCalledWith({ ...state, exchangeLoading: true });
