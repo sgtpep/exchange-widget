@@ -1,4 +1,3 @@
-src/LoadingIndicator.js
 src/ErrorIndicator.js
 src/DestinationRate.js
 src/DestinationInput.js
