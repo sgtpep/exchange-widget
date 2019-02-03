@@ -9,12 +9,12 @@ export default class extends Component {
     this.destination.current.base.addEventListener(
       'focus',
       this.onFocus.bind(this, 'destination'),
-      true,
+      true
     );
     this.source.current.base.addEventListener(
       'focus',
       this.onFocus.bind(this, 'source'),
-      true,
+      true
     );
   }
 
@@ -60,7 +60,7 @@ export default class extends Component {
             pocket =>
               html`
                 <${ExchangeSlide} pocket=${pocket} type="source" />
-              `,
+              `
           )}
         <//>
         <${Slider}
@@ -75,7 +75,7 @@ export default class extends Component {
             pocket =>
               html`
                 <${ExchangeSlide} pocket=${pocket} type="destination" />
-              `,
+              `
           )}
         <//>
       </div>

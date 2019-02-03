@@ -10,7 +10,7 @@ export default animatedHideable(
     const rate = exchangeRate(
       state.rates,
       state.sourcePocket.currency,
-      props.pocket.currency,
+      props.pocket.currency
     );
     return {
       rate,
@@ -30,5 +30,5 @@ export default animatedHideable(
           value=${props.value}
         />
       </span>
-    `,
+    `
 );

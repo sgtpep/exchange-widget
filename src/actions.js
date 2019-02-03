@@ -7,7 +7,7 @@ export const exchange = (amount, rate, fromCurrency, toCurrency) => {
   console.log('exchange:', amount, rate, fromCurrency, toCurrency);
   update(state => ({ ...state, exchangeLoading: true }));
   return new Promise(resolve => setTimeout(resolve, 1000)).then(() =>
-    update(state => ({ ...state, exchangeLoading: false })),
+    update(state => ({ ...state, exchangeLoading: false }))
   );
 };
 
@@ -32,7 +32,7 @@ const fetchRatesJSON = (url, signal = undefined) =>
         ratesHidden: ratesHidden(
           state.sourcePocket,
           state.destinationPocket,
-          !Object.keys(data.rates).length,
+          !Object.keys(data.rates).length
         ),
         ratesLoading: false,
       }));
@@ -44,7 +44,7 @@ const fetchRatesJSON = (url, signal = undefined) =>
         ratesError: true,
         ratesLoading: false,
       }));
-    },
+    }
   );
 
 const ratesHidden = (sourcePocket, destinationPocket, ratesEmpty) =>
@@ -69,7 +69,7 @@ export const setSourcePocket = pocket =>
     ratesHidden: ratesHidden(
       pocket,
       state.destinationPocket,
-      !state.rates.length,
+      !state.rates.length
     ),
     sourcePocket: pocket,
   }));

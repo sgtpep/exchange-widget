@@ -6,13 +6,13 @@ export default (props, state) => html`
   <select
     onChange=${event => {
       const [sourceCurrency, destinationCurrency] = event.target.value.split(
-        ':',
+        ':'
       );
       setSourcePocket(
-        state.pockets.find(pocket => pocket.currency === sourceCurrency),
+        state.pockets.find(pocket => pocket.currency === sourceCurrency)
       );
       setDestinationPocket(
-        state.pockets.find(pocket => pocket.currency === destinationCurrency),
+        state.pockets.find(pocket => pocket.currency === destinationCurrency)
       );
     }}
   >
@@ -31,11 +31,11 @@ export default (props, state) => html`
                   state.rates,
                   sourcePocket.currency,
                   destinationPocket.currency,
-                  { minimumFractionDigits: 4 },
+                  { minimumFractionDigits: 4 }
                 )}
             </option>
-          `,
-      ),
+          `
+      )
     )}
   </select>
 `;

@@ -8,5 +8,5 @@ export default (rates, fromCurrency, toCurrency, formatOptions = undefined) =>
   })} = ${formatCurrency(
     exchangeRate(rates, fromCurrency, toCurrency),
     toCurrency,
-    formatOptions,
+    formatOptions
   )}`;

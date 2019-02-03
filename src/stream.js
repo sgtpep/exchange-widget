@@ -4,7 +4,7 @@ export default value => {
   let emit;
   const stream = Kefir.stream(emitter => (emit = emitter.emit)).scan(
     (value, patch) => patch(value),
-    value,
+    value
   );
   return {
     onUpdate: callback => stream.observe(callback),

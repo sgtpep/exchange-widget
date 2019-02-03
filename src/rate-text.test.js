@@ -8,5 +8,5 @@ test('generate a rate text', () =>
 
 test('generate a rate text with more decimals', () =>
   expect(rateText(rates, 'USD', 'EUR', { minimumFractionDigits: 4 })).toBe(
-    '$1 = €0.9000',
+    '$1 = €0.9000'
   ));

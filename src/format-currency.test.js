@@ -18,11 +18,11 @@ describe('format with options', () => {
       formatCurrency(1.5, 'USD', {
         maximumFractionDigits: 0,
         minimumFractionDigits: 0,
-      }),
+      })
     ).toBe('$2'));
 
   test('format 1.0005 USD with three decimals', () =>
     expect(formatCurrency(1.0005, 'USD', { minimumFractionDigits: 3 })).toBe(
-      '$1.001',
+      '$1.001'
     ));
 });

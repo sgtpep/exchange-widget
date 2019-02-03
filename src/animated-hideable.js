@@ -11,7 +11,7 @@ export default (hidden, cached, render) => {
           ...this.cache,
           hidden: componentHidden,
         },
-        context,
+        context
       );
     }
   };

@@ -5,7 +5,7 @@ export default class extends Component {
   componentDidMount() {
     this.progressInterval = setInterval(
       () => this.updateProgress(this.progress + 0.01 * (1 - this.progress)),
-      10,
+      10
     );
     this.updateProgress(0);
   }

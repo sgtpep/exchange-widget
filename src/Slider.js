@@ -8,7 +8,7 @@ export default class extends Component {
     ];
     [...this.pagination.current.querySelectorAll('.active')].forEach(
       activeElement =>
-        activeElement === element || activeElement.classList.remove('active'),
+        activeElement === element || activeElement.classList.remove('active')
     );
     element && element.classList.add('active');
     this.index === undefined ||
@@ -27,20 +27,20 @@ export default class extends Component {
       ['touchmove', this.onDragMove],
       ['touchstart', this.onDragStart],
     ].forEach(([type, listener, ...args]) =>
-      this.slides.current.addEventListener(type, listener.bind(this), ...args),
+      this.slides.current.addEventListener(type, listener.bind(this), ...args)
     );
     this.selectSlide(this.props.index);
     this.props.onMount &&
       this.props.onMount(
         this.props.index,
-        this.slides.current.children[this.props.index + 1],
+        this.slides.current.children[this.props.index + 1]
       );
   }
 
   componentWillReceiveProps(props) {
     const index = Math.max(
       Math.min(props.index, this.props.children.length - 1),
-      0,
+      0
     );
     index === this.index || this.startAnimation(index);
   }
@@ -136,7 +136,7 @@ export default class extends Component {
                 >
                   ${child}
                 </div>
-              `,
+              `
           )}
         </div>
         <nav ref=${this.pagination}>
@@ -175,7 +175,7 @@ export default class extends Component {
     clearTimeout(this.animationTimeout);
     this.animationTimeout = setTimeout(
       () => this.onAnimationTimeout(index),
-      300,
+      300
     );
     this.slides.current.classList.add('animating');
     this.translateToSlide(index);
@@ -192,13 +192,13 @@ export default class extends Component {
 
   translateToPointer(event) {
     this.translateSlides(
-      `${this.slidesOffset() - (this.clientX - this.eventClientX(event))}px`,
+      `${this.slidesOffset() - (this.clientX - this.eventClientX(event))}px`
     );
   }
 
   translateToSlide(index) {
     return this.translateSlides(
-      `${(-100 / (this.props.children.length + 2)) * (index + 1)}%`,
+      `${(-100 / (this.props.children.length + 2)) * (index + 1)}%`
     );
   }
 }

@@ -13,6 +13,6 @@ export default (element, options, onDestroy = undefined) => {
         }}
       />
     `,
-    element,
+    element
   );
 };

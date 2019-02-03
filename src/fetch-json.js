@@ -3,7 +3,7 @@ export default (url, signal = undefined) =>
     .then(response =>
       response.ok
         ? response.json()
-        : Promise.reject(new Error(response.statusText)),
+        : Promise.reject(new Error(response.statusText))
     )
     .catch(error => {
       error.message !== 'NetworkError when attempting to fetch resource.' &&

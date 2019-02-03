@@ -8,7 +8,7 @@ export default class extends Component {
       clearTimeout(this.hidingTimeout);
       this.hidingTimeout = setTimeout(
         () => this.base.classList.add('hidden'),
-        3000,
+        3000
       );
     }
   }

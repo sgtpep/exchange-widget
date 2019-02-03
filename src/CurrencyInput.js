@@ -6,7 +6,7 @@ export default class extends Component {
   componentDidMount() {
     this.input.current.addEventListener(
       'textInput',
-      this.onTextInput.bind(this),
+      this.onTextInput.bind(this)
     );
   }
 
@@ -31,8 +31,8 @@ export default class extends Component {
           isNaN(number)
             ? null
             : (this.props.setAmount || (value => value))(
-                Math.min(number, this.props.max),
-              ),
+                Math.min(number, this.props.max)
+              )
         )
       : (event.target.value = this.props.value);
     if (

@@ -8,7 +8,7 @@ export default animatedHideable(
     text: rateText(
       state.rates,
       props.pocket.currency,
-      state.sourcePocket.currency,
+      state.sourcePocket.currency
     ),
   }),
   props =>
@@ -16,5 +16,5 @@ export default animatedHideable(
       <span class=${`DestinationRate animated ${props.hidden ? 'hidden' : ''}`}>
         ${props.text}
       </span>
-    `,
+    `
 );

@@ -10,7 +10,7 @@ export default animatedHideable(
       state.rates,
       state.sourcePocket.currency,
       state.destinationPocket.currency,
-      { minimumFractionDigits: 4 },
+      { minimumFractionDigits: 4 }
     ),
   }),
   props =>
@@ -19,5 +19,5 @@ export default animatedHideable(
         <span class="button">${props.text}</span>
         <${RateSelect} />
       </span>
-    `,
+    `
 );

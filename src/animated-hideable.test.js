@@ -13,14 +13,14 @@ beforeEach(() => {
     props =>
       html`
         <div hidden=${props.hidden}>${props.text}</div>
-      `,
+      `
   );
   hidden.mockReturnValueOnce(false);
   cached.mockReturnValueOnce({ text: 'foo' });
   context = shallow(
     html`
       <${Component} />
-    `,
+    `
   );
   render = () =>
     context.render(html`
@@ -32,7 +32,7 @@ test("cache props and don't change hidden prop until hiding", () => {
   expect(context.output()).toEqual(
     html`
       <div hidden=${false}>foo</div>
-    `,
+    `
   );
   hidden.mockReturnValueOnce(false);
   cached.mockReturnValueOnce({ text: 'bar' });
@@ -40,7 +40,7 @@ test("cache props and don't change hidden prop until hiding", () => {
   expect(context.output()).toEqual(
     html`
       <div hidden=${false}>bar</div>
-    `,
+    `
   );
 });
 
@@ -51,6 +51,6 @@ test('cache props and set hidden prop on hiding', () => {
   expect(context.output()).toEqual(
     html`
       <div hidden>foo</div>
-    `,
+    `
   );
 });

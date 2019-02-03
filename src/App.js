@@ -26,7 +26,7 @@ export default class extends Component {
     onState(state => this.setState(state));
     setPockets(this.props.pockets);
     setDestinationPocket(
-      this.props.pockets[this.props.pockets.length === 1 ? 0 : 1],
+      this.props.pockets[this.props.pockets.length === 1 ? 0 : 1]
     );
     setSourcePocket(this.props.pockets[0]);
   }
@@ -50,10 +50,10 @@ export default class extends Component {
         exchangeRate(
           this.state.rates,
           this.state.sourcePocket.currency,
-          this.state.destinationPocket.currency,
+          this.state.destinationPocket.currency
         ),
         this.state.sourcePocket.currency,
-        this.state.destinationPocket.currency,
+        this.state.destinationPocket.currency
       ).then(() => this.destroy());
   }
 
