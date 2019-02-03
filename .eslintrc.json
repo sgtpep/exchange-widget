@@ -4,6 +4,13 @@
     "es6": true
   },
   "extends": "eslint:recommended",
+  "overrides": {
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "files": "**/*.test.js"
+  },
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module"

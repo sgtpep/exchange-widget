@@ -1,4 +1,4 @@
-require = require('esm')(module);
+const require = require('esm')(module);
 const exchangeRate = require('./exchange-rate');
 
 const rates = [{ currency: 'EUR', rate: 0.9 }, { currency: 'GBP', rate: 0.8 }];

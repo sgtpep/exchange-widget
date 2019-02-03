@@ -1,4 +1,4 @@
-require = require('esm')(module);
+const require = require('esm')(module);
 const formatCurrency = require('./format-currency');
 
 test('format 1.005 USD', () =>

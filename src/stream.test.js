@@ -1,4 +1,4 @@
-require = require('esm')(module);
+const require = require('esm')(module);
 const stream = require('./stream').default;
 const { onUpdate } = require('./stream');
 
