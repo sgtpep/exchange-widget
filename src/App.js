@@ -13,7 +13,7 @@ import {
   setPockets,
   setSourcePocket,
 } from './actions.js';
-import { onState } from './update.js';
+import { onUpdate } from './stream.js';
 
 export default class extends Component {
   componentDidMount() {
@@ -24,7 +24,7 @@ export default class extends Component {
   }
 
   componentWillMount() {
-    onState(state => this.setState(state));
+    onUpdate(state => this.setState(state));
     setPockets(this.props.pockets);
     setDestinationPocket(
       this.props.pockets[this.props.pockets.length === 1 ? 0 : 1],

@@ -22,7 +22,7 @@ From a project directory run `npm install` and then `npm start` to start an HTTP
 
 - Whenever possible I prefer functional style in code: arrow (lambda) functions over functions, `.map()`/`.filter()`,`.reduce()`, etc. over `for .. of`, expressions over statements, etc. It may look unusual to untrained eye in not purely functional languages like JavaScript but being formatted with `prettier`, I think, it is quite comprehensible.
 - No dependency on any webpack-like bundler or transpiler for development. I wanted to try out this approach which has its advantages and drawbacks outside of the scope of this document, and, I think, it worked out well.
-- Instead of using one of many ready-made libraries for managing a store I tried to implement [Meiosis](http://meiosis.js.org/) pattern which took just [few lines](https://github.com/sgtpep/exchange-widget/blob/master/src/update.js) of code and a dependency on any reactive programming library supporting streams (I used [Kefir.js](https://kefirjs.github.io/kefir/)).
+- Instead of using one of many ready-made libraries for managing a store I tried to implement [Meiosis](http://meiosis.js.org/) pattern which took just [few lines](https://github.com/sgtpep/exchange-widget/blob/master/src/stream.js) of code and a dependency on any reactive programming library supporting streams (I used [Kefir.js](https://kefirjs.github.io/kefir/)).
 - Without a transpilation it's possible to have JSX-like experience using HTML tagged templates, and I used [htm](https://github.com/developit/htm) for that (implemented by the developer of Preact).
 
 ## Tested Browsers
