@@ -8,13 +8,13 @@ afterEach(() => fetchMock.reset());
 
 test('resolve on success', () => {
   const data = { foo: 1, bar: 2 };
-  fetchMock.getOnce('path', data);
-  return expect(fetchJSON('path')).resolves.toEqual(data);
+  fetchMock.getOnce('data', data);
+  return expect(fetchJSON('data')).resolves.toEqual(data);
 });
 
 test('reject on an unsuccessful response', () => {
-  fetchMock.getOnce('path', 404);
-  return expect(fetchJSON('path')).rejects.toEqual(new Error('Not Found'));
+  fetchMock.getOnce('data', 404);
+  return expect(fetchJSON('data')).rejects.toEqual(new Error('Not Found'));
 });
 
 test('reject on a malformed json and log to the console', () => {
@@ -34,10 +34,10 @@ test('reject on a malformed json and log to the console', () => {
 });
 
 test('reject on abort', () => {
-  fetchMock.getOnce('path', {});
+  fetchMock.getOnce('data', {});
   const controller = new AbortController();
   controller.abort();
-  return expect(fetchJSON('path', controller.signal)).rejects.toEqual(
-    new Error("URL '/path' aborted."),
+  return expect(fetchJSON('data', controller.signal)).rejects.toEqual(
+    new Error("URL '/data' aborted.")
   );
 });
