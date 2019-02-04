@@ -11,11 +11,7 @@ test('show a loading indicator', () => {
         <${LoadingIndicator} visible />
       `
     ).output()
-  ).toEqual(
-    html`
-      <div class="LoadingIndicator animated"></div>
-    `
-  );
+  ).toMatchInlineSnapshot(`<div class="LoadingIndicator animated"></div>`);
 });
 
 test('hide a loading indicator', () => {
@@ -25,9 +21,7 @@ test('hide a loading indicator', () => {
         <${LoadingIndicator} />
       `
     ).output()
-  ).toEqual(
-    html`
-      <div class="LoadingIndicator animated hidden"></div>
-    `
+  ).toMatchInlineSnapshot(
+    `<div class="LoadingIndicator animated hidden"></div>`
   );
 });

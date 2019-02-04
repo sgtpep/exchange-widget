@@ -11,11 +11,11 @@ test('show an error indicator', () => {
         <${ErrorIndicator} visible>error<//>
       `
     ).output()
-  ).toEqual(
-    html`
-      <div class="ErrorIndicator animated"><div>error</div></div>
-    `
-  );
+  ).toMatchInlineSnapshot(`
+<div class="ErrorIndicator animated">
+  <div>error</div>
+</div>
+`);
 });
 
 test('hide an error indicator', () => {
@@ -25,9 +25,9 @@ test('hide an error indicator', () => {
         <${ErrorIndicator}>error<//>
       `
     ).output()
-  ).toEqual(
-    html`
-      <div class="ErrorIndicator animated hidden"><div>error</div></div>
-    `
-  );
+  ).toMatchInlineSnapshot(`
+<div class="ErrorIndicator animated hidden">
+  <div>error</div>
+</div>
+`);
 });

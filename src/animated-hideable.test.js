@@ -29,18 +29,14 @@ beforeEach(() => {
 });
 
 test("cache props and don't change hidden prop until hiding", () => {
-  expect(context.output()).toEqual(
-    html`
-      <div hidden=${false}>foo</div>
-    `
+  expect(context.output()).toMatchInlineSnapshot(
+    `<div hidden={false}>foo</div>`
   );
   hidden.mockReturnValueOnce(false);
   cached.mockReturnValueOnce({ text: 'bar' });
   render();
-  expect(context.output()).toEqual(
-    html`
-      <div hidden=${false}>bar</div>
-    `
+  expect(context.output()).toMatchInlineSnapshot(
+    `<div hidden={false}>bar</div>`
   );
 });
 
@@ -48,9 +44,7 @@ test('cache props and set hidden prop on hiding', () => {
   hidden.mockReturnValueOnce(true);
   cached.mockReturnValueOnce({ text: 'bar' });
   render();
-  expect(context.output()).toEqual(
-    html`
-      <div hidden>foo</div>
-    `
+  expect(context.output()).toMatchInlineSnapshot(
+    `<div hidden={true}>foo</div>`
   );
 });

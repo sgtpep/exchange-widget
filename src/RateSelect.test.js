@@ -18,13 +18,13 @@ beforeEach(
 );
 
 test('check if the rate select has no items', () =>
-  expect(output()).toEqual(
-    html`
-      <select class="RateSelect" onChange=${expect.any(Function)}
-        >${''}</select
-      >
-    `
-  ));
+  expect(output()).toMatchInlineSnapshot(`
+<select
+  class="RateSelect"
+  onChange={[Function anonymous]}
+>
+</select>
+`));
 
 test('show the rate select items', async () => {
   fetchMock.getOnce('rates', require('../mocks/rates'));

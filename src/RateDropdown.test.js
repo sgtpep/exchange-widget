@@ -18,25 +18,21 @@ beforeEach(
 );
 
 test('check if the rate dropdown is hidden initially', () =>
-  expect(output()).toEqual(
-    html`
-      <span class="RateDropdown animated hidden">
-        <span class="button">${''}</span>
-        <${expect.any(Function)}/>
-      </span>
-    `
-  ));
+  expect(output()).toMatchInlineSnapshot(`
+<span class="RateDropdown animated hidden">
+  <span class="button"></span>
+  <default></default>
+</span>
+`));
 
 test('show the rate dropdown', async () => {
   fetchMock.getOnce('rates', require('../mocks/rates'));
   await actions.fetchRates('rates');
   render();
-  expect(output()).toEqual(
-    html`
-      <span class="RateDropdown animated">
-        <span class="button">£1 = €1.1437</span>
-        <${expect.any(Function)}/>
-      </span>
-    `
-  );
+  expect(output()).toMatchInlineSnapshot(`
+<span class="RateDropdown animated">
+  <span class="button">£1 = €1.1437</span>
+  <default></default>
+</span>
+`);
 });

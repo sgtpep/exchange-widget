@@ -18,10 +18,8 @@ beforeEach(
 );
 
 test('check if an exchange rate is hidden initially', () =>
-  expect(output()).toEqual(
-    html`
-      <span class="DestinationRate animated hidden">${''}</span>
-    `
+  expect(output()).toMatchInlineSnapshot(
+    `<span class="DestinationRate animated hidden"></span>`
   ));
 
 test('display an exchange rate', async () => {
@@ -29,9 +27,7 @@ test('display an exchange rate', async () => {
   await actions.fetchRates('rates');
   actions.setAmount(100);
   render();
-  expect(output()).toEqual(
-    html`
-      <span class="DestinationRate animated">$1 = £0.76</span>
-    `
+  expect(output()).toMatchInlineSnapshot(
+    `<span class="DestinationRate animated">$1 = £0.76</span>`
   );
 });
