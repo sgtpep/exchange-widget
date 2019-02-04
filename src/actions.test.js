@@ -1,5 +1,4 @@
 const fetchMock = require('fetch-mock');
-const fs = require('fs');
 
 require = require('esm')(module);
 const state = require('./state');
