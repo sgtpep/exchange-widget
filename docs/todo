@@ -1,4 +1,3 @@
-src/DestinationRate.js
 src/DestinationInput.js
 src/SourceInput.js
 src/RateDropdown.js

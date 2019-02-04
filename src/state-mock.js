@@ -23,7 +23,7 @@ module.exports = (children, depth = 2) => {
   return {
     actions,
     context,
-    node,
+    output: () => context.childAt(0).output(),
     render: () => context.render(node),
   };
 };
