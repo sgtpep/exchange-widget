@@ -1,17 +1,15 @@
+src/RateSelect.js
 src/DestinationInput.js
 src/SourceInput.js
-src/RateDropdown.js
-src/RateSelect.js
 src/ExchangeSlide.js
   source
   destination
-
-src/ExchangeSliders.js
 src/Slider.js
 src/App.js
+src/ExchangeSliders.js
 src/CurrencyInput.js
 
-format on commit
 renew subscription
 release
 test
+format on commit
