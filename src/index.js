@@ -3,13 +3,13 @@ import State from './State.js';
 import html from './html.js';
 import { render } from '../node_modules/preact/dist/preact.mjs';
 
-export default (options) => {
+export default options => {
   const root = render(
     html`
       <${State} ...${options}>
         <${App}
           destroy=${() => {
-            render(null, element, root);
+            render(null, options.element, root);
             options.onDestroy && options.onDestroy();
           }}
           ratesURL=${options.ratesURL}

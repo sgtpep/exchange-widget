@@ -2,7 +2,6 @@ import ErrorIndicator from './ErrorIndicator.js';
 import ExchangeSliders from './ExchangeSliders.js';
 import Header from './Header.js';
 import LoadingIndicator from './LoadingIndicator.js';
-import State from './State.js';
 import exchangeRate from './exchange-rate.js';
 import html from './html.js';
 import round from './round.js';
