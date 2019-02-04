@@ -7,7 +7,7 @@ export default (props, context) =>
     <span class="SourceInput">
       <${CurrencyInput}
         max=${props.pocket.sum}
-        prefix=${context.amount === null || '-'}
+        prefix=${context.amount === null ? '' : '-'}
         tabindex="-1"
         value=${context.amount && round(context.amount, 2)}
       />

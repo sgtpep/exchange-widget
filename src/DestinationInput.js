@@ -23,8 +23,8 @@ export default animatedHideable(
         class=${`DestinationInput animated${props.hidden ? ' hidden' : ''}`}
       >
         <${CurrencyInput}
-          max=${props.rate * context.sourcePocket.sum}
-          prefix=${context.amount === null || '+'}
+          max=${props.rate && props.rate * context.sourcePocket.sum}
+          prefix=${context.amount === null ? '' : '+'}
           setAmount=${value => (1 / props.rate) * value}
           tabindex="-1"
           value=${props.value}
