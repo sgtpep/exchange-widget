@@ -2,7 +2,6 @@ const fetchMock = require('fetch-mock');
 const stateMock = require('./state-mock');
 
 require = require('esm')(module);
-const CurrencyInput = require('./CurrencyInput');
 const DestinationInput = require('./DestinationInput');
 const html = require('./html');
 
