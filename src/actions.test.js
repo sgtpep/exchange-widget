@@ -4,6 +4,7 @@ require = require('esm')(module);
 const state = require('./state');
 
 const eurPocket = { currency: 'EUR', sum: 200 };
+const onState = jest.fn();
 const rates = [
   { currency: 'EUR', rate: 0.874485 },
   { currency: 'GBP', rate: 0.764586 },
@@ -14,7 +15,6 @@ const usdPocket = { currency: 'USD', sum: 100 };
 afterEach(() => fetchMock.reset());
 
 let actions;
-const onState = jest.fn();
 beforeEach(() => {
   delete require.cache[require.resolve('./actions')];
   actions = require('./actions');
