@@ -95,11 +95,10 @@ export default class extends Component {
 
   onDragStart(event) {
     event.preventDefault();
-    this.slides.current.classList.contains('animating') &&
-      (this.index = this.nextSlideIndex(this.prevSlidesOffset));
     this.clientX = this.eventClientX(event);
     this.dragging = true;
-    this.prevSlidesOffset = this.slidesOffset();
+    this.slides.current.classList.contains('animating') ||
+      (this.prevSlidesOffset = this.slidesOffset());
     this.translateToPointer(event);
     this.stopAnimation();
   }
@@ -110,8 +109,9 @@ export default class extends Component {
       event.type === 'touchend'
     ) {
       this.dragging = false;
-      this.startAnimation(this.nextSlideIndex(this.prevSlidesOffset));
-      this.prevSlidesOffset === this.slidesOffset() && event.target.focus();
+      this.prevSlidesOffset === this.slidesOffset()
+        ? event.target.focus()
+        : this.startAnimation(this.nextSlideIndex(this.prevSlidesOffset));
     }
   }
 
