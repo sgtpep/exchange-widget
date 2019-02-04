@@ -4,6 +4,7 @@ import { setDestinationPocket, setSourcePocket } from './actions.js';
 
 export default (props, context) => html`
   <select
+    class="RateSelect"
     onChange=${event => {
       const [sourceCurrency, destinationCurrency] = event.target.value.split(
         ':'
@@ -16,26 +17,28 @@ export default (props, context) => html`
       );
     }}
   >
-    ${context.pockets.map(sourcePocket =>
-      context.pockets.map(
-        destinationPocket =>
-          destinationPocket.currency === sourcePocket.currency ||
-          html`
-            <option
-              selected=${destinationPocket === context.destinationPocket &&
-                sourcePocket === context.sourcePocket}
-              value=${`${sourcePocket.currency}:${destinationPocket.currency}`}
-            >
-              ${!context.rates.length ||
-                rateText(
+    ${!context.rates.length ||
+      context.pockets.map(sourcePocket =>
+        context.pockets.map(
+          destinationPocket =>
+            destinationPocket.currency === sourcePocket.currency ||
+            html`
+              <option
+                selected=${destinationPocket === context.destinationPocket &&
+                  sourcePocket === context.sourcePocket}
+                value=${`${sourcePocket.currency}:${
+                  destinationPocket.currency
+                }`}
+              >
+                ${rateText(
                   context.rates,
                   sourcePocket.currency,
                   destinationPocket.currency,
                   { minimumFractionDigits: 4 }
                 )}
-            </option>
-          `
-      )
-    )}
+              </option>
+            `
+        )
+      )}
   </select>
 `;
