@@ -35,7 +35,7 @@ describe('exchange button disableness', () => {
   });
 });
 
-test('click on the cancel button', async () => {
+test('click on the cancel button', () => {
   context
     .find('button')
     .at(0)
