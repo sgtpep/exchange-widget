@@ -23,9 +23,13 @@
           { currency: 'USD', sum: 300 },
         ],
         ratesURL: [
-          'https://openexchangerates.org/api/latest.json?app_id=e0c2f3b5ba0a4cf7a0d561a763b6b351',
-          '../mocks/rates.json',
-        ],
+          '0b315b5b2b8643d6a2ddfa3644e58826',
+          'e0c2f3b5ba0a4cf7a0d561a763b6b351',
+        ]
+          .map(
+            id => `https://openexchangerates.org/api/latest.json?app_id=${id}`
+          )
+          .concat('../mocks/rates.json'),
       });
     </script>
   </body>
