@@ -8,6 +8,9 @@ export default initialValue => {
   );
   return {
     onUpdate: callback => stream.observe(callback),
-    update: value => emit(value),
+    update: value => {
+      emit || stream.observe();
+      return emit(value);
+    },
   };
 };
