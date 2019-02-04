@@ -1,9 +1,6 @@
-src/ExchangeSlide.js
-  source
-  destination
-src/App.js
 src/ExchangeSliders.js
 src/CurrencyInput.js
+src/App.js
 
 snapshots
 renew subscription
