@@ -3,7 +3,6 @@ src/SourceInput.js
 src/ExchangeSlide.js
   source
   destination
-src/Slider.js
 src/App.js
 src/ExchangeSliders.js
 src/CurrencyInput.js
