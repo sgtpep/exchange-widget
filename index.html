@@ -11,19 +11,17 @@
   <link href="styles/index.css" rel="stylesheet" />
   <script type="module">
     import exchangeWidget from './src/index.js';
-    exchangeWidget(
-      document.body,
-      {
-        pockets: [
-          { currency: 'GBP', sum: 100 },
-          { currency: 'EUR', sum: 200 },
-          { currency: 'USD', sum: 300 },
-        ],
-        ratesURL: 'mocks/rates.json',
-      },
-      () =>
+    exchangeWidget({
+      element: document.body,
+      onDestroy: () =>
         (document.body.innerHTML =
-          '<p style="text-align: center">Widget destroyed. <a href>Reload</a></p>')
-    );
+          '<p style="text-align: center">Widget destroyed. <a href>Reload</a></p>'),
+      pockets: [
+        { currency: 'GBP', sum: 100 },
+        { currency: 'EUR', sum: 200 },
+        { currency: 'USD', sum: 300 },
+      ],
+      ratesURL: 'mocks/rates.json',
+    });
   </script>
 </html>
