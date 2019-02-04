@@ -18,4 +18,7 @@ describe('exchange rate directions', () => {
 
   test('calculate an exchange rate from non-USD to non-USD', () =>
     expect(exchangeRate(rates, 'EUR', 'GBP')).toBe(0.888888888888889));
+
+  test('calculate an exchange rate from USD to USD', () =>
+    expect(exchangeRate(rates, 'USD', 'USD')).toBe(1));
 });

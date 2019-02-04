@@ -6,7 +6,9 @@ const exchangeRate = (rates, fromCurrency, toCurrency) =>
     : rate(rates, toCurrency) * (1 / rate(rates, fromCurrency));
 
 const rate = (rates, currency) =>
-  (rates.find(rate => rate.currency === currency) || { rate: NaN }).rate;
+  currency === 'USD'
+    ? 1
+    : (rates.find(rate => rate.currency === currency) || { rate: NaN }).rate;
 
 const cache = new Map();
 let prevRates;
