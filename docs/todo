@@ -1,7 +1,13 @@
+src/Header.js
+  click on cancel
+    destroy
+  exchange disabled
+    click
+    destroy
+
 src/DestinationRate.js
 src/DestinationInput.js
 src/SourceInput.js
-src/Header.js
 src/RateDropdown.js
 src/RateSelect.js
 src/ExchangeSlide.js
@@ -13,6 +19,7 @@ src/Slider.js
 src/App.js
 src/CurrencyInput.js
 
+format on commit
 renew subscription
 release
 test
