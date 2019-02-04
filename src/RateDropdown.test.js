@@ -27,7 +27,7 @@ test('check if the rate dropdown is hidden initially', () =>
     `
   ));
 
-test('display a rate on the rate dropdown', async () => {
+test('show the rate dropdown', async () => {
   fetchMock.getOnce('rates', require('../mocks/rates'));
   await actions.fetchRates('rates');
   render();
