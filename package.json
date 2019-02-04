@@ -31,10 +31,10 @@
     "rollup-plugin-uglify": "^6.0.2"
   },
   "scripts": {
-    "build": "postcss -m -o ./dist/exchange-widget.min.css ./styles/index.css && rollup -c",
+    "build": "postcss -m -o dist/exchange-widget.min.css styles/index.css && rollup -c",
     "check-format": "npm run format -- -c --no-write",
-    "format": "prettier --write './**/*.{css,html,js,json,md,yml}'",
-    "lint": "eslint './**/*.js'",
+    "format": "prettier --write '**/*.{css,html,js,json,md,yml}'",
+    "lint": "eslint '**/*.js'",
     "start": "http-server -c-1 -p 8000",
     "start-test": "jest --notify --watch",
     "test": "jest"
