@@ -7,10 +7,10 @@ const html = require('./html');
 
 afterEach(() => fetchMock.reset());
 
-let actions, output, render;
+let actions, context, output, render;
 beforeEach(
   () =>
-    ({ actions, output, render } = stateMock(
+    ({ actions, context, output, render } = stateMock(
       html`
         <${RateSelect} />
       `
@@ -73,4 +73,18 @@ test('show the rate select items', async () => {
   </option>
 </select>
 `);
+});
+
+test.only('select an item from the rate select', async () => {
+  fetchMock.getOnce('rates', require('../mocks/rates'));
+  await actions.fetchRates('rates');
+  render();
+  context.find('select').simulate('change', {
+    target: {
+      value: context
+        .find('option')
+        .at(3)
+        .attr('value'),
+    },
+  });
 });
