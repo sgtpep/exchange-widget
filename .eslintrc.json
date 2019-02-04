@@ -9,7 +9,7 @@
       "jest": true,
       "node": true
     },
-    "files": "**/*.test.js",
+    "files": ["**/*.test.js", "state-mock.js"],
     "rules": {
       "no-global-assign": ["error", { "exceptions": ["require"] }]
     }
