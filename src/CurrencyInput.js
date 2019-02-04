@@ -41,7 +41,7 @@ export default class extends Component {
       event.target.value
     ) {
       const { value } = event.target;
-      event.target.value = `0${event.target.value}`;
+      event.target.value = `0${value}`;
       event.target.value = value;
     }
     this.updateHiddenText();

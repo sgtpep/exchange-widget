@@ -3,12 +3,12 @@ import html from './html.js';
 import rateText from './rate-text.js';
 
 export default animatedHideable(
-  (props, state) => state.ratesHidden,
-  (props, state) => ({
+  (props, context) => context.ratesHidden,
+  (props, context) => ({
     text: rateText(
-      state.rates,
+      context.rates,
       props.pocket.currency,
-      state.sourcePocket.currency
+      context.sourcePocket.currency
     ),
   }),
   props =>

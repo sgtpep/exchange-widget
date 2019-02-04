@@ -44,19 +44,19 @@ export default class extends Component {
       ([this.focusedInput, this.focusedInputType] = [event.target, type]);
   }
 
-  render(props, _, state) {
+  render(props, state, context) {
     return html`
       <div class="ExchangeSliders">
         <${Slider}
-          index=${state.pockets.indexOf(state.sourcePocket)}
+          index=${context.pockets.indexOf(context.sourcePocket)}
           onMount=${(index, element) => this.focusSlideInput(element, 'source')}
           onSlide=${(index, element) => {
-            setSourcePocket(state.pockets[index]);
+            setSourcePocket(context.pockets[index]);
             this.focusSlideInput(element, 'source');
           }}
           ref=${this.source}
         >
-          ${state.pockets.map(
+          ${context.pockets.map(
             pocket =>
               html`
                 <${ExchangeSlide} pocket=${pocket} type="source" />
@@ -64,14 +64,14 @@ export default class extends Component {
           )}
         <//>
         <${Slider}
-          index=${state.pockets.indexOf(state.destinationPocket)}
+          index=${context.pockets.indexOf(context.destinationPocket)}
           onSlide=${(index, element) => {
-            setDestinationPocket(state.pockets[index]);
+            setDestinationPocket(context.pockets[index]);
             this.focusSlideInput(element, 'destination');
           }}
           ref=${this.destination}
         >
-          ${state.pockets.map(
+          ${context.pockets.map(
             pocket =>
               html`
                 <${ExchangeSlide} pocket=${pocket} type="destination" />

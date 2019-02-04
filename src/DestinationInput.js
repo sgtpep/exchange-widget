@@ -5,26 +5,26 @@ import html from './html.js';
 import round from './round.js';
 
 export default animatedHideable(
-  (props, state) => state.ratesHidden,
-  (props, state) => {
+  (props, context) => context.ratesHidden,
+  (props, context) => {
     const rate = exchangeRate(
-      state.rates,
-      state.sourcePocket.currency,
+      context.rates,
+      context.sourcePocket.currency,
       props.pocket.currency
     );
     return {
       rate,
-      value: state.amount && round(rate * state.amount, 2),
+      value: context.amount && round(rate * context.amount, 2),
     };
   },
-  (props, state) =>
+  (props, context) =>
     html`
       <span
         class=${`DestinationInput animated${props.hidden ? ' hidden' : ''}`}
       >
         <${CurrencyInput}
-          max=${props.rate * state.sourcePocket.sum}
-          prefix=${state.amount === null || '+'}
+          max=${props.rate * context.sourcePocket.sum}
+          prefix=${context.amount === null || '+'}
           setAmount=${value => (1 / props.rate) * value}
           tabindex="-1"
           value=${props.value}

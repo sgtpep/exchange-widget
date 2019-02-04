@@ -2,33 +2,33 @@ import html from './html.js';
 import rateText from './rate-text.js';
 import { setDestinationPocket, setSourcePocket } from './actions.js';
 
-export default (props, state) => html`
+export default (props, context) => html`
   <select
     onChange=${event => {
       const [sourceCurrency, destinationCurrency] = event.target.value.split(
         ':'
       );
       setSourcePocket(
-        state.pockets.find(pocket => pocket.currency === sourceCurrency)
+        context.pockets.find(pocket => pocket.currency === sourceCurrency)
       );
       setDestinationPocket(
-        state.pockets.find(pocket => pocket.currency === destinationCurrency)
+        context.pockets.find(pocket => pocket.currency === destinationCurrency)
       );
     }}
   >
-    ${state.pockets.map(sourcePocket =>
-      state.pockets.map(
+    ${context.pockets.map(sourcePocket =>
+      context.pockets.map(
         destinationPocket =>
           destinationPocket.currency === sourcePocket.currency ||
           html`
             <option
-              selected=${destinationPocket === state.destinationPocket &&
-                sourcePocket === state.sourcePocket}
+              selected=${destinationPocket === context.destinationPocket &&
+                sourcePocket === context.sourcePocket}
               value=${`${sourcePocket.currency}:${destinationPocket.currency}`}
             >
-              ${!state.rates.length ||
+              ${!context.rates.length ||
                 rateText(
-                  state.rates,
+                  context.rates,
                   sourcePocket.currency,
                   destinationPocket.currency,
                   { minimumFractionDigits: 4 }
