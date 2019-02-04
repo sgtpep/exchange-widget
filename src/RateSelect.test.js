@@ -7,10 +7,10 @@ const html = require('./html');
 
 afterEach(() => fetchMock.reset());
 
-let actions, context, output, render;
+let actions, output, render;
 beforeEach(
   () =>
-    ({ actions, context, output, render } = stateMock(
+    ({ actions, output, render } = stateMock(
       html`
         <${RateSelect} />
       `

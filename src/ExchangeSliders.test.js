@@ -1,14 +1,13 @@
 const stateMock = require('./state-mock');
-const { shallow } = require('preact-render-spy');
 
 require = require('esm')(module);
 const ExchangeSliders = require('./ExchangeSliders');
 const html = require('./html');
 
-let actions, context, output, render;
+let output;
 beforeEach(
   () =>
-    ({ actions, context, output, render } = stateMock(
+    ({ output } = stateMock(
       html`
         <${ExchangeSliders} />
       `
