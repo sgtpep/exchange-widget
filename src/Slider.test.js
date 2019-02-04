@@ -1,25 +1,21 @@
-const stateMock = require('./state-mock');
+const { shallow } = require('preact-render-spy');
 
 require = require('esm')(module);
 const Slider = require('./Slider');
 const html = require('./html');
 
-let output;
-beforeEach(
-  () =>
-    ({ output } = stateMock(
-      html`
-        <${Slider}>
-          <div>foo</div>
-          <div>bar</div>
-          <div>baz</div>
-        <//>
-      `
-    ))
-);
-
 test('renders slides and pagination', async () =>
-  expect(output()).toMatchInlineSnapshot(`
+  expect(
+    shallow(html`
+      <${Slider}>
+        <div>foo</div>
+        <div>bar</div>
+        <div>baz</div>
+      <//>
+    `)
+  ).toMatchInlineSnapshot(`
+preact-render-spy (1 nodes)
+-------
 <div class="Slider">
   <div style="width: 500%;">
     <div style="width: 20%;">
@@ -47,4 +43,5 @@ test('renders slides and pagination', async () =>
      
   </nav>
 </div>
+
 `));
