@@ -3,7 +3,7 @@ const fetchMock = require('fetch-mock');
 require = require('esm')(module);
 const state = require('./state');
 
-const eurPocket = { currency: 'EUR', sum: 100 };
+const eurPocket = { currency: 'EUR', sum: 200 };
 const rates = [
   { currency: 'EUR', rate: 0.874485 },
   { currency: 'GBP', rate: 0.764586 },
