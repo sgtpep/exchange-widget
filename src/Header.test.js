@@ -21,7 +21,7 @@ beforeEach(() => {
 describe('exchange button disableness', () => {
   const button = () => context.find('button').at(1);
 
-  test('check initial disableness of the exchange button', () =>
+  test('check if the exchange button is disabled initially', () =>
     expect(button().attr('disabled')).toBeTruthy());
 
   test('enable the exchange button', async () => {
