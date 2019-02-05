@@ -21,7 +21,6 @@ export default {
     commonJS(),
     inject({
       h: ['preact', 'h'],
-      include: 'src/**/*.js',
     }),
     nodeResolve(),
     uglify(),
