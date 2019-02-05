@@ -14,7 +14,7 @@ export default {
   },
   plugins: [
     babel({
-      ignore: ['node_modules'],
+      exclude: 'node_modules/**',
       plugins: ['babel-plugin-htm'],
       presets: [['@babel/env', { useBuiltIns: 'usage' }]],
     }),
