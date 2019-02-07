@@ -1,3 +1,4 @@
+stylelint
 Slider: transitionend
 delayed state update
 export preact from html.js
