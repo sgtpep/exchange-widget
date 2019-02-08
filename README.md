@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/sgtpep/exchange-widget.svg?branch=master)](https://travis-ci.org/sgtpep/exchange-widget)
 
-The currency exchange widget inspired by a popular mobile app implemented using [Preact](https://github.com/sgtpep/exchange-widget), [Meiosis](http://meiosis.js.org/), [HTML tagged templates](https://github.com/developit/htm) and native ES modules. Demo: https://sgtpep.github.io/exchange-widget/dist/.
+The currency exchange widget inspired by a popular mobile app implemented using [Preact](https://github.com/sgtpep/exchange-widget), [Meiosis](http://meiosis.js.org/), [HTML tagged templates](https://github.com/developit/htm) and native ES modules.
+
+Demo: https://sgtpep.github.io/exchange-widget/dist/.
 
 ## Development
 
