@@ -32,11 +32,11 @@
   },
   "scripts": {
     "build": "postcss -m -o dist/exchange-widget.min.css styles/index.css && rollup -c",
-    "check-format": "npm run format -- -c --no-write",
-    "format": "prettier --write '**/*.{css,html,js,json,md,yml}'",
-    "lint": "eslint '**/*.js'",
+    "eslint": "eslint '**/*.js'",
+    "prettier": "prettier --write '**/*.{css,html,js,json,md,yml}'",
+    "prettier:check": "npm run prettier -- -c --no-write",
     "start": "http-server -c-1 -p 8000",
-    "start-test": "jest --notify --watch",
+    "test:watch": "jest --notify --watch",
     "test": "jest"
   }
 }
