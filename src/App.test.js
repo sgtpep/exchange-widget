@@ -17,7 +17,7 @@ beforeEach(() => {
   fetchMock.getOnce('rates', require('../mocks/rates'));
 });
 
-test('render initial application state', () =>{
+test('render initial application state', () => {
   expect(output()).toMatchInlineSnapshot(`
 <div class="App animated">
   <default visible={false}></default>
@@ -32,6 +32,6 @@ test('render initial application state', () =>{
   </default>
   <default></default>
 </div>
-`)
+`);
   expect(fetchMock.called()).toBeTruthy();
 });
