@@ -33,10 +33,11 @@
   "scripts": {
     "build": "postcss -m -o dist/exchange-widget.min.css styles/index.css && rollup -c",
     "eslint": "eslint '**/*.js'",
+    "jest": "jest",
+    "jest:watch": "jest --notify --watch",
     "prettier": "prettier --write '**/*.{css,html,js,json,md,yml}'",
     "prettier:check": "npm run prettier -- -c --no-write",
     "start": "http-server -c-1 -p 8000",
-    "test:watch": "jest --notify --watch",
-    "test": "jest"
+    "test": "npm run prettier:check && npm run eslint && npm run jest"
   }
 }

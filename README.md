@@ -16,11 +16,12 @@ From a project directory run `npm install` and then `npm start` to start an HTTP
 
 - `build`: Generates the production code by combining, transpiling and minimizing of styles and scripts.
 - `eslint`: Checks the code for linting errors using `eslint`.
+- `jest:watch`: Starts `jest` in the watch mode.
+- `jest`: Runs tests in `jest`.
 - `prettier:check`: Checks if the code is formatted.
 - `prettier`: Formats the code using `prettier`.
 - `start`: Starts the development web server for serving static content on `http://localhost:8000/`.
-- `test:watch`: Starts `jest` in the watch mode.
-- `test`: Runs tests in `jest`.
+- `test`: Run all CI checks and tests.
 
 ## Unconventional Decisions
 
