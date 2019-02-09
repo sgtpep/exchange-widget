@@ -1,3 +1,4 @@
+pre-commit hook
 stylelint
 Slider: transitionend
 delayed state update
